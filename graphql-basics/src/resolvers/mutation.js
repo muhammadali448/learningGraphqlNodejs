@@ -18,18 +18,39 @@ const mutation = {
     };
     return users[isUpdateUserExistIndex];
   },
-  updatePost: (parent, { id, data }, { db: { posts } }, info) => {
+  updatePost: (parent, { id, data }, { db: { posts }, pubsub }, info) => {
     const isUpdatePostExistIndex = posts.findIndex((post) => post.id === id);
+    const originalPost = {
+      ...posts[isUpdatePostExistIndex],
+    };
+
     if (isUpdatePostExistIndex === -1) {
       throw new Error("Post not exist");
     }
-    posts[isUpdatePostExistIndex] = {
+    const newPost = {
       ...posts[isUpdatePostExistIndex],
       ...data,
     };
-    return posts[isUpdatePostExistIndex];
+    posts[isUpdatePostExistIndex] = newPost;
+    if (typeof data.isPublished === "boolean") {
+      if (originalPost.isPublished && !newPost.isPublished) {
+        // deleted Post
+        pubsub.publish("post", {
+          post: { mutation: "DELETED", data: originalPost },
+        });
+      } else if (!originalPost.isPublished && newPost.isPublished) {
+        // created Post
+        pubsub.publish("post", {
+          post: { mutation: "CREATED", data: newPost },
+        });
+      }
+    } else if (originalPost.isPublished) {
+      // updated
+      pubsub.publish("post", { post: { mutation: "UPDATED", data: newPost } });
+    }
+    return newPost;
   },
-  updateComment: (parent, { id, data }, { db: { comments } }, info) => {
+  updateComment: (parent, { id, data }, { db: { comments }, pubsub }, info) => {
     const isUpdateCommentExistIndex = comments.findIndex(
       (comment) => comment.id === id
     );
@@ -40,9 +61,15 @@ const mutation = {
       ...comments[isUpdateCommentExistIndex],
       ...data,
     };
+    pubsub.publish(`post-${comments[isUpdateCommentExistIndex].post}`, {
+      comment: {
+        mutation: "UPDATED",
+        data: comments[isUpdateCommentExistIndex],
+      },
+    });
     return comments[isUpdateCommentExistIndex];
   },
-  deleteComment: (parent, { id }, { db: { comments } }, info) => {
+  deleteComment: (parent, { id }, { db: { comments }, pubsub }, info) => {
     const isCommentExistIndex = comments.findIndex(
       (comment) => comment.id === id
     );
@@ -50,16 +77,27 @@ const mutation = {
       throw new Error("Comment not exist");
     }
     const deleteComment = comments.splice(isCommentExistIndex, 1);
+    pubsub.publish(`post-${deleteComment[0].post}`, {
+      comment: { mutation: "DELETED", data: deleteComment[0] },
+    });
     return deleteComment[0];
   },
-  deletePost: (parent, { id }, { db: { posts, comments } }, info) => {
+  deletePost: (parent, { id }, { db: { posts, comments }, pubsub }, info) => {
     const isPostExistIndex = posts.findIndex((post) => post.id === id);
     if (isPostExistIndex === -1) {
       throw new Error("Post not exist");
     }
-    const deletedPost = posts.splice(isPostExistIndex, 1);
+    const deletedPost = posts.splice(isPostExistIndex, 1)[0];
     comments = comments.filter((comment) => comment.post !== id);
-    return deletedPost[0];
+    if (deletedPost.isPublished) {
+      pubsub.publish("post", {
+        post: {
+          mutation: "DELETED",
+          data: deletedPost,
+        },
+      });
+    }
+    return deletedPost;
   },
   deleteUser: (parent, { id }, { db: { posts, comments, users } }, info) => {
     const isUserExistIndex = users.findIndex((user) => user.id === id);
@@ -100,7 +138,7 @@ const mutation = {
   createPost: (
     parent,
     { data: { title, body, isPublished, author } },
-    { db: { posts, users } },
+    { db: { posts, users }, pubsub },
     info
   ) => {
     const isUserExist = users.some((user) => user.id === author);
@@ -115,15 +153,22 @@ const mutation = {
       author: author,
     };
     posts.push(post);
+    if (isPublished) {
+      pubsub.publish("post", {
+        post: {
+          mutation: "CREATED",
+          data: post,
+        },
+      });
+    }
     return post;
   },
   createComment: (
     parent,
     { data: { author, post, text } },
-    { db: { posts, comments, users } },
+    { db: { posts, comments, users }, pubsub },
     info
   ) => {
-    console.log(post);
     const isUserExist = users.some((user) => user.id === author);
     const postFound = posts.some((p) => p.id === post && p.isPublished);
     posts.map((ps) =>
@@ -139,6 +184,9 @@ const mutation = {
       text,
     };
     comments.push(comment);
+    pubsub.publish(`post-${post}`, {
+      comment: { mutation: "CREATED", data: comment },
+    });
     return comment;
   },
 };

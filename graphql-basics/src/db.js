@@ -21,7 +21,7 @@ const posts = [
     id: "post_1abc",
     title: "wow",
     body: "This is limited to gtx1080",
-    isPublished: false,
+    isPublished: true,
     author: "abc111",
   },
   {
