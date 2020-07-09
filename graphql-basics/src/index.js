@@ -1,5 +1,5 @@
 import { GraphQLServer } from "graphql-yoga";
-
+import { v4 } from "uuid";
 // const typeDefs = `
 //   type Query {
 //     hello(name: String): String!
@@ -21,6 +21,7 @@ import { GraphQLServer } from "graphql-yoga";
 
 // add(numbers: [Float!]!): Float!
 // grades: [Int!]!
+
 const users = [
   {
     id: "abc111",
@@ -104,6 +105,31 @@ const typeDefs = `
     posts(queryString: String): [Post!]!
     comments: [Comment!]!
   }
+  type Mutation {
+    createUser(data: createUserInput!): User!
+    createPost(data: createPostInput!): Post!
+    createComment(data: createCommentInput!): Comment!
+  }
+
+  input createUserInput {
+    name: String!
+    email: String! 
+    age: Int
+  }
+
+  input createPostInput {
+    title: String!
+    body: String!
+    isPublished: Boolean 
+    author: ID!
+  }
+
+  input createCommentInput {
+    text: String!
+    author: ID!
+    post: ID!
+  }
+
   type User {
       id: ID!
       name: String!
@@ -165,6 +191,62 @@ const resolvers = {
     // bye: () => "We have so much fun!!!",
     // location: () => "Karachi, Pakistan",
     // bio: () => "I am Engineer",
+  },
+  Mutation: {
+    createUser: (parent, { data: { email, name, age } }, ctx, info) => {
+      // console.log(args);
+      const isEmailTaken = users.some((user) => user.email === email);
+      if (isEmailTaken) {
+        throw new Error("Email already taken");
+      }
+      const user = {
+        id: v4(),
+        name,
+        email,
+        age,
+      };
+      users.push(user);
+      return user;
+    },
+    createPost: (
+      parent,
+      { data: { title, body, isPublished, author } },
+      ctx,
+      info
+    ) => {
+      const isUserExist = users.some((user) => user.id === author);
+      if (!isUserExist) {
+        throw new Error("User not exist");
+      }
+      const post = {
+        id: v4(),
+        title,
+        body,
+        isPublished,
+        author: author,
+      };
+      posts.push(post);
+      return post;
+    },
+    createComment: (parent, { data: { author, post, text } }, ctx, info) => {
+      console.log(post);
+      const isUserExist = users.some((user) => user.id === author);
+      const postFound = posts.some((p) => p.id === post && p.isPublished);
+      posts.map((ps) =>
+        console.log(ps.id + " : " + post + " : " + ps.isPublished)
+      );
+      if (!isUserExist || !postFound) {
+        throw new Error("Error in creating a comment");
+      }
+      const comment = {
+        id: v4(),
+        author,
+        post,
+        text,
+      };
+      comments.push(comment);
+      return comment;
+    },
   },
   Post: {
     author: (parent, arg, ctx, info) =>
