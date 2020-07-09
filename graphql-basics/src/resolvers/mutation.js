@@ -1,5 +1,47 @@
 import { v4 } from "uuid";
+import post from "./post";
 const mutation = {
+  updateUser: (parent, { id, data }, { db: { users } }, info) => {
+    const isUpdateUserExistIndex = users.findIndex((user) => user.id === id);
+    if (isUpdateUserExistIndex === -1) {
+      throw new Error("User not exist");
+    }
+    if (typeof data.email === "string") {
+      const isEmailExist = users.some((user) => user.email === data.email);
+      if (isEmailExist) {
+        throw new Error("Email already exist try different one");
+      }
+    }
+    users[isUpdateUserExistIndex] = {
+      ...users[isUpdateUserExistIndex],
+      ...data,
+    };
+    return users[isUpdateUserExistIndex];
+  },
+  updatePost: (parent, { id, data }, { db: { posts } }, info) => {
+    const isUpdatePostExistIndex = posts.findIndex((post) => post.id === id);
+    if (isUpdatePostExistIndex === -1) {
+      throw new Error("Post not exist");
+    }
+    posts[isUpdatePostExistIndex] = {
+      ...posts[isUpdatePostExistIndex],
+      ...data,
+    };
+    return posts[isUpdatePostExistIndex];
+  },
+  updateComment: (parent, { id, data }, { db: { comments } }, info) => {
+    const isUpdateCommentExistIndex = comments.findIndex(
+      (comment) => comment.id === id
+    );
+    if (isUpdateCommentExistIndex === -1) {
+      throw new Error("Comment not exist");
+    }
+    comments[isUpdateCommentExistIndex] = {
+      ...comments[isUpdateCommentExistIndex],
+      ...data,
+    };
+    return comments[isUpdateCommentExistIndex];
+  },
   deleteComment: (parent, { id }, { db: { comments } }, info) => {
     const isCommentExistIndex = comments.findIndex(
       (comment) => comment.id === id
