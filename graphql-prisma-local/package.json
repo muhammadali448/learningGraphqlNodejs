@@ -1,0 +1,26 @@
+{
+  "name": "graphql-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js,graphql --exec babel-node src/index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@graphql-cli/codegen": "^1.17.0",
+    "@graphql-codegen/schema-ast": "^1.17.0"
+  },
+  "dependencies": {
+    "graphql-config": "^3.0.3",
+    "graphql-yoga": "^1.18.3",
+    "prisma-binding": "^2.3.16",
+    "uuid": "^8.2.0"
+  }
+}
