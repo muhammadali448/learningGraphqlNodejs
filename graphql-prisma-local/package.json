@@ -18,6 +18,7 @@
     "@graphql-codegen/schema-ast": "^1.17.0"
   },
   "dependencies": {
+    "@playlyfe/gql": "^2.6.2",
     "graphql-config": "^3.0.3",
     "graphql-yoga": "^1.18.3",
     "prisma-binding": "^2.3.16",
