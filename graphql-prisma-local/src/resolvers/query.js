@@ -24,9 +24,15 @@ const query = {
     // } else {
     //   return posts;
     // }
-    return prisma.query.posts(null, info);
+    const objArgs = {};
+    if (queryString) {
+      objArgs.where = {
+        OR: [{ title_contains: queryString }, { body_contains: queryString }],
+      };
+    }
+    return prisma.query.posts(objArgs, info);
   },
-  comments: (_, args, { db: { comments } }, info) => comments,
+  comments: (_, args, { prisma }, info) => prisma.query.comments(null, info),
 };
 
 export default query;
