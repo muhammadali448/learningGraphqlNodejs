@@ -1,9 +1,11 @@
 import { Prisma } from "prisma-binding";
 
 const prisma = new Prisma({
-  typeDefs: "./src/generated/prisma-review.graphql",
-  endpoint: "http://localhost:4466/reviews/default",
+  typeDefs: "./src/generated/prisma.graphql",
+  endpoint: "http://localhost:4466",
 });
+
+export default prisma;
 
 // Retrieve `id` and `name` of all users
 // prisma.query

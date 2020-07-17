@@ -6,7 +6,7 @@ import post from "./resolvers/post";
 import mutation from "./resolvers/mutation";
 import query from "./resolvers/query";
 import subscription from "./resolvers/subscription";
-import "./prisma";
+import prisma from "./prisma";
 const resolvers = {
   Query: query,
   Mutation: mutation,
@@ -23,6 +23,7 @@ const server = new GraphQLServer({
   context: {
     db,
     pubsub,
+    prisma,
   },
 });
 server.start(() => console.log("Server is running"));
