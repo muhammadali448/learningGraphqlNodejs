@@ -5,7 +5,7 @@ type Query {
   comments: [Comment!]!
 }
 type Mutation {
-  createUser(data: createUserInput!): User!
+  createUser(data: createUserInput!): createUserResponse!
   createPost(data: createPostInput!): Post!
   createComment(data: createCommentInput!): Comment!
   deleteUser(id: ID!): User!
@@ -14,6 +14,11 @@ type Mutation {
   updateUser(id: ID!, data: updateUserInput!): User!
   updatePost(id: ID!, data: updatePostInput!): Post!
   updateComment(id: ID!, data: updateCommentInput!): Comment!
+}
+
+type createUserResponse {
+  user: User!
+  token: String!
 }
 
 type Subscription {
@@ -39,6 +44,7 @@ input updateCommentInput {
 input createUserInput {
   name: String!
   email: String!
+  password: String!
 }
 
 input createPostInput {
@@ -58,6 +64,7 @@ type User {
   id: ID!
   name: String!
   email: String!
+  password: String!
   posts: [Post!]!
   comments: [Comment!]!
 }

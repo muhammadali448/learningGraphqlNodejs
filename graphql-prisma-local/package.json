@@ -19,8 +19,10 @@
   },
   "dependencies": {
     "@playlyfe/gql": "^2.6.2",
+    "bcryptjs": "^2.4.3",
     "graphql-config": "^3.0.3",
     "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
     "prisma-binding": "^2.3.16",
     "uuid": "^8.2.0"
   }
