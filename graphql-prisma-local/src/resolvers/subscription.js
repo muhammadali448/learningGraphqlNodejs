@@ -1,18 +1,33 @@
 import { v4 } from "uuid";
 const subscription = {
   post: {
-    subscribe: (parent, args, { pubsub }, info) => {
-      return pubsub.asyncIterator("post");
+    subscribe: (parent, args, { prisma }, info) => {
+      return prisma.subscription.post(
+        {
+          where: {
+            node: {
+              isPublished: true,
+            },
+          },
+        },
+        info
+      );
     },
   },
   comment: {
-    subscribe: (parent, { postId }, { pubsub, db: { posts } }, info) => {
-      const post = posts.find((post) => post.id === postId && post.isPublished);
-      if (!post) {
-        throw new Error("Post not exist");
-      }
-      const channel = `post-${postId}`;
-      return pubsub.asyncIterator(channel);
+    subscribe: (parent, { postId }, { prisma }, info) => {
+      return prisma.subscription.comment(
+        {
+          where: {
+            node: {
+              post: {
+                id: postId,
+              },
+            },
+          },
+        },
+        info
+      );
     },
   },
 };
