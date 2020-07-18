@@ -1,15 +1,17 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { getUserId } from "../utils/getUserId";
 const mutation = {
-  updateUser: async (parent, { id, data }, { db: { users }, prisma }, info) => {
-    const isUserExist = await prisma.exists.User({ id });
+  updateUser: async (parent, { data }, { prisma, auth }, info) => {
+    const userId = getUserId(auth);
+    const isUserExist = await prisma.exists.User({ id: userId });
     if (!isUserExist) {
       throw new Error("User not exist");
     }
     const updateUser = await prisma.mutation.updateUser(
       {
         where: {
-          id,
+          id: userId,
         },
         data,
       },
@@ -17,8 +19,14 @@ const mutation = {
     );
     return updateUser;
   },
-  updatePost: async (parent, { id, data }, { prisma, pubsub }, info) => {
-    const isPostExist = await prisma.exists.Post({ id });
+  updatePost: async (parent, { id, data }, { prisma, pubsub, auth }, info) => {
+    const userId = getUserId(auth);
+    const isPostExist = await prisma.exists.Post({
+      id,
+      author: {
+        id: userId,
+      },
+    });
     if (!isPostExist) {
       throw new Error("Post not exist");
     }
@@ -33,10 +41,21 @@ const mutation = {
     );
     return updatedPost;
   },
-  updateComment: async (parent, { id, data }, { prisma, pubsub }, info) => {
-    const isCommentExist = await prisma.exists.Comment({ id });
+  updateComment: async (
+    parent,
+    { id, data },
+    { prisma, pubsub, auth },
+    info
+  ) => {
+    const userId = getUserId(auth);
+    const isCommentExist = await prisma.exists.Comment({
+      id,
+      author: {
+        id: userId,
+      },
+    });
     if (!isCommentExist) {
-      throw new Error("Comment not exist");
+      throw new Error("Unauthorized");
     }
     const updatedComment = await prisma.mutation.updateComment(
       {
@@ -49,10 +68,14 @@ const mutation = {
     );
     return updatedComment;
   },
-  deleteComment: async (parent, { id }, { prisma, pubsub }, info) => {
-    const isCommentExist = await prisma.exists.Comment({ id });
+  deleteComment: async (parent, { id }, { prisma, pubsub, auth }, info) => {
+    const userId = getUserId(auth);
+    const isCommentExist = await prisma.exists.Comment({
+      id,
+      author: { id: userId },
+    });
     if (!isCommentExist) {
-      throw new Error("Comment not exist");
+      throw new Error("Unauthorized");
     }
     const deletedComment = await prisma.mutation.deleteComment(
       {
@@ -64,10 +87,14 @@ const mutation = {
     );
     return deletedComment;
   },
-  deletePost: async (parent, { id }, { prisma, pubsub }, info) => {
-    const isPostExist = await prisma.exists.Post({ id });
+  deletePost: async (parent, { id }, { prisma, pubsub, auth }, info) => {
+    const userId = getUserId(auth);
+    const isPostExist = await prisma.exists.Post({
+      id,
+      author: { id: userId },
+    });
     if (!isPostExist) {
-      throw new Error("Post not exist");
+      throw new Error("Unauthorized");
     }
     const deletedPost = await prisma.mutation.deletePost(
       {
@@ -79,20 +106,50 @@ const mutation = {
     );
     return deletedPost;
   },
-  deleteUser: async (parent, { id }, { prisma }, info) => {
-    const isUserExist = await prisma.exists.User({ id });
+  deleteUser: async (parent, args, { prisma, auth }, info) => {
+    const userId = getUserId(auth);
+    const isUserExist = await prisma.exists.User({ id: userId });
     if (!isUserExist) {
       throw new Error("User not exist");
     }
     const deletedUser = await prisma.mutation.deleteUser(
       {
         where: {
-          id,
+          id: userId,
         },
       },
       info
     );
     return deletedUser;
+  },
+  loginUser: async (
+    parent,
+    { data: { email, password } },
+    { prisma },
+    info
+  ) => {
+    const user = await prisma.query.user({
+      where: {
+        email,
+      },
+    });
+    if (!user) {
+      throw new Error("User not exist");
+    }
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
+    if (!isPasswordMatch) {
+      throw new Error("Password not correct");
+    }
+    const token = jwt.sign(
+      {
+        userId: user.id,
+      },
+      "createUserToken"
+    );
+    return {
+      user,
+      token,
+    };
   },
   createUser: async (
     parent,
@@ -128,11 +185,12 @@ const mutation = {
   },
   createPost: async (
     parent,
-    { data: { title, body, isPublished, author } },
-    { pubsub, prisma },
+    { data: { title, body, isPublished } },
+    { pubsub, prisma, auth },
     info
   ) => {
-    const isUserExist = await prisma.exists.User({ id: author });
+    const userId = getUserId(auth);
+    const isUserExist = await prisma.exists.User({ id: userId });
     if (!isUserExist) {
       throw new Error("User not exist");
     }
@@ -144,7 +202,7 @@ const mutation = {
           isPublished,
           author: {
             connect: {
-              id: author,
+              id: userId,
             },
           },
         },
@@ -155,17 +213,24 @@ const mutation = {
   },
   createComment: async (
     parent,
-    { data: { author, post, text } },
-    { pubsub, prisma },
+    { data: { post, text } },
+    { pubsub, prisma, auth },
     info
   ) => {
-    const isUserExist = await prisma.exists.User({ id: author });
+    const userId = getUserId(auth);
+    const isUserExist = await prisma.exists.User({ id: userId });
     const isPostExist = await prisma.exists.Post({ id: post });
+    const isCommentAuth = await prisma.exists.Comment({
+      author: { id: userId },
+    });
     if (!isUserExist) {
       throw new Error("User not exist");
     }
     if (!isPostExist) {
       throw new Error("Post not exist");
+    }
+    if (!isCommentAuth) {
+      throw new Error("Unauthorized");
     }
     const newComment = await prisma.mutation.createComment(
       {
@@ -173,7 +238,7 @@ const mutation = {
           text,
           author: {
             connect: {
-              id: author,
+              id: userId,
             },
           },
           post: {

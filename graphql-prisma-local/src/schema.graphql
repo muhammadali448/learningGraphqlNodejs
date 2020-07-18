@@ -6,12 +6,13 @@ type Query {
 }
 type Mutation {
   createUser(data: createUserInput!): createUserResponse!
+  loginUser(data: loginUserInput!): createUserResponse!
   createPost(data: createPostInput!): Post!
   createComment(data: createCommentInput!): Comment!
-  deleteUser(id: ID!): User!
+  deleteUser: User!
   deletePost(id: ID!): Post!
   deleteComment(id: ID!): Comment!
-  updateUser(id: ID!, data: updateUserInput!): User!
+  updateUser(data: updateUserInput!): User!
   updatePost(id: ID!, data: updatePostInput!): Post!
   updateComment(id: ID!, data: updateCommentInput!): Comment!
 }
@@ -47,16 +48,19 @@ input createUserInput {
   password: String!
 }
 
+input loginUserInput {
+  email: String!
+  password: String!
+}
+
 input createPostInput {
   title: String!
   body: String!
   isPublished: Boolean
-  author: ID!
 }
 
 input createCommentInput {
   text: String!
-  author: ID!
   post: ID!
 }
 
