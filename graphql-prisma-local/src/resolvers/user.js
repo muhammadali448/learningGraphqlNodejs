@@ -1,9 +1,36 @@
+import { getUserId } from "../utils/getUserId";
+
 const user = {
-  // posts: (parent, args, { prisma }, info) =>
-  //   // posts.filter((post) => post.author === parent.id),
-  //   // prisma.query.posts(null, "{ id title isPublished body }", info),
-  // comments: (parent, args, { db: { comments } }, info) =>
-  //   comments.filter((comment) => comment.author === parent.id),
+  // email: async (parent, args, { prisma, auth }, info) => {
+  //   const userId = getUserId(auth, false);
+  //   if (userId && parent.id === userId) {
+  //     return parent.email;
+  //   }
+  //   return null;
+  // },
+  posts: {
+    fragment: "fragment userId on User { id }",
+    resolve: async (parent, args, { prisma }, info) => {
+      return prisma.query.posts({
+        where: {
+          author: {
+            id: parent.id,
+          },
+          isPublished: true,
+        },
+      });
+    },
+  },
+  email: {
+    fragment: "fragment userId on User { id }",
+    resolve: async (parent, args, { prisma, auth }, info) => {
+      const userId = getUserId(auth, false);
+      if (userId && parent.id === userId) {
+        return parent.email;
+      }
+      return null;
+    },
+  },
 };
 
 export default user;
