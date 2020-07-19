@@ -1,10 +1,7 @@
+import { getUserId } from "../utils/getUserId";
+
 const query = {
   users: (_, { name }, { prisma }, info) => {
-    // name
-    //   ? users.filter(
-    //       (user) => user.name.toLowerCase().indexOf(name.toLowerCase()) > -1
-    //     )
-    //   : users
     const optArgs = {};
     if (name) {
       optArgs.where = {
@@ -14,25 +11,72 @@ const query = {
     }
     return prisma.query.users(optArgs, info);
   },
-  posts: (_, { queryString }, { prisma }, info) => {
-    // if (queryString) {
-    //   return posts.filter(
-    //     (post) =>
-    //       post.title.toLowerCase().includes(queryString.toLowerCase()) ||
-    //       post.body.toLowerCase().includes(queryString.toLowerCase())
-    //   );
-    // } else {
-    //   return posts;
-    // }
-    const objArgs = {};
+  myPosts: (_, { queryString }, { prisma, auth }, info) => {
+    const userId = getUserId(auth);
+    const objArgs = {
+      where: {
+        author: {
+          id: userId,
+        },
+      },
+    };
     if (queryString) {
       objArgs.where = {
+        ...objArgs.where,
+        OR: [{ title_contains: queryString }, { body_contains: queryString }],
+      };
+    }
+    return prisma.query.posts(objArgs, info);
+  },
+  posts: (_, { queryString }, { prisma }, info) => {
+    const objArgs = {
+      where: {
+        isPublished: true,
+      },
+    };
+    if (queryString) {
+      objArgs.where = {
+        ...objArgs.where,
         OR: [{ title_contains: queryString }, { body_contains: queryString }],
       };
     }
     return prisma.query.posts(objArgs, info);
   },
   comments: (_, args, { prisma }, info) => prisma.query.comments(null, info),
+  me: async (_, args, { auth, prisma }, info) => {
+    const userId = getUserId(auth);
+    return prisma.query.user(
+      {
+        where: {
+          id: userId,
+        },
+      },
+      info
+    );
+  },
+  post: async (_, { id }, { prisma, auth }, info) => {
+    const userId = getUserId(auth, false);
+    const posts = await prisma.query.posts(
+      {
+        where: {
+          id,
+          OR: [
+            { isPublished: true },
+            {
+              author: {
+                id: userId,
+              },
+            },
+          ],
+        },
+      },
+      info
+    );
+    if (posts.length === 0) {
+      throw new Error("Post not found");
+    }
+    return posts[0];
+  },
 };
 
 export default query;

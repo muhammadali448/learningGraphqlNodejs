@@ -3,6 +3,8 @@ type Query {
   me: User!
   posts(queryString: String): [Post!]!
   comments: [Comment!]!
+  post(id: ID!): Post!
+  myPosts(queryString: String): [Post!]!
 }
 type Mutation {
   createUser(data: createUserInput!): createUserResponse!
