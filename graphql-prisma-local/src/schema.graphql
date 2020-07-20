@@ -27,11 +27,13 @@ type createUserResponse {
 type Subscription {
   comment(postId: ID!): CommentSubscriptionPayload!
   post: PostSubscriptionPayload!
+  myPosts: MyPostSubscriptionPayload!
 }
 
 input updateUserInput {
   name: String
   email: String
+  password: String
 }
 
 input updatePostInput {
@@ -98,6 +100,11 @@ enum MutationType {
 type CommentSubscriptionPayload {
   mutation: MutationType!
   node: Comment
+}
+
+type MyPostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
 }
 
 type PostSubscriptionPayload {

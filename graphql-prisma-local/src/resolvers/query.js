@@ -5,7 +5,7 @@ const query = {
     const optArgs = {};
     if (name) {
       optArgs.where = {
-        OR: [{ name_contains: name }, { email_contains: name }],
+        name_contains: name,
         // name_contains: name,
       };
     }

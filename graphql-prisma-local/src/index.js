@@ -6,12 +6,12 @@ const pubsub = new PubSub();
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers,
-  context({ request }) {
+  context(req) {
     return {
       db,
       pubsub,
       prisma,
-      auth: request.headers.authorization,
+      auth: req,
     };
   },
   fragmentReplacements,

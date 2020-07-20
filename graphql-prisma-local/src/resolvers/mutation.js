@@ -1,12 +1,17 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { getUserId } from "../utils/getUserId";
+import generateToken from "../utils/generateToken";
+import generateHashPassword from "../utils/generateHashPassword";
 const mutation = {
   updateUser: async (parent, { data }, { prisma, auth }, info) => {
     const userId = getUserId(auth);
     const isUserExist = await prisma.exists.User({ id: userId });
     if (!isUserExist) {
       throw new Error("User not exist");
+    }
+    if (typeof data.password === "string") {
+      const hashedPassword = await generateHashPassword(data.password);
+      data.password = hashedPassword;
     }
     const updateUser = await prisma.mutation.updateUser(
       {
@@ -28,7 +33,24 @@ const mutation = {
       },
     });
     if (!isPostExist) {
-      throw new Error("Post not exist");
+      throw new Error("Something went wrong");
+    }
+    const isPostPublished = await prisma.exists.Post({
+      isPublished: true,
+    });
+    if (
+      isPostPublished &&
+      typeof data.isPublished !== "undefined" &&
+      !data.isPublished
+    ) {
+      console.log(data.isPublished);
+      await prisma.mutation.deleteManyComments({
+        where: {
+          post: {
+            id,
+          },
+        },
+      });
     }
     const updatedPost = await prisma.mutation.updatePost(
       {
@@ -140,15 +162,10 @@ const mutation = {
     if (!isPasswordMatch) {
       throw new Error("Password not correct");
     }
-    const token = jwt.sign(
-      {
-        userId: user.id,
-      },
-      "createUserToken"
-    );
+
     return {
       user,
-      token,
+      token: generateToken(user.id),
     };
   },
   createUser: async (
@@ -161,10 +178,7 @@ const mutation = {
     if (isEmailExist) {
       throw new Error("Email already exist");
     }
-    if (password.length < 8) {
-      throw new Error("Password should be greater than 8 characters");
-    }
-    const hashPassword = await bcrypt.hash(password, 10);
+    const hashPassword = await generateHashPassword(password);
     const newUser = await prisma.mutation.createUser({
       data: {
         name,
@@ -172,15 +186,10 @@ const mutation = {
         password: hashPassword,
       },
     });
-    const token = jwt.sign(
-      {
-        userId: newUser.id,
-      },
-      "createUserToken"
-    );
+
     return {
       user: newUser,
-      token,
+      token: generateToken(newUser.id),
     };
   },
   createPost: async (
@@ -219,19 +228,22 @@ const mutation = {
   ) => {
     const userId = getUserId(auth);
     const isUserExist = await prisma.exists.User({ id: userId });
-    const isPostExist = await prisma.exists.Post({ id: post });
-    const isCommentAuth = await prisma.exists.Comment({
-      author: { id: userId },
+    const isPostExist = await prisma.exists.Post({
+      id: post,
+      isPublished: true,
     });
+    // const isCommentAuth = await prisma.exists.Comment({
+    //   author: { id: userId },
+    // });
     if (!isUserExist) {
       throw new Error("User not exist");
     }
     if (!isPostExist) {
       throw new Error("Post not exist");
     }
-    if (!isCommentAuth) {
-      throw new Error("Unauthorized");
-    }
+    // if (!isCommentAuth) {
+    //   throw new Error("Unauthorized");
+    // }
     const newComment = await prisma.mutation.createComment(
       {
         data: {
