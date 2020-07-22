@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e js,graphql --exec babel-node src/index"
+    "start": "node dist/index.js",
+    "build": "babel src -d dist --copy-files",
+    "heroku-postbuild": "yarn build",
+    "dev": "env-cmd -f ./configs/dev.env nodemon -e js,graphql --exec babel-node src/index"
   },
   "keywords": [],
   "author": "",
@@ -20,10 +23,17 @@
   "dependencies": {
     "@playlyfe/gql": "^2.6.2",
     "bcryptjs": "^2.4.3",
+    "core-js": "^3.6.5",
+    "env-cmd": "^10.1.0",
     "graphql-config": "^3.0.3",
     "graphql-yoga": "^1.18.3",
     "jsonwebtoken": "^8.5.1",
     "prisma-binding": "^2.3.16",
+    "regenerator-runtime": "^0.13.6",
     "uuid": "^8.2.0"
+  },
+  "engines": {
+    "node": "10.22.0",
+    "yarn": "1.22.4"
   }
 }

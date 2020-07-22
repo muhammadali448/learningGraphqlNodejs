@@ -6,7 +6,7 @@ export const getUserId = (auth, isAuthRequired = true) => {
     : auth.connection.context.Authorization;
   if (authTokenWithBarer) {
     const token = authTokenWithBarer.split(" ")[1];
-    const user = jwt.verify(token, "createUserToken");
+    const user = jwt.verify(token, process.env.JWT_SECRET);
     return user.userId;
   }
   if (isAuthRequired) {
