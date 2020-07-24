@@ -1,107 +1,110 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "cross-fetch/polyfill";
-import ApolloClient, { gql } from "apollo-boost";
+import { gql } from "apollo-boost";
 import prisma from "../src/prisma";
-import bcrypt from "bcryptjs";
-const client = new ApolloClient({
-  uri: "http://localhost:4000",
-});
+import { createSeedDatabase, user1 } from "./utils/createSeedDatabase";
+import getClient from "./utils/getClient";
+const client = getClient();
 
-beforeEach(async () => {
-  await prisma.mutation.deleteManyUsers();
-  await prisma.mutation.deleteManyPosts();
-  const user = await prisma.mutation.createUser({
-    data: {
-      name: "John Smith",
-      email: "john_smith222@gmail.com",
-      password: bcrypt.hashSync("hello123"),
-    },
-  });
-  await prisma.mutation.createPost({
-    data: {
-      title: "test title",
-      body: "test body",
-      isPublished: true,
-      author: {
-        connect: {
-          id: user.id,
-        },
-      },
-    },
-  });
-  await prisma.mutation.createPost({
-    data: {
-      title: "test title",
-      body: "",
-      isPublished: false,
-      author: {
-        connect: {
-          id: user.id,
-        },
-      },
-    },
-  });
-});
-test("should create a new user", async () => {
-  const createUser = gql`
-    mutation {
-      createUser(
-        data: {
-          name: "Muhammad Ali"
-          email: "ma6627863@gmail.com"
-          password: "admin123"
+describe("Users Test Cases", () => {
+  beforeEach(createSeedDatabase);
+  test("should create a new user", async () => {
+    const createUser = gql`
+      mutation {
+        createUser(
+          data: {
+            name: "Muhammad Ali"
+            email: "ma6627863@gmail.com"
+            password: "admin123"
+          }
+        ) {
+          user {
+            id
+            name
+          }
+          token
         }
-      ) {
-        user {
+      }
+    `;
+    const response = await client.mutate({
+      mutation: createUser,
+    });
+    const isUserExist = await prisma.exists.User({
+      id: response.data.createUser.user.id,
+    });
+    expect(isUserExist).toBeTruthy();
+  });
+
+  test("should not create a new user if password length is less than 8u", async () => {
+    const createUser = gql`
+      mutation {
+        createUser(
+          data: {
+            name: "ABC NAME"
+            email: "abc222@gmail.com"
+            password: "admin"
+          }
+        ) {
+          token
+        }
+      }
+    `;
+    await expect(
+      client.mutate({
+        mutation: createUser,
+      })
+    ).rejects.toThrow();
+  });
+
+  test("should get users profile", async () => {
+    const getUsers = gql`
+      query {
+        users {
           id
           name
+          email
         }
-        token
       }
-    }
-  `;
-  const response = await client.mutate({
-    mutation: createUser,
+    `;
+    const response = await client.query({
+      query: getUsers,
+    });
+    expect(response.data.users.length).toBe(1);
+    expect(response.data.users[0].email).toBeNull();
+    expect(response.data.users[0].name).toBe("John Smith");
   });
-  const isUserExist = await prisma.exists.User({
-    id: response.data.createUser.user.id,
-  });
-  expect(isUserExist).toBeTruthy();
-});
 
-test("should get users profile", async () => {
-  const getUsers = gql`
-    query {
-      users {
-        id
-        name
-        email
+  test("should login with bad credentials", async () => {
+    const loginUser = gql`
+      mutation {
+        loginUser(
+          data: { email: "hello222@gmail.com", password: "hello22222" }
+        ) {
+          token
+        }
       }
-    }
-  `;
-  const response = await client.query({
-    query: getUsers,
+    `;
+    await expect(
+      client.mutate({
+        mutation: loginUser,
+      })
+    ).rejects.toThrow();
   });
-  expect(response.data.users.length).toBe(1);
-  expect(response.data.users[0].email).toBeNull();
-  expect(response.data.users[0].name).toBe("John Smith");
-});
-
-test("should return published posts", async () => {
-  const getPosts = gql`
-    query {
-      posts {
-        id
-        title
-        body
-        isPublished
+  test("should return user profile", async () => {
+    const client = getClient(user1.jwt);
+    const getProfile = gql`
+      query {
+        me {
+          id
+          name
+          email
+        }
       }
-    }
-  `;
-  const response = await client.query({
-    query: getPosts,
+    `;
+    const { data } = await client.query({ query: getProfile });
+    expect(data.me.id).toBe(user1.user.id);
+    expect(data.me.name).toBe(user1.user.name);
+    expect(data.me.email).toBe(user1.user.email);
   });
-  expect(response.data.posts.length).toBe(1);
-  expect(response.data.posts[0].isPublished).toBeTruthy();
 });

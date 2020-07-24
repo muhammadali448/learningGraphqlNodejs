@@ -8,7 +8,7 @@
     "build": "babel src -d dist --copy-files",
     "heroku-postbuild": "yarn build",
     "dev": "env-cmd -f ./configs/dev.env nodemon -e js,graphql --exec babel-node src/index",
-    "test": "env-cmd -f ./configs/test.env jest --watch"
+    "test": "env-cmd -f ./configs/test.env jest --watch --silent --verbose --runInBand"
   },
   "jest": {
     "globalSetup": "./tests/jest/globalSetup.js",
