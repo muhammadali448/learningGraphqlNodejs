@@ -1,25 +1,21 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "cross-fetch/polyfill";
-import { gql } from "apollo-boost";
 import prisma from "../src/prisma";
 import { createSeedDatabase, user1, post1 } from "./utils/createSeedDatabase";
 import getClient from "./utils/getClient";
+import {
+  getPosts,
+  getMyPosts,
+  updatePost,
+  createPost,
+  deletePost,
+} from "./utils/operations/post";
 const client = getClient();
 
 describe("Post Test Cases", () => {
   beforeEach(createSeedDatabase);
   test("should return published posts", async () => {
-    const getPosts = gql`
-      query {
-        posts {
-          id
-          title
-          body
-          isPublished
-        }
-      }
-    `;
     const response = await client.query({
       query: getPosts,
     });
@@ -28,48 +24,26 @@ describe("Post Test Cases", () => {
   });
   test("should return myPosts", async () => {
     const client = getClient(user1.jwt);
-    const getMyPosts = gql`
-      query {
-        myPosts {
-          id
-          title
-          body
-          isPublished
-        }
-      }
-    `;
     const { data } = await client.query({ query: getMyPosts });
     expect(data.myPosts).toHaveLength(2);
   });
   test("should update post title", async () => {
     const client = getClient(user1.jwt);
     const title = "change hogya";
-    const updatePost = gql`
-      mutation {
-        updatePost(
-          id: "${post1.post.id}"
-          data: { title: "${title}" }
-        ) {
-          title
-        }
-      }
-    `;
-    const { data } = await client.mutate({ mutation: updatePost });
+    const variables = {
+      data: { title },
+      id: post1.post.id,
+    };
+    const { data } = await client.mutate({ mutation: updatePost, variables });
     expect(data.updatePost.title).toBe(title);
   });
   test("should update isPublished to false title", async () => {
     const client = getClient(user1.jwt);
-    const updatePost = gql`
-      mutation {
-        updatePost(
-          id: "${post1.post.id}"
-          data: { isPublished: false }
-        ) {
-            isPublished
-        }
-      }
-    `;
-    const { data } = await client.mutate({ mutation: updatePost });
+    const variables = {
+      data: { isPublished: false },
+      id: post1.post.id,
+    };
+    const { data } = await client.mutate({ mutation: updatePost, variables });
     const isPostExist = await prisma.exists.Post({
       id: post1.post.id,
       isPublished: false,
@@ -83,17 +57,10 @@ describe("Post Test Cases", () => {
     let title = "new post";
     let body = "";
     let isPublished = true;
-    const createPost = gql`
-      mutation {
-        createPost(data: { title: "${title}", body: "${body}", isPublished: ${isPublished} }) {
-          id
-          title
-          body
-          isPublished
-        }
-      }
-    `;
-    const { data } = await client.mutate({ mutation: createPost });
+    const variables = {
+      data: { title, body, isPublished },
+    };
+    const { data } = await client.mutate({ mutation: createPost, variables });
     expect(data.createPost.title).toBe(title);
     expect(data.createPost.body).toBe(body);
     expect(data.createPost.isPublished).toBe(isPublished);
@@ -104,14 +71,10 @@ describe("Post Test Cases", () => {
   });
   test("should delete post", async () => {
     const client = getClient(user1.jwt);
-    const createPost = gql`
-      mutation {
-        deletePost(id: "${post1.post.id}") {
-          id
-        }
-      }
-    `;
-    await client.mutate({ mutation: createPost });
+    const variables = {
+      id: post1.post.id,
+    };
+    await client.mutate({ mutation: deletePost, variables });
     const isPostExist = await prisma.exists.Post({
       id: post1.post.id,
     });
