@@ -51,7 +51,7 @@ describe("Post Test Cases", () => {
     expect(data.updatePost.isPublished).toBeFalsy();
     expect(isPostExist).toBeTruthy();
   });
-  test("should update isPublished to false title", async () => {
+  test("should create a post", async () => {
     const client = getClient(user1.jwt);
 
     let title = "new post";
