@@ -8,9 +8,10 @@ import {
   user2,
   comment1,
   comment2,
+  post1,
 } from "./utils/createSeedDatabase";
 import getClient from "./utils/getClient";
-import { deleteComment } from "./utils/operations/comment";
+import { deleteComment, subscriptionComment } from "./utils/operations/comment";
 import { async } from "regenerator-runtime/runtime";
 const client = getClient();
 
@@ -42,5 +43,29 @@ describe("Comment Test Cases", () => {
         variables,
       })
     ).rejects.toThrow();
+  });
+  test("should subscribe a comment for a post", (done) => {
+    const client = getClient(user1.jwt);
+    const variables = {
+      postId: post1.post.id,
+    };
+    const sub = client
+      .subscribe({ query: subscriptionComment, variables })
+      .subscribe({
+        next(response) {
+          try {
+            expect(response.data.comment.mutation).toBe("DELETED");
+            sub.unsubscribe();
+            done();
+          } catch (err) {
+            done(err);
+          }
+        },
+      });
+    setTimeout(async () => {
+      await prisma.mutation.deleteComment({
+        where: { id: comment1.comment.id },
+      });
+    }, 1000);
   });
 });

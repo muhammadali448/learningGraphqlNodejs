@@ -10,6 +10,7 @@ import {
   updatePost,
   createPost,
   deletePost,
+  subscriptionPosts,
 } from "./utils/operations/post";
 const client = getClient();
 
@@ -79,5 +80,24 @@ describe("Post Test Cases", () => {
       id: post1.post.id,
     });
     expect(isPostExist).toBeFalsy();
+  });
+  test("should subscribe a post", (done) => {
+    const client = getClient(user1.jwt);
+    const sub = client.subscribe({ query: subscriptionPosts }).subscribe({
+      next(response) {
+        try {
+          expect(response.data.post.mutation).toBe("DELETED");
+          sub.unsubscribe();
+          done();
+        } catch (err) {
+          done(err);
+        }
+      },
+    });
+    setTimeout(async () => {
+      await prisma.mutation.deletePost({
+        where: { id: post1.post.id },
+      });
+    }, 1000);
   });
 });

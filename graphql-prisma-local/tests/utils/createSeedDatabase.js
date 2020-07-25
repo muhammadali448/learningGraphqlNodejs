@@ -1,5 +1,6 @@
 import prisma from "../../src/prisma";
 import bcrypt from "bcryptjs";
+
 import jwt from "jsonwebtoken";
 const user1 = {
   inputFields: {
@@ -45,6 +46,7 @@ const comment2 = {
 };
 
 const createSeedDatabase = async () => {
+  jest.setTimeout(10000);
   await prisma.mutation.deleteManyUsers();
   await prisma.mutation.deleteManyPosts();
   user1.user = await prisma.mutation.createUser({

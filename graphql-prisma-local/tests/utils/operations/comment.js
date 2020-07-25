@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from "@apollo/client";
 const deleteComment = gql`
   mutation($id: ID!) {
     deleteComment(id: $id) {
@@ -14,4 +14,16 @@ const deleteComment = gql`
   }
 `;
 
-export { deleteComment };
+const subscriptionComment = gql`
+  subscription($postId: ID!) {
+    comment(postId: $postId) {
+      node {
+        id
+        text
+      }
+      mutation
+    }
+  }
+`;
+
+export { deleteComment, subscriptionComment };

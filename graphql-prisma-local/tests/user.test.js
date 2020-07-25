@@ -1,7 +1,6 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import "cross-fetch/polyfill";
-import { gql } from "apollo-boost";
 import prisma from "../src/prisma";
 import { createSeedDatabase, user1 } from "./utils/createSeedDatabase";
 import getClient from "./utils/getClient";

@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from "@apollo/client";
 const getPosts = gql`
   query {
     posts {
@@ -49,4 +49,25 @@ const deletePost = gql`
   }
 `;
 
-export { getPosts, getMyPosts, updatePost, createPost, deletePost };
+const subscriptionPosts = gql`
+  subscription {
+    post {
+      node {
+        id
+        title
+        body
+        isPublished
+      }
+      mutation
+    }
+  }
+`;
+
+export {
+  getPosts,
+  getMyPosts,
+  updatePost,
+  createPost,
+  deletePost,
+  subscriptionPosts,
+};
