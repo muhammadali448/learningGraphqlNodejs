@@ -63,9 +63,21 @@ const subscriptionPosts = gql`
   }
 `;
 
+const fetchPublishedPostById = gql`
+  query($id: ID!) {
+    post(id: $id) {
+      id
+      title
+      body
+      isPublished
+    }
+  }
+`;
+
 export {
   getPosts,
   getMyPosts,
+  fetchPublishedPostById,
   updatePost,
   createPost,
   deletePost,

@@ -12,7 +12,7 @@ const createUser = gql`
   }
 `;
 const loginUser = gql`
-  mutation($data: loginUserInput) {
+  mutation($data: loginUserInput!) {
     loginUser(data: $data) {
       token
     }

@@ -31,6 +31,15 @@ const post1 = {
   post: undefined,
 };
 
+const post2 = {
+  inputFields: {
+    title: "test title2",
+    body: "test body2",
+    isPublished: false,
+  },
+  post: undefined,
+};
+
 const comment1 = {
   inputFields: {
     text: "nice post comment_1",
@@ -63,6 +72,16 @@ const createSeedDatabase = async () => {
       author: {
         connect: {
           id: user1.user.id,
+        },
+      },
+    },
+  });
+  post2.post = await prisma.mutation.createPost({
+    data: {
+      ...post2.inputFields,
+      author: {
+        connect: {
+          id: user2.user.id,
         },
       },
     },
@@ -111,4 +130,4 @@ const createSeedDatabase = async () => {
   });
 };
 
-export { createSeedDatabase, user1, post1, user2, comment1, comment2 };
+export { createSeedDatabase, user1, post1, post2, user2, comment1, comment2 };
