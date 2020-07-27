@@ -1,0 +1,20 @@
+type Employee {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    photo_url: String
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime @updatedAt
+    employeer: Employeer
+    status: Boolean @default(value: true)
+}
+
+type Employeer {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    photo_url: String
+    employees: [Employee]
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime @updatedAt
+}
