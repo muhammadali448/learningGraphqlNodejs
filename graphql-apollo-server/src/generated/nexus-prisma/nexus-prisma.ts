@@ -15,76 +15,120 @@ export interface NexusPrismaTypes {
   objectTypes: {
     fields: {
       Query: QueryObject
-      Employee: EmployeeObject
-      Employeer: EmployeerObject
-      EmployeeConnection: EmployeeConnectionObject
+      User: UserObject
+      Post: PostObject
+      Comment: CommentObject
+      UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
-      EmployeeEdge: EmployeeEdgeObject
-      AggregateEmployee: AggregateEmployeeObject
-      EmployeerConnection: EmployeerConnectionObject
-      EmployeerEdge: EmployeerEdgeObject
-      AggregateEmployeer: AggregateEmployeerObject
+      UserEdge: UserEdgeObject
+      AggregateUser: AggregateUserObject
+      PostConnection: PostConnectionObject
+      PostEdge: PostEdgeObject
+      AggregatePost: AggregatePostObject
+      CommentConnection: CommentConnectionObject
+      CommentEdge: CommentEdgeObject
+      AggregateComment: AggregateCommentObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
-      EmployeeSubscriptionPayload: EmployeeSubscriptionPayloadObject
-      EmployeePreviousValues: EmployeePreviousValuesObject
-      EmployeerSubscriptionPayload: EmployeerSubscriptionPayloadObject
-      EmployeerPreviousValues: EmployeerPreviousValuesObject
+      UserSubscriptionPayload: UserSubscriptionPayloadObject
+      UserPreviousValues: UserPreviousValuesObject
+      PostSubscriptionPayload: PostSubscriptionPayloadObject
+      PostPreviousValues: PostPreviousValuesObject
+      CommentSubscriptionPayload: CommentSubscriptionPayloadObject
+      CommentPreviousValues: CommentPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
-      Employee: EmployeeFieldDetails
-      Employeer: EmployeerFieldDetails
-      EmployeeConnection: EmployeeConnectionFieldDetails
+      User: UserFieldDetails
+      Post: PostFieldDetails
+      Comment: CommentFieldDetails
+      UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
-      EmployeeEdge: EmployeeEdgeFieldDetails
-      AggregateEmployee: AggregateEmployeeFieldDetails
-      EmployeerConnection: EmployeerConnectionFieldDetails
-      EmployeerEdge: EmployeerEdgeFieldDetails
-      AggregateEmployeer: AggregateEmployeerFieldDetails
+      UserEdge: UserEdgeFieldDetails
+      AggregateUser: AggregateUserFieldDetails
+      PostConnection: PostConnectionFieldDetails
+      PostEdge: PostEdgeFieldDetails
+      AggregatePost: AggregatePostFieldDetails
+      CommentConnection: CommentConnectionFieldDetails
+      CommentEdge: CommentEdgeFieldDetails
+      AggregateComment: AggregateCommentFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
-      EmployeeSubscriptionPayload: EmployeeSubscriptionPayloadFieldDetails
-      EmployeePreviousValues: EmployeePreviousValuesFieldDetails
-      EmployeerSubscriptionPayload: EmployeerSubscriptionPayloadFieldDetails
-      EmployeerPreviousValues: EmployeerPreviousValuesFieldDetails
+      UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
+      UserPreviousValues: UserPreviousValuesFieldDetails
+      PostSubscriptionPayload: PostSubscriptionPayloadFieldDetails
+      PostPreviousValues: PostPreviousValuesFieldDetails
+      CommentSubscriptionPayload: CommentSubscriptionPayloadFieldDetails
+      CommentPreviousValues: CommentPreviousValuesFieldDetails
     }
   }
   inputTypes: {
     fields: {
-      EmployeeWhereUniqueInput: EmployeeWhereUniqueInputInputObject
-      EmployeeWhereInput: EmployeeWhereInputInputObject
-      EmployeerWhereInput: EmployeerWhereInputInputObject
-      EmployeerWhereUniqueInput: EmployeerWhereUniqueInputInputObject
-      EmployeeCreateInput: EmployeeCreateInputInputObject
-      EmployeerCreateOneWithoutEmployeesInput: EmployeerCreateOneWithoutEmployeesInputInputObject
-      EmployeerCreateWithoutEmployeesInput: EmployeerCreateWithoutEmployeesInputInputObject
-      EmployeeUpdateInput: EmployeeUpdateInputInputObject
-      EmployeerUpdateOneWithoutEmployeesInput: EmployeerUpdateOneWithoutEmployeesInputInputObject
-      EmployeerUpdateWithoutEmployeesDataInput: EmployeerUpdateWithoutEmployeesDataInputInputObject
-      EmployeerUpsertWithoutEmployeesInput: EmployeerUpsertWithoutEmployeesInputInputObject
-      EmployeeUpdateManyMutationInput: EmployeeUpdateManyMutationInputInputObject
-      EmployeerCreateInput: EmployeerCreateInputInputObject
-      EmployeeCreateManyWithoutEmployeerInput: EmployeeCreateManyWithoutEmployeerInputInputObject
-      EmployeeCreateWithoutEmployeerInput: EmployeeCreateWithoutEmployeerInputInputObject
-      EmployeerUpdateInput: EmployeerUpdateInputInputObject
-      EmployeeUpdateManyWithoutEmployeerInput: EmployeeUpdateManyWithoutEmployeerInputInputObject
-      EmployeeUpdateWithWhereUniqueWithoutEmployeerInput: EmployeeUpdateWithWhereUniqueWithoutEmployeerInputInputObject
-      EmployeeUpdateWithoutEmployeerDataInput: EmployeeUpdateWithoutEmployeerDataInputInputObject
-      EmployeeUpsertWithWhereUniqueWithoutEmployeerInput: EmployeeUpsertWithWhereUniqueWithoutEmployeerInputInputObject
-      EmployeeScalarWhereInput: EmployeeScalarWhereInputInputObject
-      EmployeeUpdateManyWithWhereNestedInput: EmployeeUpdateManyWithWhereNestedInputInputObject
-      EmployeeUpdateManyDataInput: EmployeeUpdateManyDataInputInputObject
-      EmployeerUpdateManyMutationInput: EmployeerUpdateManyMutationInputInputObject
-      EmployeeSubscriptionWhereInput: EmployeeSubscriptionWhereInputInputObject
-      EmployeerSubscriptionWhereInput: EmployeerSubscriptionWhereInputInputObject
+      UserWhereUniqueInput: UserWhereUniqueInputInputObject
+      PostWhereInput: PostWhereInputInputObject
+      UserWhereInput: UserWhereInputInputObject
+      CommentWhereInput: CommentWhereInputInputObject
+      PostWhereUniqueInput: PostWhereUniqueInputInputObject
+      CommentWhereUniqueInput: CommentWhereUniqueInputInputObject
+      UserCreateInput: UserCreateInputInputObject
+      PostCreateManyWithoutAuthorInput: PostCreateManyWithoutAuthorInputInputObject
+      PostCreateWithoutAuthorInput: PostCreateWithoutAuthorInputInputObject
+      CommentCreateManyWithoutPostInput: CommentCreateManyWithoutPostInputInputObject
+      CommentCreateWithoutPostInput: CommentCreateWithoutPostInputInputObject
+      UserCreateOneWithoutCommentsInput: UserCreateOneWithoutCommentsInputInputObject
+      UserCreateWithoutCommentsInput: UserCreateWithoutCommentsInputInputObject
+      CommentCreateManyWithoutAuthorInput: CommentCreateManyWithoutAuthorInputInputObject
+      CommentCreateWithoutAuthorInput: CommentCreateWithoutAuthorInputInputObject
+      PostCreateOneWithoutCommentsInput: PostCreateOneWithoutCommentsInputInputObject
+      PostCreateWithoutCommentsInput: PostCreateWithoutCommentsInputInputObject
+      UserCreateOneWithoutPostsInput: UserCreateOneWithoutPostsInputInputObject
+      UserCreateWithoutPostsInput: UserCreateWithoutPostsInputInputObject
+      UserUpdateInput: UserUpdateInputInputObject
+      PostUpdateManyWithoutAuthorInput: PostUpdateManyWithoutAuthorInputInputObject
+      PostUpdateWithWhereUniqueWithoutAuthorInput: PostUpdateWithWhereUniqueWithoutAuthorInputInputObject
+      PostUpdateWithoutAuthorDataInput: PostUpdateWithoutAuthorDataInputInputObject
+      CommentUpdateManyWithoutPostInput: CommentUpdateManyWithoutPostInputInputObject
+      CommentUpdateWithWhereUniqueWithoutPostInput: CommentUpdateWithWhereUniqueWithoutPostInputInputObject
+      CommentUpdateWithoutPostDataInput: CommentUpdateWithoutPostDataInputInputObject
+      UserUpdateOneRequiredWithoutCommentsInput: UserUpdateOneRequiredWithoutCommentsInputInputObject
+      UserUpdateWithoutCommentsDataInput: UserUpdateWithoutCommentsDataInputInputObject
+      UserUpsertWithoutCommentsInput: UserUpsertWithoutCommentsInputInputObject
+      CommentUpsertWithWhereUniqueWithoutPostInput: CommentUpsertWithWhereUniqueWithoutPostInputInputObject
+      CommentScalarWhereInput: CommentScalarWhereInputInputObject
+      CommentUpdateManyWithWhereNestedInput: CommentUpdateManyWithWhereNestedInputInputObject
+      CommentUpdateManyDataInput: CommentUpdateManyDataInputInputObject
+      PostUpsertWithWhereUniqueWithoutAuthorInput: PostUpsertWithWhereUniqueWithoutAuthorInputInputObject
+      PostScalarWhereInput: PostScalarWhereInputInputObject
+      PostUpdateManyWithWhereNestedInput: PostUpdateManyWithWhereNestedInputInputObject
+      PostUpdateManyDataInput: PostUpdateManyDataInputInputObject
+      CommentUpdateManyWithoutAuthorInput: CommentUpdateManyWithoutAuthorInputInputObject
+      CommentUpdateWithWhereUniqueWithoutAuthorInput: CommentUpdateWithWhereUniqueWithoutAuthorInputInputObject
+      CommentUpdateWithoutAuthorDataInput: CommentUpdateWithoutAuthorDataInputInputObject
+      PostUpdateOneRequiredWithoutCommentsInput: PostUpdateOneRequiredWithoutCommentsInputInputObject
+      PostUpdateWithoutCommentsDataInput: PostUpdateWithoutCommentsDataInputInputObject
+      UserUpdateOneRequiredWithoutPostsInput: UserUpdateOneRequiredWithoutPostsInputInputObject
+      UserUpdateWithoutPostsDataInput: UserUpdateWithoutPostsDataInputInputObject
+      UserUpsertWithoutPostsInput: UserUpsertWithoutPostsInputInputObject
+      PostUpsertWithoutCommentsInput: PostUpsertWithoutCommentsInputInputObject
+      CommentUpsertWithWhereUniqueWithoutAuthorInput: CommentUpsertWithWhereUniqueWithoutAuthorInputInputObject
+      UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
+      PostCreateInput: PostCreateInputInputObject
+      PostUpdateInput: PostUpdateInputInputObject
+      PostUpdateManyMutationInput: PostUpdateManyMutationInputInputObject
+      CommentCreateInput: CommentCreateInputInputObject
+      CommentUpdateInput: CommentUpdateInputInputObject
+      CommentUpdateManyMutationInput: CommentUpdateManyMutationInputInputObject
+      UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
+      PostSubscriptionWhereInput: PostSubscriptionWhereInputInputObject
+      CommentSubscriptionWhereInput: CommentSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
-    EmployeeOrderByInput: EmployeeOrderByInputValues,
-    EmployeerOrderByInput: EmployeerOrderByInputValues,
+    PostOrderByInput: PostOrderByInputValues,
+    CommentOrderByInput: CommentOrderByInputValues,
+    UserOrderByInput: UserOrderByInputValues,
     MutationType: MutationTypeValues,
   }
 }
@@ -93,33 +137,31 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
-  | { name: 'employee', args?: QueryEmployeeArgs[] | false, alias?: string  } 
-  | { name: 'employees', args?: QueryEmployeesArgs[] | false, alias?: string  } 
-  | { name: 'employeesConnection', args?: QueryEmployeesConnectionArgs[] | false, alias?: string  } 
-  | { name: 'employeer', args?: QueryEmployeerArgs[] | false, alias?: string  } 
-  | { name: 'employeers', args?: QueryEmployeersArgs[] | false, alias?: string  } 
-  | { name: 'employeersConnection', args?: QueryEmployeersConnectionArgs[] | false, alias?: string  } 
+  | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
+  | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
+  | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
+  | { name: 'post', args?: QueryPostArgs[] | false, alias?: string  } 
+  | { name: 'posts', args?: QueryPostsArgs[] | false, alias?: string  } 
+  | { name: 'postsConnection', args?: QueryPostsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'comment', args?: QueryCommentArgs[] | false, alias?: string  } 
+  | { name: 'comments', args?: QueryCommentsArgs[] | false, alias?: string  } 
+  | { name: 'commentsConnection', args?: QueryCommentsConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
-  | 'employee'
-  | 'employees'
-  | 'employeesConnection'
-  | 'employeer'
-  | 'employeers'
-  | 'employeersConnection'
+  | 'user'
+  | 'users'
+  | 'usersConnection'
+  | 'post'
+  | 'posts'
+  | 'postsConnection'
+  | 'comment'
+  | 'comments'
+  | 'commentsConnection'
 
 
-type QueryEmployeeArgs =
+type QueryUserArgs =
   | 'where'
-type QueryEmployeesArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryEmployeesConnectionArgs =
+type QueryUsersArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -127,9 +169,7 @@ type QueryEmployeesConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryEmployeerArgs =
-  | 'where'
-type QueryEmployeersArgs =
+type QueryUsersConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -137,7 +177,35 @@ type QueryEmployeersArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryEmployeersConnectionArgs =
+type QueryPostArgs =
+  | 'where'
+type QueryPostsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPostsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCommentArgs =
+  | 'where'
+type QueryCommentsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryCommentsConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -148,210 +216,159 @@ type QueryEmployeersConnectionArgs =
   
 
 export interface QueryFieldDetails {
-  employee: {
-    type: 'Employee'
-    args: Record<QueryEmployeeArgs, core.NexusArgDef<string>>
+  user: {
+    type: 'User'
+    args: Record<QueryUserArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where: EmployeeWhereUniqueInput }  ,
+      args: { where: UserWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee | null> | prisma.Employee | null
+    ) => Promise<prisma.User | null> | prisma.User | null
   }
-  employees: {
-    type: 'Employee'
-    args: Record<QueryEmployeesArgs, core.NexusArgDef<string>>
+  users: {
+    type: 'User'
+    args: Record<QueryUsersArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: EmployeeWhereInput | null, orderBy?: prisma.EmployeeOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee[]> | prisma.Employee[]
+    ) => Promise<prisma.User[]> | prisma.User[]
   }
-  employeesConnection: {
-    type: 'EmployeeConnection'
-    args: Record<QueryEmployeesConnectionArgs, core.NexusArgDef<string>>
+  usersConnection: {
+    type: 'UserConnection'
+    args: Record<QueryUsersConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: EmployeeWhereInput | null, orderBy?: prisma.EmployeeOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: UserWhereInput | null, orderBy?: prisma.UserOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeeConnection> | prisma.EmployeeConnection
+    ) => Promise<prisma.UserConnection> | prisma.UserConnection
   }
-  employeer: {
-    type: 'Employeer'
-    args: Record<QueryEmployeerArgs, core.NexusArgDef<string>>
+  post: {
+    type: 'Post'
+    args: Record<QueryPostArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where: EmployeerWhereUniqueInput }  ,
+      args: { where: PostWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer | null> | prisma.Employeer | null
+    ) => Promise<prisma.Post | null> | prisma.Post | null
   }
-  employeers: {
-    type: 'Employeer'
-    args: Record<QueryEmployeersArgs, core.NexusArgDef<string>>
+  posts: {
+    type: 'Post'
+    args: Record<QueryPostsArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: EmployeerWhereInput | null, orderBy?: prisma.EmployeerOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer[]> | prisma.Employeer[]
+    ) => Promise<prisma.Post[]> | prisma.Post[]
   }
-  employeersConnection: {
-    type: 'EmployeerConnection'
-    args: Record<QueryEmployeersConnectionArgs, core.NexusArgDef<string>>
+  postsConnection: {
+    type: 'PostConnection'
+    args: Record<QueryPostsConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Query">,
-      args: { where?: EmployeerWhereInput | null, orderBy?: prisma.EmployeerOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeerConnection> | prisma.EmployeerConnection
+    ) => Promise<prisma.PostConnection> | prisma.PostConnection
   }
-}
-  
-
-// Types for Employee
-
-type EmployeeObject =
-  | EmployeeFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'photo_url', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'employeer', args?: [] | false, alias?: string  } 
-  | { name: 'status', args?: [] | false, alias?: string  } 
-
-type EmployeeFields =
-  | 'id'
-  | 'name'
-  | 'email'
-  | 'photo_url'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'employeer'
-  | 'status'
-
-
-
-  
-
-export interface EmployeeFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  email: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  photo_url: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  createdAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  updatedAt: {
-    type: 'DateTime'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  employeer: {
-    type: 'Employeer'
-    args: {}
+  comment: {
+    type: 'Comment'
+    args: Record<QueryCommentArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Employee">,
-      args: {  }  ,
+      root: core.RootValue<"Query">,
+      args: { where: CommentWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer | null> | prisma.Employeer | null
+    ) => Promise<prisma.Comment | null> | prisma.Comment | null
   }
-  status: {
-    type: 'Boolean'
-    args: {}
+  comments: {
+    type: 'Comment'
+    args: Record<QueryCommentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: CommentWhereInput | null, orderBy?: prisma.CommentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment[]> | prisma.Comment[]
+  }
+  commentsConnection: {
+    type: 'CommentConnection'
+    args: Record<QueryCommentsConnectionArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
-    nullable: true
-    resolve: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: CommentWhereInput | null, orderBy?: prisma.CommentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CommentConnection> | prisma.CommentConnection
   }
 }
   
 
-// Types for Employeer
+// Types for User
 
-type EmployeerObject =
-  | EmployeerFields
+type UserObject =
+  | UserFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'photo_url', args?: [] | false, alias?: string  } 
-  | { name: 'employees', args?: EmployeerEmployeesArgs[] | false, alias?: string  } 
+  | { name: 'password', args?: [] | false, alias?: string  } 
+  | { name: 'posts', args?: UserPostsArgs[] | false, alias?: string  } 
+  | { name: 'comments', args?: UserCommentsArgs[] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
-type EmployeerFields =
+type UserFields =
   | 'id'
   | 'name'
   | 'email'
-  | 'photo_url'
-  | 'employees'
+  | 'password'
+  | 'posts'
+  | 'comments'
   | 'createdAt'
   | 'updatedAt'
 
 
-type EmployeerEmployeesArgs =
+type UserPostsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type UserCommentsArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -361,7 +378,7 @@ type EmployeerEmployeesArgs =
   | 'last'
   
 
-export interface EmployeerFieldDetails {
+export interface UserFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -386,26 +403,39 @@ export interface EmployeerFieldDetails {
     nullable: false
     resolve: undefined
   }
-  photo_url: {
+  password: {
     type: 'String'
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
-  employees: {
-    type: 'Employee'
-    args: Record<EmployeerEmployeesArgs, core.NexusArgDef<string>>
+  posts: {
+    type: 'Post'
+    args: Record<UserPostsArgs, core.NexusArgDef<string>>
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"Employeer">,
-      args: { where?: EmployeeWhereInput | null, orderBy?: prisma.EmployeeOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      root: core.RootValue<"User">,
+      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee[]> | prisma.Employee[]
+    ) => Promise<prisma.Post[]> | prisma.Post[]
+  }
+  comments: {
+    type: 'Comment'
+    args: Record<UserCommentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"User">,
+      args: { where?: CommentWhereInput | null, orderBy?: prisma.CommentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment[]> | prisma.Comment[]
   }
   createdAt: {
     type: 'DateTime'
@@ -420,21 +450,218 @@ export interface EmployeerFieldDetails {
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
 }
   
 
-// Types for EmployeeConnection
+// Types for Post
 
-type EmployeeConnectionObject =
-  | EmployeeConnectionFields
+type PostObject =
+  | PostFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'content', args?: [] | false, alias?: string  } 
+  | { name: 'isPublished', args?: [] | false, alias?: string  } 
+  | { name: 'author', args?: [] | false, alias?: string  } 
+  | { name: 'comments', args?: PostCommentsArgs[] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type PostFields =
+  | 'id'
+  | 'title'
+  | 'content'
+  | 'isPublished'
+  | 'author'
+  | 'comments'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+type PostCommentsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+  
+
+export interface PostFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  content: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  isPublished: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  author: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Post">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  comments: {
+    type: 'Comment'
+    args: Record<PostCommentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Post">,
+      args: { where?: CommentWhereInput | null, orderBy?: prisma.CommentOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment[]> | prisma.Comment[]
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for Comment
+
+type CommentObject =
+  | CommentFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'text', args?: [] | false, alias?: string  } 
+  | { name: 'author', args?: [] | false, alias?: string  } 
+  | { name: 'post', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type CommentFields =
+  | 'id'
+  | 'text'
+  | 'author'
+  | 'post'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+
+  
+
+export interface CommentFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  text: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  author: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Comment">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  post: {
+    type: 'Post'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Comment">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post> | prisma.Post
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for UserConnection
+
+type UserConnectionObject =
+  | UserConnectionFields
   | { name: 'pageInfo', args?: [] | false, alias?: string  } 
   | { name: 'edges', args?: [] | false, alias?: string  } 
   | { name: 'aggregate', args?: [] | false, alias?: string  } 
 
-type EmployeeConnectionFields =
+type UserConnectionFields =
   | 'pageInfo'
   | 'edges'
   | 'aggregate'
@@ -443,7 +670,7 @@ type EmployeeConnectionFields =
 
   
 
-export interface EmployeeConnectionFieldDetails {
+export interface UserConnectionFieldDetails {
   pageInfo: {
     type: 'PageInfo'
     args: {}
@@ -451,37 +678,37 @@ export interface EmployeeConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeeConnection">,
+      root: core.RootValue<"UserConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
   edges: {
-    type: 'EmployeeEdge'
+    type: 'UserEdge'
     args: {}
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeeConnection">,
+      root: core.RootValue<"UserConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeeEdge[]> | prisma.EmployeeEdge[]
+    ) => Promise<prisma.UserEdge[]> | prisma.UserEdge[]
   }
   aggregate: {
-    type: 'AggregateEmployee'
+    type: 'AggregateUser'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeeConnection">,
+      root: core.RootValue<"UserConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateEmployee> | prisma.AggregateEmployee
+    ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
   }
 }
   
@@ -541,14 +768,14 @@ export interface PageInfoFieldDetails {
 }
   
 
-// Types for EmployeeEdge
+// Types for UserEdge
 
-type EmployeeEdgeObject =
-  | EmployeeEdgeFields
+type UserEdgeObject =
+  | UserEdgeFields
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'cursor', args?: [] | false, alias?: string  } 
 
-type EmployeeEdgeFields =
+type UserEdgeFields =
   | 'node'
   | 'cursor'
 
@@ -556,19 +783,19 @@ type EmployeeEdgeFields =
 
   
 
-export interface EmployeeEdgeFieldDetails {
+export interface UserEdgeFieldDetails {
   node: {
-    type: 'Employee'
+    type: 'User'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeeEdge">,
+      root: core.RootValue<"UserEdge">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee> | prisma.Employee
+    ) => Promise<prisma.User> | prisma.User
   }
   cursor: {
     type: 'String'
@@ -581,20 +808,20 @@ export interface EmployeeEdgeFieldDetails {
 }
   
 
-// Types for AggregateEmployee
+// Types for AggregateUser
 
-type AggregateEmployeeObject =
-  | AggregateEmployeeFields
+type AggregateUserObject =
+  | AggregateUserFields
   | { name: 'count', args?: [] | false, alias?: string  } 
 
-type AggregateEmployeeFields =
+type AggregateUserFields =
   | 'count'
 
 
 
   
 
-export interface AggregateEmployeeFieldDetails {
+export interface AggregateUserFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -606,15 +833,15 @@ export interface AggregateEmployeeFieldDetails {
 }
   
 
-// Types for EmployeerConnection
+// Types for PostConnection
 
-type EmployeerConnectionObject =
-  | EmployeerConnectionFields
+type PostConnectionObject =
+  | PostConnectionFields
   | { name: 'pageInfo', args?: [] | false, alias?: string  } 
   | { name: 'edges', args?: [] | false, alias?: string  } 
   | { name: 'aggregate', args?: [] | false, alias?: string  } 
 
-type EmployeerConnectionFields =
+type PostConnectionFields =
   | 'pageInfo'
   | 'edges'
   | 'aggregate'
@@ -623,7 +850,7 @@ type EmployeerConnectionFields =
 
   
 
-export interface EmployeerConnectionFieldDetails {
+export interface PostConnectionFieldDetails {
   pageInfo: {
     type: 'PageInfo'
     args: {}
@@ -631,49 +858,49 @@ export interface EmployeerConnectionFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeerConnection">,
+      root: core.RootValue<"PostConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.PageInfo> | prisma.PageInfo
   }
   edges: {
-    type: 'EmployeerEdge'
+    type: 'PostEdge'
     args: {}
     description: string
     list: true
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeerConnection">,
+      root: core.RootValue<"PostConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeerEdge[]> | prisma.EmployeerEdge[]
+    ) => Promise<prisma.PostEdge[]> | prisma.PostEdge[]
   }
   aggregate: {
-    type: 'AggregateEmployeer'
+    type: 'AggregatePost'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeerConnection">,
+      root: core.RootValue<"PostConnection">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateEmployeer> | prisma.AggregateEmployeer
+    ) => Promise<prisma.AggregatePost> | prisma.AggregatePost
   }
 }
   
 
-// Types for EmployeerEdge
+// Types for PostEdge
 
-type EmployeerEdgeObject =
-  | EmployeerEdgeFields
+type PostEdgeObject =
+  | PostEdgeFields
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'cursor', args?: [] | false, alias?: string  } 
 
-type EmployeerEdgeFields =
+type PostEdgeFields =
   | 'node'
   | 'cursor'
 
@@ -681,19 +908,19 @@ type EmployeerEdgeFields =
 
   
 
-export interface EmployeerEdgeFieldDetails {
+export interface PostEdgeFieldDetails {
   node: {
-    type: 'Employeer'
+    type: 'Post'
     args: {}
     description: string
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeerEdge">,
+      root: core.RootValue<"PostEdge">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer> | prisma.Employeer
+    ) => Promise<prisma.Post> | prisma.Post
   }
   cursor: {
     type: 'String'
@@ -706,20 +933,145 @@ export interface EmployeerEdgeFieldDetails {
 }
   
 
-// Types for AggregateEmployeer
+// Types for AggregatePost
 
-type AggregateEmployeerObject =
-  | AggregateEmployeerFields
+type AggregatePostObject =
+  | AggregatePostFields
   | { name: 'count', args?: [] | false, alias?: string  } 
 
-type AggregateEmployeerFields =
+type AggregatePostFields =
   | 'count'
 
 
 
   
 
-export interface AggregateEmployeerFieldDetails {
+export interface AggregatePostFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for CommentConnection
+
+type CommentConnectionObject =
+  | CommentConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type CommentConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface CommentConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CommentConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'CommentEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CommentConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CommentEdge[]> | prisma.CommentEdge[]
+  }
+  aggregate: {
+    type: 'AggregateComment'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CommentConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregateComment> | prisma.AggregateComment
+  }
+}
+  
+
+// Types for CommentEdge
+
+type CommentEdgeObject =
+  | CommentEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type CommentEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface CommentEdgeFieldDetails {
+  node: {
+    type: 'Comment'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CommentEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment> | prisma.Comment
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregateComment
+
+type AggregateCommentObject =
+  | AggregateCommentFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregateCommentFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregateCommentFieldDetails {
   count: {
     type: 'Int'
     args: {}
@@ -735,221 +1087,327 @@ export interface AggregateEmployeerFieldDetails {
 
 type MutationObject =
   | MutationFields
-  | { name: 'createEmployee', args?: MutationCreateEmployeeArgs[] | false, alias?: string  } 
-  | { name: 'updateEmployee', args?: MutationUpdateEmployeeArgs[] | false, alias?: string  } 
-  | { name: 'updateManyEmployees', args?: MutationUpdateManyEmployeesArgs[] | false, alias?: string  } 
-  | { name: 'upsertEmployee', args?: MutationUpsertEmployeeArgs[] | false, alias?: string  } 
-  | { name: 'deleteEmployee', args?: MutationDeleteEmployeeArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyEmployees', args?: MutationDeleteManyEmployeesArgs[] | false, alias?: string  } 
-  | { name: 'createEmployeer', args?: MutationCreateEmployeerArgs[] | false, alias?: string  } 
-  | { name: 'updateEmployeer', args?: MutationUpdateEmployeerArgs[] | false, alias?: string  } 
-  | { name: 'updateManyEmployeers', args?: MutationUpdateManyEmployeersArgs[] | false, alias?: string  } 
-  | { name: 'upsertEmployeer', args?: MutationUpsertEmployeerArgs[] | false, alias?: string  } 
-  | { name: 'deleteEmployeer', args?: MutationDeleteEmployeerArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyEmployeers', args?: MutationDeleteManyEmployeersArgs[] | false, alias?: string  } 
+  | { name: 'createUser', args?: MutationCreateUserArgs[] | false, alias?: string  } 
+  | { name: 'updateUser', args?: MutationUpdateUserArgs[] | false, alias?: string  } 
+  | { name: 'updateManyUsers', args?: MutationUpdateManyUsersArgs[] | false, alias?: string  } 
+  | { name: 'upsertUser', args?: MutationUpsertUserArgs[] | false, alias?: string  } 
+  | { name: 'deleteUser', args?: MutationDeleteUserArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
+  | { name: 'createPost', args?: MutationCreatePostArgs[] | false, alias?: string  } 
+  | { name: 'updatePost', args?: MutationUpdatePostArgs[] | false, alias?: string  } 
+  | { name: 'updateManyPosts', args?: MutationUpdateManyPostsArgs[] | false, alias?: string  } 
+  | { name: 'upsertPost', args?: MutationUpsertPostArgs[] | false, alias?: string  } 
+  | { name: 'deletePost', args?: MutationDeletePostArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyPosts', args?: MutationDeleteManyPostsArgs[] | false, alias?: string  } 
+  | { name: 'createComment', args?: MutationCreateCommentArgs[] | false, alias?: string  } 
+  | { name: 'updateComment', args?: MutationUpdateCommentArgs[] | false, alias?: string  } 
+  | { name: 'updateManyComments', args?: MutationUpdateManyCommentsArgs[] | false, alias?: string  } 
+  | { name: 'upsertComment', args?: MutationUpsertCommentArgs[] | false, alias?: string  } 
+  | { name: 'deleteComment', args?: MutationDeleteCommentArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyComments', args?: MutationDeleteManyCommentsArgs[] | false, alias?: string  } 
 
 type MutationFields =
-  | 'createEmployee'
-  | 'updateEmployee'
-  | 'updateManyEmployees'
-  | 'upsertEmployee'
-  | 'deleteEmployee'
-  | 'deleteManyEmployees'
-  | 'createEmployeer'
-  | 'updateEmployeer'
-  | 'updateManyEmployeers'
-  | 'upsertEmployeer'
-  | 'deleteEmployeer'
-  | 'deleteManyEmployeers'
+  | 'createUser'
+  | 'updateUser'
+  | 'updateManyUsers'
+  | 'upsertUser'
+  | 'deleteUser'
+  | 'deleteManyUsers'
+  | 'createPost'
+  | 'updatePost'
+  | 'updateManyPosts'
+  | 'upsertPost'
+  | 'deletePost'
+  | 'deleteManyPosts'
+  | 'createComment'
+  | 'updateComment'
+  | 'updateManyComments'
+  | 'upsertComment'
+  | 'deleteComment'
+  | 'deleteManyComments'
 
 
-type MutationCreateEmployeeArgs =
+type MutationCreateUserArgs =
   | 'data'
-type MutationUpdateEmployeeArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyEmployeesArgs =
+type MutationUpdateUserArgs =
   | 'data'
   | 'where'
-type MutationUpsertEmployeeArgs =
+type MutationUpdateManyUsersArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertUserArgs =
   | 'where'
   | 'create'
   | 'update'
-type MutationDeleteEmployeeArgs =
+type MutationDeleteUserArgs =
   | 'where'
-type MutationDeleteManyEmployeesArgs =
+type MutationDeleteManyUsersArgs =
   | 'where'
-type MutationCreateEmployeerArgs =
+type MutationCreatePostArgs =
   | 'data'
-type MutationUpdateEmployeerArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyEmployeersArgs =
+type MutationUpdatePostArgs =
   | 'data'
   | 'where'
-type MutationUpsertEmployeerArgs =
+type MutationUpdateManyPostsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertPostArgs =
   | 'where'
   | 'create'
   | 'update'
-type MutationDeleteEmployeerArgs =
+type MutationDeletePostArgs =
   | 'where'
-type MutationDeleteManyEmployeersArgs =
+type MutationDeleteManyPostsArgs =
+  | 'where'
+type MutationCreateCommentArgs =
+  | 'data'
+type MutationUpdateCommentArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyCommentsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertCommentArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeleteCommentArgs =
+  | 'where'
+type MutationDeleteManyCommentsArgs =
   | 'where'
   
 
 export interface MutationFieldDetails {
-  createEmployee: {
-    type: 'Employee'
-    args: Record<MutationCreateEmployeeArgs, core.NexusArgDef<string>>
+  createUser: {
+    type: 'User'
+    args: Record<MutationCreateUserArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: EmployeeCreateInput }  ,
+      args: { data: UserCreateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee> | prisma.Employee
+    ) => Promise<prisma.User> | prisma.User
   }
-  updateEmployee: {
-    type: 'Employee'
-    args: Record<MutationUpdateEmployeeArgs, core.NexusArgDef<string>>
+  updateUser: {
+    type: 'User'
+    args: Record<MutationUpdateUserArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: EmployeeUpdateInput, where: EmployeeWhereUniqueInput }  ,
+      args: { data: UserUpdateInput, where: UserWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee | null> | prisma.Employee | null
+    ) => Promise<prisma.User | null> | prisma.User | null
   }
-  updateManyEmployees: {
+  updateManyUsers: {
     type: 'BatchPayload'
-    args: Record<MutationUpdateManyEmployeesArgs, core.NexusArgDef<string>>
+    args: Record<MutationUpdateManyUsersArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: EmployeeUpdateManyMutationInput, where?: EmployeeWhereInput | null }  ,
+      args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  upsertEmployee: {
-    type: 'Employee'
-    args: Record<MutationUpsertEmployeeArgs, core.NexusArgDef<string>>
+  upsertUser: {
+    type: 'User'
+    args: Record<MutationUpsertUserArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: EmployeeWhereUniqueInput, create: EmployeeCreateInput, update: EmployeeUpdateInput }  ,
+      args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee> | prisma.Employee
+    ) => Promise<prisma.User> | prisma.User
   }
-  deleteEmployee: {
-    type: 'Employee'
-    args: Record<MutationDeleteEmployeeArgs, core.NexusArgDef<string>>
+  deleteUser: {
+    type: 'User'
+    args: Record<MutationDeleteUserArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: EmployeeWhereUniqueInput }  ,
+      args: { where: UserWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee | null> | prisma.Employee | null
+    ) => Promise<prisma.User | null> | prisma.User | null
   }
-  deleteManyEmployees: {
+  deleteManyUsers: {
     type: 'BatchPayload'
-    args: Record<MutationDeleteManyEmployeesArgs, core.NexusArgDef<string>>
+    args: Record<MutationDeleteManyUsersArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where?: EmployeeWhereInput | null }  ,
+      args: { where?: UserWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  createEmployeer: {
-    type: 'Employeer'
-    args: Record<MutationCreateEmployeerArgs, core.NexusArgDef<string>>
+  createPost: {
+    type: 'Post'
+    args: Record<MutationCreatePostArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: EmployeerCreateInput }  ,
+      args: { data: PostCreateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer> | prisma.Employeer
+    ) => Promise<prisma.Post> | prisma.Post
   }
-  updateEmployeer: {
-    type: 'Employeer'
-    args: Record<MutationUpdateEmployeerArgs, core.NexusArgDef<string>>
+  updatePost: {
+    type: 'Post'
+    args: Record<MutationUpdatePostArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: EmployeerUpdateInput, where: EmployeerWhereUniqueInput }  ,
+      args: { data: PostUpdateInput, where: PostWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer | null> | prisma.Employeer | null
+    ) => Promise<prisma.Post | null> | prisma.Post | null
   }
-  updateManyEmployeers: {
+  updateManyPosts: {
     type: 'BatchPayload'
-    args: Record<MutationUpdateManyEmployeersArgs, core.NexusArgDef<string>>
+    args: Record<MutationUpdateManyPostsArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { data: EmployeerUpdateManyMutationInput, where?: EmployeerWhereInput | null }  ,
+      args: { data: PostUpdateManyMutationInput, where?: PostWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  upsertEmployeer: {
-    type: 'Employeer'
-    args: Record<MutationUpsertEmployeerArgs, core.NexusArgDef<string>>
+  upsertPost: {
+    type: 'Post'
+    args: Record<MutationUpsertPostArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: EmployeerWhereUniqueInput, create: EmployeerCreateInput, update: EmployeerUpdateInput }  ,
+      args: { where: PostWhereUniqueInput, create: PostCreateInput, update: PostUpdateInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer> | prisma.Employeer
+    ) => Promise<prisma.Post> | prisma.Post
   }
-  deleteEmployeer: {
-    type: 'Employeer'
-    args: Record<MutationDeleteEmployeerArgs, core.NexusArgDef<string>>
+  deletePost: {
+    type: 'Post'
+    args: Record<MutationDeletePostArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where: EmployeerWhereUniqueInput }  ,
+      args: { where: PostWhereUniqueInput }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer | null> | prisma.Employeer | null
+    ) => Promise<prisma.Post | null> | prisma.Post | null
   }
-  deleteManyEmployeers: {
+  deleteManyPosts: {
     type: 'BatchPayload'
-    args: Record<MutationDeleteManyEmployeersArgs, core.NexusArgDef<string>>
+    args: Record<MutationDeleteManyPostsArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: false
     resolve: (
       root: core.RootValue<"Mutation">,
-      args: { where?: EmployeerWhereInput | null }  ,
+      args: { where?: PostWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createComment: {
+    type: 'Comment'
+    args: Record<MutationCreateCommentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: CommentCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment> | prisma.Comment
+  }
+  updateComment: {
+    type: 'Comment'
+    args: Record<MutationUpdateCommentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: CommentUpdateInput, where: CommentWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment | null> | prisma.Comment | null
+  }
+  updateManyComments: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyCommentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: CommentUpdateManyMutationInput, where?: CommentWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertComment: {
+    type: 'Comment'
+    args: Record<MutationUpsertCommentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: CommentWhereUniqueInput, create: CommentCreateInput, update: CommentUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment> | prisma.Comment
+  }
+  deleteComment: {
+    type: 'Comment'
+    args: Record<MutationDeleteCommentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: CommentWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment | null> | prisma.Comment | null
+  }
+  deleteManyComments: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyCommentsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: CommentWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
@@ -986,60 +1444,77 @@ export interface BatchPayloadFieldDetails {
 
 type SubscriptionObject =
   | SubscriptionFields
-  | { name: 'employee', args?: SubscriptionEmployeeArgs[] | false, alias?: string  } 
-  | { name: 'employeer', args?: SubscriptionEmployeerArgs[] | false, alias?: string  } 
+  | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
+  | { name: 'post', args?: SubscriptionPostArgs[] | false, alias?: string  } 
+  | { name: 'comment', args?: SubscriptionCommentArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
-  | 'employee'
-  | 'employeer'
+  | 'user'
+  | 'post'
+  | 'comment'
 
 
-type SubscriptionEmployeeArgs =
+type SubscriptionUserArgs =
   | 'where'
-type SubscriptionEmployeerArgs =
+type SubscriptionPostArgs =
+  | 'where'
+type SubscriptionCommentArgs =
   | 'where'
   
 
 export interface SubscriptionFieldDetails {
-  employee: {
-    type: 'EmployeeSubscriptionPayload'
-    args: Record<SubscriptionEmployeeArgs, core.NexusArgDef<string>>
+  user: {
+    type: 'UserSubscriptionPayload'
+    args: Record<SubscriptionUserArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Subscription">,
-      args: { where?: EmployeeSubscriptionWhereInput | null }  ,
+      args: { where?: UserSubscriptionWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeeSubscriptionPayload | null> | prisma.EmployeeSubscriptionPayload | null
+    ) => Promise<prisma.UserSubscriptionPayload | null> | prisma.UserSubscriptionPayload | null
   }
-  employeer: {
-    type: 'EmployeerSubscriptionPayload'
-    args: Record<SubscriptionEmployeerArgs, core.NexusArgDef<string>>
+  post: {
+    type: 'PostSubscriptionPayload'
+    args: Record<SubscriptionPostArgs, core.NexusArgDef<string>>
     description: string
     list: undefined
     nullable: true
     resolve: (
       root: core.RootValue<"Subscription">,
-      args: { where?: EmployeerSubscriptionWhereInput | null }  ,
+      args: { where?: PostSubscriptionWhereInput | null }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeerSubscriptionPayload | null> | prisma.EmployeerSubscriptionPayload | null
+    ) => Promise<prisma.PostSubscriptionPayload | null> | prisma.PostSubscriptionPayload | null
+  }
+  comment: {
+    type: 'CommentSubscriptionPayload'
+    args: Record<SubscriptionCommentArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: CommentSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CommentSubscriptionPayload | null> | prisma.CommentSubscriptionPayload | null
   }
 }
   
 
-// Types for EmployeeSubscriptionPayload
+// Types for UserSubscriptionPayload
 
-type EmployeeSubscriptionPayloadObject =
-  | EmployeeSubscriptionPayloadFields
+type UserSubscriptionPayloadObject =
+  | UserSubscriptionPayloadFields
   | { name: 'mutation', args?: [] | false, alias?: string  } 
   | { name: 'node', args?: [] | false, alias?: string  } 
   | { name: 'updatedFields', args?: [] | false, alias?: string  } 
   | { name: 'previousValues', args?: [] | false, alias?: string  } 
 
-type EmployeeSubscriptionPayloadFields =
+type UserSubscriptionPayloadFields =
   | 'mutation'
   | 'node'
   | 'updatedFields'
@@ -1049,7 +1524,7 @@ type EmployeeSubscriptionPayloadFields =
 
   
 
-export interface EmployeeSubscriptionPayloadFieldDetails {
+export interface UserSubscriptionPayloadFieldDetails {
   mutation: {
     type: 'MutationType'
     args: {}
@@ -1057,24 +1532,24 @@ export interface EmployeeSubscriptionPayloadFieldDetails {
     list: undefined
     nullable: false
     resolve: (
-      root: core.RootValue<"EmployeeSubscriptionPayload">,
+      root: core.RootValue<"UserSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.MutationType> | prisma.MutationType
   }
   node: {
-    type: 'Employee'
+    type: 'User'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"EmployeeSubscriptionPayload">,
+      root: core.RootValue<"UserSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employee | null> | prisma.Employee | null
+    ) => Promise<prisma.User | null> | prisma.User | null
   }
   updatedFields: {
     type: 'String'
@@ -1085,47 +1560,45 @@ export interface EmployeeSubscriptionPayloadFieldDetails {
     resolve: undefined
   }
   previousValues: {
-    type: 'EmployeePreviousValues'
+    type: 'UserPreviousValues'
     args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"EmployeeSubscriptionPayload">,
+      root: core.RootValue<"UserSubscriptionPayload">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeePreviousValues | null> | prisma.EmployeePreviousValues | null
+    ) => Promise<prisma.UserPreviousValues | null> | prisma.UserPreviousValues | null
   }
 }
   
 
-// Types for EmployeePreviousValues
+// Types for UserPreviousValues
 
-type EmployeePreviousValuesObject =
-  | EmployeePreviousValuesFields
+type UserPreviousValuesObject =
+  | UserPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'photo_url', args?: [] | false, alias?: string  } 
+  | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-  | { name: 'status', args?: [] | false, alias?: string  } 
 
-type EmployeePreviousValuesFields =
+type UserPreviousValuesFields =
   | 'id'
   | 'name'
   | 'email'
-  | 'photo_url'
+  | 'password'
   | 'createdAt'
   | 'updatedAt'
-  | 'status'
 
 
 
   
 
-export interface EmployeePreviousValuesFieldDetails {
+export interface UserPreviousValuesFieldDetails {
   id: {
     type: 'ID'
     args: {}
@@ -1150,12 +1623,12 @@ export interface EmployeePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  photo_url: {
+  password: {
     type: 'String'
     args: {}
     description: string
     list: undefined
-    nullable: true
+    nullable: false
     resolve: undefined
   }
   createdAt: {
@@ -1171,144 +1644,136 @@ export interface EmployeePreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for PostSubscriptionPayload
+
+type PostSubscriptionPayloadObject =
+  | PostSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type PostSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface PostSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PostSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Post'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PostSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post | null> | prisma.Post | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'PostPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PostSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PostPreviousValues | null> | prisma.PostPreviousValues | null
+  }
+}
+  
+
+// Types for PostPreviousValues
+
+type PostPreviousValuesObject =
+  | PostPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'content', args?: [] | false, alias?: string  } 
+  | { name: 'isPublished', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type PostPreviousValuesFields =
+  | 'id'
+  | 'title'
+  | 'content'
+  | 'isPublished'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+
+  
+
+export interface PostPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  content: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
     nullable: true
     resolve: undefined
   }
-  status: {
+  isPublished: {
     type: 'Boolean'
     args: {}
     description: string
     list: undefined
-    nullable: true
-    resolve: undefined
-  }
-}
-  
-
-// Types for EmployeerSubscriptionPayload
-
-type EmployeerSubscriptionPayloadObject =
-  | EmployeerSubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
-
-type EmployeerSubscriptionPayloadFields =
-  | 'mutation'
-  | 'node'
-  | 'updatedFields'
-  | 'previousValues'
-
-
-
-  
-
-export interface EmployeerSubscriptionPayloadFieldDetails {
-  mutation: {
-    type: 'MutationType'
-    args: {}
-    description: string
-    list: undefined
     nullable: false
-    resolve: (
-      root: core.RootValue<"EmployeerSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.MutationType> | prisma.MutationType
-  }
-  node: {
-    type: 'Employeer'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"EmployeerSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Employeer | null> | prisma.Employeer | null
-  }
-  updatedFields: {
-    type: 'String'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: undefined
-  }
-  previousValues: {
-    type: 'EmployeerPreviousValues'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"EmployeerSubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.EmployeerPreviousValues | null> | prisma.EmployeerPreviousValues | null
-  }
-}
-  
-
-// Types for EmployeerPreviousValues
-
-type EmployeerPreviousValuesObject =
-  | EmployeerPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
-  | { name: 'email', args?: [] | false, alias?: string  } 
-  | { name: 'photo_url', args?: [] | false, alias?: string  } 
-  | { name: 'createdAt', args?: [] | false, alias?: string  } 
-  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
-
-type EmployeerPreviousValuesFields =
-  | 'id'
-  | 'name'
-  | 'email'
-  | 'photo_url'
-  | 'createdAt'
-  | 'updatedAt'
-
-
-
-  
-
-export interface EmployeerPreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  name: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  email: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  photo_url: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
     resolve: undefined
   }
   createdAt: {
@@ -1324,23 +1789,287 @@ export interface EmployeerPreviousValuesFieldDetails {
     args: {}
     description: string
     list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for CommentSubscriptionPayload
+
+type CommentSubscriptionPayloadObject =
+  | CommentSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type CommentSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface CommentSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"CommentSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Comment'
+    args: {}
+    description: string
+    list: undefined
     nullable: true
+    resolve: (
+      root: core.RootValue<"CommentSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Comment | null> | prisma.Comment | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'CommentPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"CommentSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.CommentPreviousValues | null> | prisma.CommentPreviousValues | null
+  }
+}
+  
+
+// Types for CommentPreviousValues
+
+type CommentPreviousValuesObject =
+  | CommentPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'text', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+
+type CommentPreviousValuesFields =
+  | 'id'
+  | 'text'
+  | 'createdAt'
+  | 'updatedAt'
+
+
+
+  
+
+export interface CommentPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  text: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
     resolve: undefined
   }
 }
   
 
 
-export interface EmployeeWhereUniqueInput {
+export interface UserWhereUniqueInput {
   id?: string | null
   email?: string | null
 }
-export type EmployeeWhereUniqueInputInputObject =
-  | Extract<keyof EmployeeWhereUniqueInput, string>
+export type UserWhereUniqueInputInputObject =
+  | Extract<keyof UserWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'email', alias?: string  } 
   
-export interface EmployeeWhereInput {
+export interface PostWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
+  isPublished?: boolean | null
+  isPublished_not?: boolean | null
+  author?: UserWhereInput | null
+  comments_every?: CommentWhereInput | null
+  comments_some?: CommentWhereInput | null
+  comments_none?: CommentWhereInput | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: PostWhereInput[]
+  OR?: PostWhereInput[]
+  NOT?: PostWhereInput[]
+}
+export type PostWhereInputInputObject =
+  | Extract<keyof PostWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'title_not', alias?: string  } 
+  | { name: 'title_in', alias?: string  } 
+  | { name: 'title_not_in', alias?: string  } 
+  | { name: 'title_lt', alias?: string  } 
+  | { name: 'title_lte', alias?: string  } 
+  | { name: 'title_gt', alias?: string  } 
+  | { name: 'title_gte', alias?: string  } 
+  | { name: 'title_contains', alias?: string  } 
+  | { name: 'title_not_contains', alias?: string  } 
+  | { name: 'title_starts_with', alias?: string  } 
+  | { name: 'title_not_starts_with', alias?: string  } 
+  | { name: 'title_ends_with', alias?: string  } 
+  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'content_not', alias?: string  } 
+  | { name: 'content_in', alias?: string  } 
+  | { name: 'content_not_in', alias?: string  } 
+  | { name: 'content_lt', alias?: string  } 
+  | { name: 'content_lte', alias?: string  } 
+  | { name: 'content_gt', alias?: string  } 
+  | { name: 'content_gte', alias?: string  } 
+  | { name: 'content_contains', alias?: string  } 
+  | { name: 'content_not_contains', alias?: string  } 
+  | { name: 'content_starts_with', alias?: string  } 
+  | { name: 'content_not_starts_with', alias?: string  } 
+  | { name: 'content_ends_with', alias?: string  } 
+  | { name: 'content_not_ends_with', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'isPublished_not', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'comments_every', alias?: string  } 
+  | { name: 'comments_some', alias?: string  } 
+  | { name: 'comments_none', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface UserWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1383,20 +2112,26 @@ export interface EmployeeWhereInput {
   email_not_starts_with?: string | null
   email_ends_with?: string | null
   email_not_ends_with?: string | null
-  photo_url?: string | null
-  photo_url_not?: string | null
-  photo_url_in?: string[]
-  photo_url_not_in?: string[]
-  photo_url_lt?: string | null
-  photo_url_lte?: string | null
-  photo_url_gt?: string | null
-  photo_url_gte?: string | null
-  photo_url_contains?: string | null
-  photo_url_not_contains?: string | null
-  photo_url_starts_with?: string | null
-  photo_url_not_starts_with?: string | null
-  photo_url_ends_with?: string | null
-  photo_url_not_ends_with?: string | null
+  password?: string | null
+  password_not?: string | null
+  password_in?: string[]
+  password_not_in?: string[]
+  password_lt?: string | null
+  password_lte?: string | null
+  password_gt?: string | null
+  password_gte?: string | null
+  password_contains?: string | null
+  password_not_contains?: string | null
+  password_starts_with?: string | null
+  password_not_starts_with?: string | null
+  password_ends_with?: string | null
+  password_not_ends_with?: string | null
+  posts_every?: PostWhereInput | null
+  posts_some?: PostWhereInput | null
+  posts_none?: PostWhereInput | null
+  comments_every?: CommentWhereInput | null
+  comments_some?: CommentWhereInput | null
+  comments_none?: CommentWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -1413,15 +2148,12 @@ export interface EmployeeWhereInput {
   updatedAt_lte?: string | null
   updatedAt_gt?: string | null
   updatedAt_gte?: string | null
-  employeer?: EmployeerWhereInput | null
-  status?: boolean | null
-  status_not?: boolean | null
-  AND?: EmployeeWhereInput[]
-  OR?: EmployeeWhereInput[]
-  NOT?: EmployeeWhereInput[]
+  AND?: UserWhereInput[]
+  OR?: UserWhereInput[]
+  NOT?: UserWhereInput[]
 }
-export type EmployeeWhereInputInputObject =
-  | Extract<keyof EmployeeWhereInput, string>
+export type UserWhereInputInputObject =
+  | Extract<keyof UserWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1464,20 +2196,26 @@ export type EmployeeWhereInputInputObject =
   | { name: 'email_not_starts_with', alias?: string  } 
   | { name: 'email_ends_with', alias?: string  } 
   | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'photo_url_not', alias?: string  } 
-  | { name: 'photo_url_in', alias?: string  } 
-  | { name: 'photo_url_not_in', alias?: string  } 
-  | { name: 'photo_url_lt', alias?: string  } 
-  | { name: 'photo_url_lte', alias?: string  } 
-  | { name: 'photo_url_gt', alias?: string  } 
-  | { name: 'photo_url_gte', alias?: string  } 
-  | { name: 'photo_url_contains', alias?: string  } 
-  | { name: 'photo_url_not_contains', alias?: string  } 
-  | { name: 'photo_url_starts_with', alias?: string  } 
-  | { name: 'photo_url_not_starts_with', alias?: string  } 
-  | { name: 'photo_url_ends_with', alias?: string  } 
-  | { name: 'photo_url_not_ends_with', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'password_not', alias?: string  } 
+  | { name: 'password_in', alias?: string  } 
+  | { name: 'password_not_in', alias?: string  } 
+  | { name: 'password_lt', alias?: string  } 
+  | { name: 'password_lte', alias?: string  } 
+  | { name: 'password_gt', alias?: string  } 
+  | { name: 'password_gte', alias?: string  } 
+  | { name: 'password_contains', alias?: string  } 
+  | { name: 'password_not_contains', alias?: string  } 
+  | { name: 'password_starts_with', alias?: string  } 
+  | { name: 'password_not_starts_with', alias?: string  } 
+  | { name: 'password_ends_with', alias?: string  } 
+  | { name: 'password_not_ends_with', alias?: string  } 
+  | { name: 'posts_every', alias?: string  } 
+  | { name: 'posts_some', alias?: string  } 
+  | { name: 'posts_none', alias?: string  } 
+  | { name: 'comments_every', alias?: string  } 
+  | { name: 'comments_some', alias?: string  } 
+  | { name: 'comments_none', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -1494,14 +2232,11 @@ export type EmployeeWhereInputInputObject =
   | { name: 'updatedAt_lte', alias?: string  } 
   | { name: 'updatedAt_gt', alias?: string  } 
   | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'employeer', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  | { name: 'status_not', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface EmployeerWhereInput {
+export interface CommentWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1516,51 +2251,22 @@ export interface EmployeerWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  email?: string | null
-  email_not?: string | null
-  email_in?: string[]
-  email_not_in?: string[]
-  email_lt?: string | null
-  email_lte?: string | null
-  email_gt?: string | null
-  email_gte?: string | null
-  email_contains?: string | null
-  email_not_contains?: string | null
-  email_starts_with?: string | null
-  email_not_starts_with?: string | null
-  email_ends_with?: string | null
-  email_not_ends_with?: string | null
-  photo_url?: string | null
-  photo_url_not?: string | null
-  photo_url_in?: string[]
-  photo_url_not_in?: string[]
-  photo_url_lt?: string | null
-  photo_url_lte?: string | null
-  photo_url_gt?: string | null
-  photo_url_gte?: string | null
-  photo_url_contains?: string | null
-  photo_url_not_contains?: string | null
-  photo_url_starts_with?: string | null
-  photo_url_not_starts_with?: string | null
-  photo_url_ends_with?: string | null
-  photo_url_not_ends_with?: string | null
-  employees_every?: EmployeeWhereInput | null
-  employees_some?: EmployeeWhereInput | null
-  employees_none?: EmployeeWhereInput | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[]
+  text_not_in?: string[]
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
+  author?: UserWhereInput | null
+  post?: PostWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -1577,12 +2283,12 @@ export interface EmployeerWhereInput {
   updatedAt_lte?: string | null
   updatedAt_gt?: string | null
   updatedAt_gte?: string | null
-  AND?: EmployeerWhereInput[]
-  OR?: EmployeerWhereInput[]
-  NOT?: EmployeerWhereInput[]
+  AND?: CommentWhereInput[]
+  OR?: CommentWhereInput[]
+  NOT?: CommentWhereInput[]
 }
-export type EmployeerWhereInputInputObject =
-  | Extract<keyof EmployeerWhereInput, string>
+export type CommentWhereInputInputObject =
+  | Extract<keyof CommentWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1597,51 +2303,22 @@ export type EmployeerWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'photo_url_not', alias?: string  } 
-  | { name: 'photo_url_in', alias?: string  } 
-  | { name: 'photo_url_not_in', alias?: string  } 
-  | { name: 'photo_url_lt', alias?: string  } 
-  | { name: 'photo_url_lte', alias?: string  } 
-  | { name: 'photo_url_gt', alias?: string  } 
-  | { name: 'photo_url_gte', alias?: string  } 
-  | { name: 'photo_url_contains', alias?: string  } 
-  | { name: 'photo_url_not_contains', alias?: string  } 
-  | { name: 'photo_url_starts_with', alias?: string  } 
-  | { name: 'photo_url_not_starts_with', alias?: string  } 
-  | { name: 'photo_url_ends_with', alias?: string  } 
-  | { name: 'photo_url_not_ends_with', alias?: string  } 
-  | { name: 'employees_every', alias?: string  } 
-  | { name: 'employees_some', alias?: string  } 
-  | { name: 'employees_none', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'text_not', alias?: string  } 
+  | { name: 'text_in', alias?: string  } 
+  | { name: 'text_not_in', alias?: string  } 
+  | { name: 'text_lt', alias?: string  } 
+  | { name: 'text_lte', alias?: string  } 
+  | { name: 'text_gt', alias?: string  } 
+  | { name: 'text_gte', alias?: string  } 
+  | { name: 'text_contains', alias?: string  } 
+  | { name: 'text_not_contains', alias?: string  } 
+  | { name: 'text_starts_with', alias?: string  } 
+  | { name: 'text_not_starts_with', alias?: string  } 
+  | { name: 'text_ends_with', alias?: string  } 
+  | { name: 'text_not_ends_with', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'post', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -1662,184 +2339,201 @@ export type EmployeerWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface EmployeerWhereUniqueInput {
+export interface PostWhereUniqueInput {
   id?: string | null
-  email?: string | null
 }
-export type EmployeerWhereUniqueInputInputObject =
-  | Extract<keyof EmployeerWhereUniqueInput, string>
+export type PostWhereUniqueInputInputObject =
+  | Extract<keyof PostWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'email', alias?: string  } 
   
-export interface EmployeeCreateInput {
+export interface CommentWhereUniqueInput {
+  id?: string | null
+}
+export type CommentWhereUniqueInputInputObject =
+  | Extract<keyof CommentWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  
+export interface UserCreateInput {
   id?: string | null
   name?: string
   email?: string
-  photo_url?: string | null
-  employeer?: EmployeerCreateOneWithoutEmployeesInput | null
-  status?: boolean | null
+  password?: string
+  posts?: PostCreateManyWithoutAuthorInput | null
+  comments?: CommentCreateManyWithoutAuthorInput | null
 }
-export type EmployeeCreateInputInputObject =
-  | Extract<keyof EmployeeCreateInput, string>
+export type UserCreateInputInputObject =
+  | Extract<keyof UserCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'employeer', alias?: string  } 
-  | { name: 'status', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
   
-export interface EmployeerCreateOneWithoutEmployeesInput {
-  create?: EmployeerCreateWithoutEmployeesInput | null
-  connect?: EmployeerWhereUniqueInput | null
+export interface PostCreateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[]
+  connect?: PostWhereUniqueInput[]
 }
-export type EmployeerCreateOneWithoutEmployeesInputInputObject =
-  | Extract<keyof EmployeerCreateOneWithoutEmployeesInput, string>
+export type PostCreateManyWithoutAuthorInputInputObject =
+  | Extract<keyof PostCreateManyWithoutAuthorInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface EmployeerCreateWithoutEmployeesInput {
+export interface PostCreateWithoutAuthorInput {
   id?: string | null
-  name?: string
-  email?: string
-  photo_url?: string | null
+  title?: string
+  content?: string | null
+  isPublished?: boolean | null
+  comments?: CommentCreateManyWithoutPostInput | null
 }
-export type EmployeerCreateWithoutEmployeesInputInputObject =
-  | Extract<keyof EmployeerCreateWithoutEmployeesInput, string>
+export type PostCreateWithoutAuthorInputInputObject =
+  | Extract<keyof PostCreateWithoutAuthorInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
   
-export interface EmployeeUpdateInput {
-  name?: string | null
-  email?: string | null
-  photo_url?: string | null
-  employeer?: EmployeerUpdateOneWithoutEmployeesInput | null
-  status?: boolean | null
+export interface CommentCreateManyWithoutPostInput {
+  create?: CommentCreateWithoutPostInput[]
+  connect?: CommentWhereUniqueInput[]
 }
-export type EmployeeUpdateInputInputObject =
-  | Extract<keyof EmployeeUpdateInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'employeer', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  
-export interface EmployeerUpdateOneWithoutEmployeesInput {
-  create?: EmployeerCreateWithoutEmployeesInput | null
-  update?: EmployeerUpdateWithoutEmployeesDataInput | null
-  upsert?: EmployeerUpsertWithoutEmployeesInput | null
-  delete?: boolean | null
-  disconnect?: boolean | null
-  connect?: EmployeerWhereUniqueInput | null
-}
-export type EmployeerUpdateOneWithoutEmployeesInputInputObject =
-  | Extract<keyof EmployeerUpdateOneWithoutEmployeesInput, string>
-  | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
-  | { name: 'delete', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface EmployeerUpdateWithoutEmployeesDataInput {
-  name?: string | null
-  email?: string | null
-  photo_url?: string | null
-}
-export type EmployeerUpdateWithoutEmployeesDataInputInputObject =
-  | Extract<keyof EmployeerUpdateWithoutEmployeesDataInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  
-export interface EmployeerUpsertWithoutEmployeesInput {
-  update?: EmployeerUpdateWithoutEmployeesDataInput
-  create?: EmployeerCreateWithoutEmployeesInput
-}
-export type EmployeerUpsertWithoutEmployeesInputInputObject =
-  | Extract<keyof EmployeerUpsertWithoutEmployeesInput, string>
-  | { name: 'update', alias?: string  } 
-  | { name: 'create', alias?: string  } 
-  
-export interface EmployeeUpdateManyMutationInput {
-  name?: string | null
-  email?: string | null
-  photo_url?: string | null
-  status?: boolean | null
-}
-export type EmployeeUpdateManyMutationInputInputObject =
-  | Extract<keyof EmployeeUpdateManyMutationInput, string>
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  
-export interface EmployeerCreateInput {
-  id?: string | null
-  name?: string
-  email?: string
-  photo_url?: string | null
-  employees?: EmployeeCreateManyWithoutEmployeerInput | null
-}
-export type EmployeerCreateInputInputObject =
-  | Extract<keyof EmployeerCreateInput, string>
-  | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'employees', alias?: string  } 
-  
-export interface EmployeeCreateManyWithoutEmployeerInput {
-  create?: EmployeeCreateWithoutEmployeerInput[]
-  connect?: EmployeeWhereUniqueInput[]
-}
-export type EmployeeCreateManyWithoutEmployeerInputInputObject =
-  | Extract<keyof EmployeeCreateManyWithoutEmployeerInput, string>
+export type CommentCreateManyWithoutPostInputInputObject =
+  | Extract<keyof CommentCreateManyWithoutPostInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface EmployeeCreateWithoutEmployeerInput {
+export interface CommentCreateWithoutPostInput {
+  id?: string | null
+  text?: string
+  author?: UserCreateOneWithoutCommentsInput
+}
+export type CommentCreateWithoutPostInputInputObject =
+  | Extract<keyof CommentCreateWithoutPostInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  
+export interface UserCreateOneWithoutCommentsInput {
+  create?: UserCreateWithoutCommentsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneWithoutCommentsInputInputObject =
+  | Extract<keyof UserCreateOneWithoutCommentsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateWithoutCommentsInput {
   id?: string | null
   name?: string
   email?: string
-  photo_url?: string | null
-  status?: boolean | null
+  password?: string
+  posts?: PostCreateManyWithoutAuthorInput | null
 }
-export type EmployeeCreateWithoutEmployeerInputInputObject =
-  | Extract<keyof EmployeeCreateWithoutEmployeerInput, string>
+export type UserCreateWithoutCommentsInputInputObject =
+  | Extract<keyof UserCreateWithoutCommentsInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'status', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
   
-export interface EmployeerUpdateInput {
-  name?: string | null
-  email?: string | null
-  photo_url?: string | null
-  employees?: EmployeeUpdateManyWithoutEmployeerInput | null
+export interface CommentCreateManyWithoutAuthorInput {
+  create?: CommentCreateWithoutAuthorInput[]
+  connect?: CommentWhereUniqueInput[]
 }
-export type EmployeerUpdateInputInputObject =
-  | Extract<keyof EmployeerUpdateInput, string>
+export type CommentCreateManyWithoutAuthorInputInputObject =
+  | Extract<keyof CommentCreateManyWithoutAuthorInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface CommentCreateWithoutAuthorInput {
+  id?: string | null
+  text?: string
+  post?: PostCreateOneWithoutCommentsInput
+}
+export type CommentCreateWithoutAuthorInputInputObject =
+  | Extract<keyof CommentCreateWithoutAuthorInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'post', alias?: string  } 
+  
+export interface PostCreateOneWithoutCommentsInput {
+  create?: PostCreateWithoutCommentsInput | null
+  connect?: PostWhereUniqueInput | null
+}
+export type PostCreateOneWithoutCommentsInputInputObject =
+  | Extract<keyof PostCreateOneWithoutCommentsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PostCreateWithoutCommentsInput {
+  id?: string | null
+  title?: string
+  content?: string | null
+  isPublished?: boolean | null
+  author?: UserCreateOneWithoutPostsInput
+}
+export type PostCreateWithoutCommentsInputInputObject =
+  | Extract<keyof PostCreateWithoutCommentsInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneWithoutPostsInputInputObject =
+  | Extract<keyof UserCreateOneWithoutPostsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateWithoutPostsInput {
+  id?: string | null
+  name?: string
+  email?: string
+  password?: string
+  comments?: CommentCreateManyWithoutAuthorInput | null
+}
+export type UserCreateWithoutPostsInputInputObject =
+  | Extract<keyof UserCreateWithoutPostsInput, string>
+  | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'employees', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
   
-export interface EmployeeUpdateManyWithoutEmployeerInput {
-  create?: EmployeeCreateWithoutEmployeerInput[]
-  delete?: EmployeeWhereUniqueInput[]
-  connect?: EmployeeWhereUniqueInput[]
-  set?: EmployeeWhereUniqueInput[]
-  disconnect?: EmployeeWhereUniqueInput[]
-  update?: EmployeeUpdateWithWhereUniqueWithoutEmployeerInput[]
-  upsert?: EmployeeUpsertWithWhereUniqueWithoutEmployeerInput[]
-  deleteMany?: EmployeeScalarWhereInput[]
-  updateMany?: EmployeeUpdateManyWithWhereNestedInput[]
+export interface UserUpdateInput {
+  name?: string | null
+  email?: string | null
+  password?: string | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  comments?: CommentUpdateManyWithoutAuthorInput | null
 }
-export type EmployeeUpdateManyWithoutEmployeerInputInputObject =
-  | Extract<keyof EmployeeUpdateManyWithoutEmployeerInput, string>
+export type UserUpdateInputInputObject =
+  | Extract<keyof UserUpdateInput, string>
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
+  
+export interface PostUpdateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[]
+  delete?: PostWhereUniqueInput[]
+  connect?: PostWhereUniqueInput[]
+  set?: PostWhereUniqueInput[]
+  disconnect?: PostWhereUniqueInput[]
+  update?: PostUpdateWithWhereUniqueWithoutAuthorInput[]
+  upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput[]
+  deleteMany?: PostScalarWhereInput[]
+  updateMany?: PostUpdateManyWithWhereNestedInput[]
+}
+export type PostUpdateManyWithoutAuthorInputInputObject =
+  | Extract<keyof PostUpdateManyWithoutAuthorInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -1850,40 +2544,116 @@ export type EmployeeUpdateManyWithoutEmployeerInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface EmployeeUpdateWithWhereUniqueWithoutEmployeerInput {
-  where?: EmployeeWhereUniqueInput
-  data?: EmployeeUpdateWithoutEmployeerDataInput
+export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where?: PostWhereUniqueInput
+  data?: PostUpdateWithoutAuthorDataInput
 }
-export type EmployeeUpdateWithWhereUniqueWithoutEmployeerInputInputObject =
-  | Extract<keyof EmployeeUpdateWithWhereUniqueWithoutEmployeerInput, string>
+export type PostUpdateWithWhereUniqueWithoutAuthorInputInputObject =
+  | Extract<keyof PostUpdateWithWhereUniqueWithoutAuthorInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface EmployeeUpdateWithoutEmployeerDataInput {
+export interface PostUpdateWithoutAuthorDataInput {
+  title?: string | null
+  content?: string | null
+  isPublished?: boolean | null
+  comments?: CommentUpdateManyWithoutPostInput | null
+}
+export type PostUpdateWithoutAuthorDataInputInputObject =
+  | Extract<keyof PostUpdateWithoutAuthorDataInput, string>
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
+  
+export interface CommentUpdateManyWithoutPostInput {
+  create?: CommentCreateWithoutPostInput[]
+  delete?: CommentWhereUniqueInput[]
+  connect?: CommentWhereUniqueInput[]
+  set?: CommentWhereUniqueInput[]
+  disconnect?: CommentWhereUniqueInput[]
+  update?: CommentUpdateWithWhereUniqueWithoutPostInput[]
+  upsert?: CommentUpsertWithWhereUniqueWithoutPostInput[]
+  deleteMany?: CommentScalarWhereInput[]
+  updateMany?: CommentUpdateManyWithWhereNestedInput[]
+}
+export type CommentUpdateManyWithoutPostInputInputObject =
+  | Extract<keyof CommentUpdateManyWithoutPostInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface CommentUpdateWithWhereUniqueWithoutPostInput {
+  where?: CommentWhereUniqueInput
+  data?: CommentUpdateWithoutPostDataInput
+}
+export type CommentUpdateWithWhereUniqueWithoutPostInputInputObject =
+  | Extract<keyof CommentUpdateWithWhereUniqueWithoutPostInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface CommentUpdateWithoutPostDataInput {
+  text?: string | null
+  author?: UserUpdateOneRequiredWithoutCommentsInput | null
+}
+export type CommentUpdateWithoutPostDataInputInputObject =
+  | Extract<keyof CommentUpdateWithoutPostDataInput, string>
+  | { name: 'text', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  
+export interface UserUpdateOneRequiredWithoutCommentsInput {
+  create?: UserCreateWithoutCommentsInput | null
+  update?: UserUpdateWithoutCommentsDataInput | null
+  upsert?: UserUpsertWithoutCommentsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneRequiredWithoutCommentsInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredWithoutCommentsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateWithoutCommentsDataInput {
   name?: string | null
   email?: string | null
-  photo_url?: string | null
-  status?: boolean | null
+  password?: string | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
 }
-export type EmployeeUpdateWithoutEmployeerDataInputInputObject =
-  | Extract<keyof EmployeeUpdateWithoutEmployeerDataInput, string>
+export type UserUpdateWithoutCommentsDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutCommentsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'status', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
   
-export interface EmployeeUpsertWithWhereUniqueWithoutEmployeerInput {
-  where?: EmployeeWhereUniqueInput
-  update?: EmployeeUpdateWithoutEmployeerDataInput
-  create?: EmployeeCreateWithoutEmployeerInput
+export interface UserUpsertWithoutCommentsInput {
+  update?: UserUpdateWithoutCommentsDataInput
+  create?: UserCreateWithoutCommentsInput
 }
-export type EmployeeUpsertWithWhereUniqueWithoutEmployeerInputInputObject =
-  | Extract<keyof EmployeeUpsertWithWhereUniqueWithoutEmployeerInput, string>
+export type UserUpsertWithoutCommentsInputInputObject =
+  | Extract<keyof UserUpsertWithoutCommentsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface CommentUpsertWithWhereUniqueWithoutPostInput {
+  where?: CommentWhereUniqueInput
+  update?: CommentUpdateWithoutPostDataInput
+  create?: CommentCreateWithoutPostInput
+}
+export type CommentUpsertWithWhereUniqueWithoutPostInputInputObject =
+  | Extract<keyof CommentUpsertWithWhereUniqueWithoutPostInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface EmployeeScalarWhereInput {
+export interface CommentScalarWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1898,48 +2668,20 @@ export interface EmployeeScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
-  email?: string | null
-  email_not?: string | null
-  email_in?: string[]
-  email_not_in?: string[]
-  email_lt?: string | null
-  email_lte?: string | null
-  email_gt?: string | null
-  email_gte?: string | null
-  email_contains?: string | null
-  email_not_contains?: string | null
-  email_starts_with?: string | null
-  email_not_starts_with?: string | null
-  email_ends_with?: string | null
-  email_not_ends_with?: string | null
-  photo_url?: string | null
-  photo_url_not?: string | null
-  photo_url_in?: string[]
-  photo_url_not_in?: string[]
-  photo_url_lt?: string | null
-  photo_url_lte?: string | null
-  photo_url_gt?: string | null
-  photo_url_gte?: string | null
-  photo_url_contains?: string | null
-  photo_url_not_contains?: string | null
-  photo_url_starts_with?: string | null
-  photo_url_not_starts_with?: string | null
-  photo_url_ends_with?: string | null
-  photo_url_not_ends_with?: string | null
+  text?: string | null
+  text_not?: string | null
+  text_in?: string[]
+  text_not_in?: string[]
+  text_lt?: string | null
+  text_lte?: string | null
+  text_gt?: string | null
+  text_gte?: string | null
+  text_contains?: string | null
+  text_not_contains?: string | null
+  text_starts_with?: string | null
+  text_not_starts_with?: string | null
+  text_ends_with?: string | null
+  text_not_ends_with?: string | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -1956,14 +2698,12 @@ export interface EmployeeScalarWhereInput {
   updatedAt_lte?: string | null
   updatedAt_gt?: string | null
   updatedAt_gte?: string | null
-  status?: boolean | null
-  status_not?: boolean | null
-  AND?: EmployeeScalarWhereInput[]
-  OR?: EmployeeScalarWhereInput[]
-  NOT?: EmployeeScalarWhereInput[]
+  AND?: CommentScalarWhereInput[]
+  OR?: CommentScalarWhereInput[]
+  NOT?: CommentScalarWhereInput[]
 }
-export type EmployeeScalarWhereInputInputObject =
-  | Extract<keyof EmployeeScalarWhereInput, string>
+export type CommentScalarWhereInputInputObject =
+  | Extract<keyof CommentScalarWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1978,48 +2718,20 @@ export type EmployeeScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
-  | { name: 'email', alias?: string  } 
-  | { name: 'email_not', alias?: string  } 
-  | { name: 'email_in', alias?: string  } 
-  | { name: 'email_not_in', alias?: string  } 
-  | { name: 'email_lt', alias?: string  } 
-  | { name: 'email_lte', alias?: string  } 
-  | { name: 'email_gt', alias?: string  } 
-  | { name: 'email_gte', alias?: string  } 
-  | { name: 'email_contains', alias?: string  } 
-  | { name: 'email_not_contains', alias?: string  } 
-  | { name: 'email_starts_with', alias?: string  } 
-  | { name: 'email_not_starts_with', alias?: string  } 
-  | { name: 'email_ends_with', alias?: string  } 
-  | { name: 'email_not_ends_with', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'photo_url_not', alias?: string  } 
-  | { name: 'photo_url_in', alias?: string  } 
-  | { name: 'photo_url_not_in', alias?: string  } 
-  | { name: 'photo_url_lt', alias?: string  } 
-  | { name: 'photo_url_lte', alias?: string  } 
-  | { name: 'photo_url_gt', alias?: string  } 
-  | { name: 'photo_url_gte', alias?: string  } 
-  | { name: 'photo_url_contains', alias?: string  } 
-  | { name: 'photo_url_not_contains', alias?: string  } 
-  | { name: 'photo_url_starts_with', alias?: string  } 
-  | { name: 'photo_url_not_starts_with', alias?: string  } 
-  | { name: 'photo_url_ends_with', alias?: string  } 
-  | { name: 'photo_url_not_ends_with', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'text_not', alias?: string  } 
+  | { name: 'text_in', alias?: string  } 
+  | { name: 'text_not_in', alias?: string  } 
+  | { name: 'text_lt', alias?: string  } 
+  | { name: 'text_lte', alias?: string  } 
+  | { name: 'text_gt', alias?: string  } 
+  | { name: 'text_gte', alias?: string  } 
+  | { name: 'text_contains', alias?: string  } 
+  | { name: 'text_not_contains', alias?: string  } 
+  | { name: 'text_starts_with', alias?: string  } 
+  | { name: 'text_not_starts_with', alias?: string  } 
+  | { name: 'text_ends_with', alias?: string  } 
+  | { name: 'text_not_ends_with', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -2036,57 +2748,407 @@ export type EmployeeScalarWhereInputInputObject =
   | { name: 'updatedAt_lte', alias?: string  } 
   | { name: 'updatedAt_gt', alias?: string  } 
   | { name: 'updatedAt_gte', alias?: string  } 
-  | { name: 'status', alias?: string  } 
-  | { name: 'status_not', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface EmployeeUpdateManyWithWhereNestedInput {
-  where?: EmployeeScalarWhereInput
-  data?: EmployeeUpdateManyDataInput
+export interface CommentUpdateManyWithWhereNestedInput {
+  where?: CommentScalarWhereInput
+  data?: CommentUpdateManyDataInput
 }
-export type EmployeeUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof EmployeeUpdateManyWithWhereNestedInput, string>
+export type CommentUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof CommentUpdateManyWithWhereNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface EmployeeUpdateManyDataInput {
+export interface CommentUpdateManyDataInput {
+  text?: string | null
+}
+export type CommentUpdateManyDataInputInputObject =
+  | Extract<keyof CommentUpdateManyDataInput, string>
+  | { name: 'text', alias?: string  } 
+  
+export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where?: PostWhereUniqueInput
+  update?: PostUpdateWithoutAuthorDataInput
+  create?: PostCreateWithoutAuthorInput
+}
+export type PostUpsertWithWhereUniqueWithoutAuthorInputInputObject =
+  | Extract<keyof PostUpsertWithWhereUniqueWithoutAuthorInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface PostScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
+  isPublished?: boolean | null
+  isPublished_not?: boolean | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  AND?: PostScalarWhereInput[]
+  OR?: PostScalarWhereInput[]
+  NOT?: PostScalarWhereInput[]
+}
+export type PostScalarWhereInputInputObject =
+  | Extract<keyof PostScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'title_not', alias?: string  } 
+  | { name: 'title_in', alias?: string  } 
+  | { name: 'title_not_in', alias?: string  } 
+  | { name: 'title_lt', alias?: string  } 
+  | { name: 'title_lte', alias?: string  } 
+  | { name: 'title_gt', alias?: string  } 
+  | { name: 'title_gte', alias?: string  } 
+  | { name: 'title_contains', alias?: string  } 
+  | { name: 'title_not_contains', alias?: string  } 
+  | { name: 'title_starts_with', alias?: string  } 
+  | { name: 'title_not_starts_with', alias?: string  } 
+  | { name: 'title_ends_with', alias?: string  } 
+  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'content_not', alias?: string  } 
+  | { name: 'content_in', alias?: string  } 
+  | { name: 'content_not_in', alias?: string  } 
+  | { name: 'content_lt', alias?: string  } 
+  | { name: 'content_lte', alias?: string  } 
+  | { name: 'content_gt', alias?: string  } 
+  | { name: 'content_gte', alias?: string  } 
+  | { name: 'content_contains', alias?: string  } 
+  | { name: 'content_not_contains', alias?: string  } 
+  | { name: 'content_starts_with', alias?: string  } 
+  | { name: 'content_not_starts_with', alias?: string  } 
+  | { name: 'content_ends_with', alias?: string  } 
+  | { name: 'content_not_ends_with', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'isPublished_not', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface PostUpdateManyWithWhereNestedInput {
+  where?: PostScalarWhereInput
+  data?: PostUpdateManyDataInput
+}
+export type PostUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof PostUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface PostUpdateManyDataInput {
+  title?: string | null
+  content?: string | null
+  isPublished?: boolean | null
+}
+export type PostUpdateManyDataInputInputObject =
+  | Extract<keyof PostUpdateManyDataInput, string>
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  
+export interface CommentUpdateManyWithoutAuthorInput {
+  create?: CommentCreateWithoutAuthorInput[]
+  delete?: CommentWhereUniqueInput[]
+  connect?: CommentWhereUniqueInput[]
+  set?: CommentWhereUniqueInput[]
+  disconnect?: CommentWhereUniqueInput[]
+  update?: CommentUpdateWithWhereUniqueWithoutAuthorInput[]
+  upsert?: CommentUpsertWithWhereUniqueWithoutAuthorInput[]
+  deleteMany?: CommentScalarWhereInput[]
+  updateMany?: CommentUpdateManyWithWhereNestedInput[]
+}
+export type CommentUpdateManyWithoutAuthorInputInputObject =
+  | Extract<keyof CommentUpdateManyWithoutAuthorInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface CommentUpdateWithWhereUniqueWithoutAuthorInput {
+  where?: CommentWhereUniqueInput
+  data?: CommentUpdateWithoutAuthorDataInput
+}
+export type CommentUpdateWithWhereUniqueWithoutAuthorInputInputObject =
+  | Extract<keyof CommentUpdateWithWhereUniqueWithoutAuthorInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface CommentUpdateWithoutAuthorDataInput {
+  text?: string | null
+  post?: PostUpdateOneRequiredWithoutCommentsInput | null
+}
+export type CommentUpdateWithoutAuthorDataInputInputObject =
+  | Extract<keyof CommentUpdateWithoutAuthorDataInput, string>
+  | { name: 'text', alias?: string  } 
+  | { name: 'post', alias?: string  } 
+  
+export interface PostUpdateOneRequiredWithoutCommentsInput {
+  create?: PostCreateWithoutCommentsInput | null
+  update?: PostUpdateWithoutCommentsDataInput | null
+  upsert?: PostUpsertWithoutCommentsInput | null
+  connect?: PostWhereUniqueInput | null
+}
+export type PostUpdateOneRequiredWithoutCommentsInputInputObject =
+  | Extract<keyof PostUpdateOneRequiredWithoutCommentsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PostUpdateWithoutCommentsDataInput {
+  title?: string | null
+  content?: string | null
+  isPublished?: boolean | null
+  author?: UserUpdateOneRequiredWithoutPostsInput | null
+}
+export type PostUpdateWithoutCommentsDataInputInputObject =
+  | Extract<keyof PostUpdateWithoutCommentsDataInput, string>
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  
+export interface UserUpdateOneRequiredWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput | null
+  update?: UserUpdateWithoutPostsDataInput | null
+  upsert?: UserUpsertWithoutPostsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneRequiredWithoutPostsInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredWithoutPostsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateWithoutPostsDataInput {
   name?: string | null
   email?: string | null
-  photo_url?: string | null
-  status?: boolean | null
+  password?: string | null
+  comments?: CommentUpdateManyWithoutAuthorInput | null
 }
-export type EmployeeUpdateManyDataInputInputObject =
-  | Extract<keyof EmployeeUpdateManyDataInput, string>
+export type UserUpdateWithoutPostsDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutPostsDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
-  | { name: 'status', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
   
-export interface EmployeerUpdateManyMutationInput {
+export interface UserUpsertWithoutPostsInput {
+  update?: UserUpdateWithoutPostsDataInput
+  create?: UserCreateWithoutPostsInput
+}
+export type UserUpsertWithoutPostsInputInputObject =
+  | Extract<keyof UserUpsertWithoutPostsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface PostUpsertWithoutCommentsInput {
+  update?: PostUpdateWithoutCommentsDataInput
+  create?: PostCreateWithoutCommentsInput
+}
+export type PostUpsertWithoutCommentsInputInputObject =
+  | Extract<keyof PostUpsertWithoutCommentsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface CommentUpsertWithWhereUniqueWithoutAuthorInput {
+  where?: CommentWhereUniqueInput
+  update?: CommentUpdateWithoutAuthorDataInput
+  create?: CommentCreateWithoutAuthorInput
+}
+export type CommentUpsertWithWhereUniqueWithoutAuthorInputInputObject =
+  | Extract<keyof CommentUpsertWithWhereUniqueWithoutAuthorInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface UserUpdateManyMutationInput {
   name?: string | null
   email?: string | null
-  photo_url?: string | null
+  password?: string | null
 }
-export type EmployeerUpdateManyMutationInputInputObject =
-  | Extract<keyof EmployeerUpdateManyMutationInput, string>
+export type UserUpdateManyMutationInputInputObject =
+  | Extract<keyof UserUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'email', alias?: string  } 
-  | { name: 'photo_url', alias?: string  } 
+  | { name: 'password', alias?: string  } 
   
-export interface EmployeeSubscriptionWhereInput {
+export interface PostCreateInput {
+  id?: string | null
+  title?: string
+  content?: string | null
+  isPublished?: boolean | null
+  author?: UserCreateOneWithoutPostsInput
+  comments?: CommentCreateManyWithoutPostInput | null
+}
+export type PostCreateInputInputObject =
+  | Extract<keyof PostCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
+  
+export interface PostUpdateInput {
+  title?: string | null
+  content?: string | null
+  isPublished?: boolean | null
+  author?: UserUpdateOneRequiredWithoutPostsInput | null
+  comments?: CommentUpdateManyWithoutPostInput | null
+}
+export type PostUpdateInputInputObject =
+  | Extract<keyof PostUpdateInput, string>
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'comments', alias?: string  } 
+  
+export interface PostUpdateManyMutationInput {
+  title?: string | null
+  content?: string | null
+  isPublished?: boolean | null
+}
+export type PostUpdateManyMutationInputInputObject =
+  | Extract<keyof PostUpdateManyMutationInput, string>
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'isPublished', alias?: string  } 
+  
+export interface CommentCreateInput {
+  id?: string | null
+  text?: string
+  author?: UserCreateOneWithoutCommentsInput
+  post?: PostCreateOneWithoutCommentsInput
+}
+export type CommentCreateInputInputObject =
+  | Extract<keyof CommentCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'text', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'post', alias?: string  } 
+  
+export interface CommentUpdateInput {
+  text?: string | null
+  author?: UserUpdateOneRequiredWithoutCommentsInput | null
+  post?: PostUpdateOneRequiredWithoutCommentsInput | null
+}
+export type CommentUpdateInputInputObject =
+  | Extract<keyof CommentUpdateInput, string>
+  | { name: 'text', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'post', alias?: string  } 
+  
+export interface CommentUpdateManyMutationInput {
+  text?: string | null
+}
+export type CommentUpdateManyMutationInputInputObject =
+  | Extract<keyof CommentUpdateManyMutationInput, string>
+  | { name: 'text', alias?: string  } 
+  
+export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
   updatedFields_contains_every?: string[]
   updatedFields_contains_some?: string[]
-  node?: EmployeeWhereInput | null
-  AND?: EmployeeSubscriptionWhereInput[]
-  OR?: EmployeeSubscriptionWhereInput[]
-  NOT?: EmployeeSubscriptionWhereInput[]
+  node?: UserWhereInput | null
+  AND?: UserSubscriptionWhereInput[]
+  OR?: UserSubscriptionWhereInput[]
+  NOT?: UserSubscriptionWhereInput[]
 }
-export type EmployeeSubscriptionWhereInputInputObject =
-  | Extract<keyof EmployeeSubscriptionWhereInput, string>
+export type UserSubscriptionWhereInputInputObject =
+  | Extract<keyof UserSubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -2096,18 +3158,39 @@ export type EmployeeSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface EmployeerSubscriptionWhereInput {
+export interface PostSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
   updatedFields_contains?: string | null
   updatedFields_contains_every?: string[]
   updatedFields_contains_some?: string[]
-  node?: EmployeerWhereInput | null
-  AND?: EmployeerSubscriptionWhereInput[]
-  OR?: EmployeerSubscriptionWhereInput[]
-  NOT?: EmployeerSubscriptionWhereInput[]
+  node?: PostWhereInput | null
+  AND?: PostSubscriptionWhereInput[]
+  OR?: PostSubscriptionWhereInput[]
+  NOT?: PostSubscriptionWhereInput[]
 }
-export type EmployeerSubscriptionWhereInputInputObject =
-  | Extract<keyof EmployeerSubscriptionWhereInput, string>
+export type PostSubscriptionWhereInputInputObject =
+  | Extract<keyof PostSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface CommentSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: CommentWhereInput | null
+  AND?: CommentSubscriptionWhereInput[]
+  OR?: CommentSubscriptionWhereInput[]
+  NOT?: CommentSubscriptionWhereInput[]
+}
+export type CommentSubscriptionWhereInputInputObject =
+  | Extract<keyof CommentSubscriptionWhereInput, string>
   | { name: 'mutation_in', alias?: string  } 
   | { name: 'updatedFields_contains', alias?: string  } 
   | { name: 'updatedFields_contains_every', alias?: string  } 
@@ -2118,31 +3201,39 @@ export type EmployeerSubscriptionWhereInputInputObject =
   | { name: 'NOT', alias?: string  } 
   
 
-export type EmployeeOrderByInputValues =
+export type PostOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
-  | 'email_ASC'
-  | 'email_DESC'
-  | 'photo_url_ASC'
-  | 'photo_url_DESC'
+  | 'title_ASC'
+  | 'title_DESC'
+  | 'content_ASC'
+  | 'content_DESC'
+  | 'isPublished_ASC'
+  | 'isPublished_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
-  | 'status_ASC'
-  | 'status_DESC'
   
-export type EmployeerOrderByInputValues =
+export type CommentOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'text_ASC'
+  | 'text_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
   | 'email_ASC'
   | 'email_DESC'
-  | 'photo_url_ASC'
-  | 'photo_url_DESC'
+  | 'password_ASC'
+  | 'password_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

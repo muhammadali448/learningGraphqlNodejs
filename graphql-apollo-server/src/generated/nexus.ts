@@ -14,27 +14,131 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  EmployeeCreateInput: { // input type
-    email: string; // String!
-    employeer?: NexusGenInputs['EmployeerCreateOneWithoutEmployeesInput'] | null; // EmployeerCreateOneWithoutEmployeesInput
+  CommentWhereInput: { // input type
+    AND?: NexusGenInputs['CommentWhereInput'][] | null; // [CommentWhereInput!]
+    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
     id?: string | null; // ID
-    name: string; // String!
-    photo_url?: string | null; // String
-    status?: boolean | null; // Boolean
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    NOT?: NexusGenInputs['CommentWhereInput'][] | null; // [CommentWhereInput!]
+    OR?: NexusGenInputs['CommentWhereInput'][] | null; // [CommentWhereInput!]
+    post?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    text?: string | null; // String
+    text_contains?: string | null; // String
+    text_ends_with?: string | null; // String
+    text_gt?: string | null; // String
+    text_gte?: string | null; // String
+    text_in?: string[] | null; // [String!]
+    text_lt?: string | null; // String
+    text_lte?: string | null; // String
+    text_not?: string | null; // String
+    text_not_contains?: string | null; // String
+    text_not_ends_with?: string | null; // String
+    text_not_in?: string[] | null; // [String!]
+    text_not_starts_with?: string | null; // String
+    text_starts_with?: string | null; // String
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
   }
-  EmployeeCreateManyWithoutEmployeerInput: { // input type
-    connect?: NexusGenInputs['EmployeeWhereUniqueInput'][] | null; // [EmployeeWhereUniqueInput!]
-    create?: NexusGenInputs['EmployeeCreateWithoutEmployeerInput'][] | null; // [EmployeeCreateWithoutEmployeerInput!]
-  }
-  EmployeeCreateWithoutEmployeerInput: { // input type
-    email: string; // String!
+  PostWhereInput: { // input type
+    AND?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
+    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    comments_every?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
+    comments_none?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
+    comments_some?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
+    content?: string | null; // String
+    content_contains?: string | null; // String
+    content_ends_with?: string | null; // String
+    content_gt?: string | null; // String
+    content_gte?: string | null; // String
+    content_in?: string[] | null; // [String!]
+    content_lt?: string | null; // String
+    content_lte?: string | null; // String
+    content_not?: string | null; // String
+    content_not_contains?: string | null; // String
+    content_not_ends_with?: string | null; // String
+    content_not_in?: string[] | null; // [String!]
+    content_not_starts_with?: string | null; // String
+    content_starts_with?: string | null; // String
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
     id?: string | null; // ID
-    name: string; // String!
-    photo_url?: string | null; // String
-    status?: boolean | null; // Boolean
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    isPublished?: boolean | null; // Boolean
+    isPublished_not?: boolean | null; // Boolean
+    NOT?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
+    OR?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
+    title?: string | null; // String
+    title_contains?: string | null; // String
+    title_ends_with?: string | null; // String
+    title_gt?: string | null; // String
+    title_gte?: string | null; // String
+    title_in?: string[] | null; // [String!]
+    title_lt?: string | null; // String
+    title_lte?: string | null; // String
+    title_not?: string | null; // String
+    title_not_contains?: string | null; // String
+    title_not_ends_with?: string | null; // String
+    title_not_in?: string[] | null; // [String!]
+    title_not_starts_with?: string | null; // String
+    title_starts_with?: string | null; // String
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
   }
-  EmployeeScalarWhereInput: { // input type
-    AND?: NexusGenInputs['EmployeeScalarWhereInput'][] | null; // [EmployeeScalarWhereInput!]
+  UserWhereInput: { // input type
+    AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    comments_every?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
+    comments_none?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
+    comments_some?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
     createdAt_gte?: any | null; // DateTime
@@ -85,24 +189,25 @@ export interface NexusGenInputs {
     name_not_in?: string[] | null; // [String!]
     name_not_starts_with?: string | null; // String
     name_starts_with?: string | null; // String
-    NOT?: NexusGenInputs['EmployeeScalarWhereInput'][] | null; // [EmployeeScalarWhereInput!]
-    OR?: NexusGenInputs['EmployeeScalarWhereInput'][] | null; // [EmployeeScalarWhereInput!]
-    photo_url?: string | null; // String
-    photo_url_contains?: string | null; // String
-    photo_url_ends_with?: string | null; // String
-    photo_url_gt?: string | null; // String
-    photo_url_gte?: string | null; // String
-    photo_url_in?: string[] | null; // [String!]
-    photo_url_lt?: string | null; // String
-    photo_url_lte?: string | null; // String
-    photo_url_not?: string | null; // String
-    photo_url_not_contains?: string | null; // String
-    photo_url_not_ends_with?: string | null; // String
-    photo_url_not_in?: string[] | null; // [String!]
-    photo_url_not_starts_with?: string | null; // String
-    photo_url_starts_with?: string | null; // String
-    status?: boolean | null; // Boolean
-    status_not?: boolean | null; // Boolean
+    NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    password?: string | null; // String
+    password_contains?: string | null; // String
+    password_ends_with?: string | null; // String
+    password_gt?: string | null; // String
+    password_gte?: string | null; // String
+    password_in?: string[] | null; // [String!]
+    password_lt?: string | null; // String
+    password_lte?: string | null; // String
+    password_not?: string | null; // String
+    password_not_contains?: string | null; // String
+    password_not_ends_with?: string | null; // String
+    password_not_in?: string[] | null; // [String!]
+    password_not_starts_with?: string | null; // String
+    password_starts_with?: string | null; // String
+    posts_every?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    posts_none?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    posts_some?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -112,538 +217,134 @@ export interface NexusGenInputs {
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
   }
-  EmployeeUpdateInput: { // input type
-    email?: string | null; // String
-    employeer?: NexusGenInputs['EmployeerUpdateOneWithoutEmployeesInput'] | null; // EmployeerUpdateOneWithoutEmployeesInput
-    name?: string | null; // String
-    photo_url?: string | null; // String
-    status?: boolean | null; // Boolean
-  }
-  EmployeeUpdateManyDataInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
-    photo_url?: string | null; // String
-    status?: boolean | null; // Boolean
-  }
-  EmployeeUpdateManyMutationInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
-    photo_url?: string | null; // String
-    status?: boolean | null; // Boolean
-  }
-  EmployeeUpdateManyWithWhereNestedInput: { // input type
-    data: NexusGenInputs['EmployeeUpdateManyDataInput']; // EmployeeUpdateManyDataInput!
-    where: NexusGenInputs['EmployeeScalarWhereInput']; // EmployeeScalarWhereInput!
-  }
-  EmployeeUpdateManyWithoutEmployeerInput: { // input type
-    connect?: NexusGenInputs['EmployeeWhereUniqueInput'][] | null; // [EmployeeWhereUniqueInput!]
-    create?: NexusGenInputs['EmployeeCreateWithoutEmployeerInput'][] | null; // [EmployeeCreateWithoutEmployeerInput!]
-    delete?: NexusGenInputs['EmployeeWhereUniqueInput'][] | null; // [EmployeeWhereUniqueInput!]
-    deleteMany?: NexusGenInputs['EmployeeScalarWhereInput'][] | null; // [EmployeeScalarWhereInput!]
-    disconnect?: NexusGenInputs['EmployeeWhereUniqueInput'][] | null; // [EmployeeWhereUniqueInput!]
-    set?: NexusGenInputs['EmployeeWhereUniqueInput'][] | null; // [EmployeeWhereUniqueInput!]
-    update?: NexusGenInputs['EmployeeUpdateWithWhereUniqueWithoutEmployeerInput'][] | null; // [EmployeeUpdateWithWhereUniqueWithoutEmployeerInput!]
-    updateMany?: NexusGenInputs['EmployeeUpdateManyWithWhereNestedInput'][] | null; // [EmployeeUpdateManyWithWhereNestedInput!]
-    upsert?: NexusGenInputs['EmployeeUpsertWithWhereUniqueWithoutEmployeerInput'][] | null; // [EmployeeUpsertWithWhereUniqueWithoutEmployeerInput!]
-  }
-  EmployeeUpdateWithWhereUniqueWithoutEmployeerInput: { // input type
-    data: NexusGenInputs['EmployeeUpdateWithoutEmployeerDataInput']; // EmployeeUpdateWithoutEmployeerDataInput!
-    where: NexusGenInputs['EmployeeWhereUniqueInput']; // EmployeeWhereUniqueInput!
-  }
-  EmployeeUpdateWithoutEmployeerDataInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
-    photo_url?: string | null; // String
-    status?: boolean | null; // Boolean
-  }
-  EmployeeUpsertWithWhereUniqueWithoutEmployeerInput: { // input type
-    create: NexusGenInputs['EmployeeCreateWithoutEmployeerInput']; // EmployeeCreateWithoutEmployeerInput!
-    update: NexusGenInputs['EmployeeUpdateWithoutEmployeerDataInput']; // EmployeeUpdateWithoutEmployeerDataInput!
-    where: NexusGenInputs['EmployeeWhereUniqueInput']; // EmployeeWhereUniqueInput!
-  }
-  EmployeeWhereInput: { // input type
-    AND?: NexusGenInputs['EmployeeWhereInput'][] | null; // [EmployeeWhereInput!]
-    createdAt?: any | null; // DateTime
-    createdAt_gt?: any | null; // DateTime
-    createdAt_gte?: any | null; // DateTime
-    createdAt_in?: any[] | null; // [DateTime!]
-    createdAt_lt?: any | null; // DateTime
-    createdAt_lte?: any | null; // DateTime
-    createdAt_not?: any | null; // DateTime
-    createdAt_not_in?: any[] | null; // [DateTime!]
-    email?: string | null; // String
-    email_contains?: string | null; // String
-    email_ends_with?: string | null; // String
-    email_gt?: string | null; // String
-    email_gte?: string | null; // String
-    email_in?: string[] | null; // [String!]
-    email_lt?: string | null; // String
-    email_lte?: string | null; // String
-    email_not?: string | null; // String
-    email_not_contains?: string | null; // String
-    email_not_ends_with?: string | null; // String
-    email_not_in?: string[] | null; // [String!]
-    email_not_starts_with?: string | null; // String
-    email_starts_with?: string | null; // String
-    employeer?: NexusGenInputs['EmployeerWhereInput'] | null; // EmployeerWhereInput
-    id?: string | null; // ID
-    id_contains?: string | null; // ID
-    id_ends_with?: string | null; // ID
-    id_gt?: string | null; // ID
-    id_gte?: string | null; // ID
-    id_in?: string[] | null; // [ID!]
-    id_lt?: string | null; // ID
-    id_lte?: string | null; // ID
-    id_not?: string | null; // ID
-    id_not_contains?: string | null; // ID
-    id_not_ends_with?: string | null; // ID
-    id_not_in?: string[] | null; // [ID!]
-    id_not_starts_with?: string | null; // ID
-    id_starts_with?: string | null; // ID
-    name?: string | null; // String
-    name_contains?: string | null; // String
-    name_ends_with?: string | null; // String
-    name_gt?: string | null; // String
-    name_gte?: string | null; // String
-    name_in?: string[] | null; // [String!]
-    name_lt?: string | null; // String
-    name_lte?: string | null; // String
-    name_not?: string | null; // String
-    name_not_contains?: string | null; // String
-    name_not_ends_with?: string | null; // String
-    name_not_in?: string[] | null; // [String!]
-    name_not_starts_with?: string | null; // String
-    name_starts_with?: string | null; // String
-    NOT?: NexusGenInputs['EmployeeWhereInput'][] | null; // [EmployeeWhereInput!]
-    OR?: NexusGenInputs['EmployeeWhereInput'][] | null; // [EmployeeWhereInput!]
-    photo_url?: string | null; // String
-    photo_url_contains?: string | null; // String
-    photo_url_ends_with?: string | null; // String
-    photo_url_gt?: string | null; // String
-    photo_url_gte?: string | null; // String
-    photo_url_in?: string[] | null; // [String!]
-    photo_url_lt?: string | null; // String
-    photo_url_lte?: string | null; // String
-    photo_url_not?: string | null; // String
-    photo_url_not_contains?: string | null; // String
-    photo_url_not_ends_with?: string | null; // String
-    photo_url_not_in?: string[] | null; // [String!]
-    photo_url_not_starts_with?: string | null; // String
-    photo_url_starts_with?: string | null; // String
-    status?: boolean | null; // Boolean
-    status_not?: boolean | null; // Boolean
-    updatedAt?: any | null; // DateTime
-    updatedAt_gt?: any | null; // DateTime
-    updatedAt_gte?: any | null; // DateTime
-    updatedAt_in?: any[] | null; // [DateTime!]
-    updatedAt_lt?: any | null; // DateTime
-    updatedAt_lte?: any | null; // DateTime
-    updatedAt_not?: any | null; // DateTime
-    updatedAt_not_in?: any[] | null; // [DateTime!]
-  }
-  EmployeeWhereUniqueInput: { // input type
-    email?: string | null; // String
-    id?: string | null; // ID
-  }
-  EmployeerCreateInput: { // input type
+  loginInput: { // input type
     email: string; // String!
-    employees?: NexusGenInputs['EmployeeCreateManyWithoutEmployeerInput'] | null; // EmployeeCreateManyWithoutEmployeerInput
-    id?: string | null; // ID
-    name: string; // String!
-    photo_url?: string | null; // String
+    password: string; // String!
   }
-  EmployeerCreateOneWithoutEmployeesInput: { // input type
-    connect?: NexusGenInputs['EmployeerWhereUniqueInput'] | null; // EmployeerWhereUniqueInput
-    create?: NexusGenInputs['EmployeerCreateWithoutEmployeesInput'] | null; // EmployeerCreateWithoutEmployeesInput
-  }
-  EmployeerCreateWithoutEmployeesInput: { // input type
+  signupInput: { // input type
     email: string; // String!
-    id?: string | null; // ID
     name: string; // String!
-    photo_url?: string | null; // String
-  }
-  EmployeerUpdateInput: { // input type
-    email?: string | null; // String
-    employees?: NexusGenInputs['EmployeeUpdateManyWithoutEmployeerInput'] | null; // EmployeeUpdateManyWithoutEmployeerInput
-    name?: string | null; // String
-    photo_url?: string | null; // String
-  }
-  EmployeerUpdateManyMutationInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
-    photo_url?: string | null; // String
-  }
-  EmployeerUpdateOneWithoutEmployeesInput: { // input type
-    connect?: NexusGenInputs['EmployeerWhereUniqueInput'] | null; // EmployeerWhereUniqueInput
-    create?: NexusGenInputs['EmployeerCreateWithoutEmployeesInput'] | null; // EmployeerCreateWithoutEmployeesInput
-    delete?: boolean | null; // Boolean
-    disconnect?: boolean | null; // Boolean
-    update?: NexusGenInputs['EmployeerUpdateWithoutEmployeesDataInput'] | null; // EmployeerUpdateWithoutEmployeesDataInput
-    upsert?: NexusGenInputs['EmployeerUpsertWithoutEmployeesInput'] | null; // EmployeerUpsertWithoutEmployeesInput
-  }
-  EmployeerUpdateWithoutEmployeesDataInput: { // input type
-    email?: string | null; // String
-    name?: string | null; // String
-    photo_url?: string | null; // String
-  }
-  EmployeerUpsertWithoutEmployeesInput: { // input type
-    create: NexusGenInputs['EmployeerCreateWithoutEmployeesInput']; // EmployeerCreateWithoutEmployeesInput!
-    update: NexusGenInputs['EmployeerUpdateWithoutEmployeesDataInput']; // EmployeerUpdateWithoutEmployeesDataInput!
-  }
-  EmployeerWhereInput: { // input type
-    AND?: NexusGenInputs['EmployeerWhereInput'][] | null; // [EmployeerWhereInput!]
-    createdAt?: any | null; // DateTime
-    createdAt_gt?: any | null; // DateTime
-    createdAt_gte?: any | null; // DateTime
-    createdAt_in?: any[] | null; // [DateTime!]
-    createdAt_lt?: any | null; // DateTime
-    createdAt_lte?: any | null; // DateTime
-    createdAt_not?: any | null; // DateTime
-    createdAt_not_in?: any[] | null; // [DateTime!]
-    email?: string | null; // String
-    email_contains?: string | null; // String
-    email_ends_with?: string | null; // String
-    email_gt?: string | null; // String
-    email_gte?: string | null; // String
-    email_in?: string[] | null; // [String!]
-    email_lt?: string | null; // String
-    email_lte?: string | null; // String
-    email_not?: string | null; // String
-    email_not_contains?: string | null; // String
-    email_not_ends_with?: string | null; // String
-    email_not_in?: string[] | null; // [String!]
-    email_not_starts_with?: string | null; // String
-    email_starts_with?: string | null; // String
-    employees_every?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    employees_none?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    employees_some?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    id?: string | null; // ID
-    id_contains?: string | null; // ID
-    id_ends_with?: string | null; // ID
-    id_gt?: string | null; // ID
-    id_gte?: string | null; // ID
-    id_in?: string[] | null; // [ID!]
-    id_lt?: string | null; // ID
-    id_lte?: string | null; // ID
-    id_not?: string | null; // ID
-    id_not_contains?: string | null; // ID
-    id_not_ends_with?: string | null; // ID
-    id_not_in?: string[] | null; // [ID!]
-    id_not_starts_with?: string | null; // ID
-    id_starts_with?: string | null; // ID
-    name?: string | null; // String
-    name_contains?: string | null; // String
-    name_ends_with?: string | null; // String
-    name_gt?: string | null; // String
-    name_gte?: string | null; // String
-    name_in?: string[] | null; // [String!]
-    name_lt?: string | null; // String
-    name_lte?: string | null; // String
-    name_not?: string | null; // String
-    name_not_contains?: string | null; // String
-    name_not_ends_with?: string | null; // String
-    name_not_in?: string[] | null; // [String!]
-    name_not_starts_with?: string | null; // String
-    name_starts_with?: string | null; // String
-    NOT?: NexusGenInputs['EmployeerWhereInput'][] | null; // [EmployeerWhereInput!]
-    OR?: NexusGenInputs['EmployeerWhereInput'][] | null; // [EmployeerWhereInput!]
-    photo_url?: string | null; // String
-    photo_url_contains?: string | null; // String
-    photo_url_ends_with?: string | null; // String
-    photo_url_gt?: string | null; // String
-    photo_url_gte?: string | null; // String
-    photo_url_in?: string[] | null; // [String!]
-    photo_url_lt?: string | null; // String
-    photo_url_lte?: string | null; // String
-    photo_url_not?: string | null; // String
-    photo_url_not_contains?: string | null; // String
-    photo_url_not_ends_with?: string | null; // String
-    photo_url_not_in?: string[] | null; // [String!]
-    photo_url_not_starts_with?: string | null; // String
-    photo_url_starts_with?: string | null; // String
-    updatedAt?: any | null; // DateTime
-    updatedAt_gt?: any | null; // DateTime
-    updatedAt_gte?: any | null; // DateTime
-    updatedAt_in?: any[] | null; // [DateTime!]
-    updatedAt_lt?: any | null; // DateTime
-    updatedAt_lte?: any | null; // DateTime
-    updatedAt_not?: any | null; // DateTime
-    updatedAt_not_in?: any[] | null; // [DateTime!]
-  }
-  EmployeerWhereUniqueInput: { // input type
-    email?: string | null; // String
-    id?: string | null; // ID
+    password: string; // String!
   }
 }
 
 export interface NexusGenEnums {
-  EmployeeOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "photo_url_ASC" | "photo_url_DESC" | "status_ASC" | "status_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  EmployeerOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "photo_url_ASC" | "photo_url_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  CommentOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "text_ASC" | "text_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
-  AggregateEmployee: { // root type
-    count: number; // Int!
+  AuthPayload: { // root type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
   }
-  AggregateEmployeer: { // root type
-    count: number; // Int!
-  }
-  BatchPayload: { // root type
-    count: any; // Long!
-  }
-  Employee: { // root type
+  Comment: { // root type
     createdAt: any; // DateTime!
-    email: string; // String!
     id: string; // ID!
-    name: string; // String!
-    status?: boolean | null; // Boolean
-  }
-  EmployeeConnection: { // root type
-    edges: NexusGenRootTypes['EmployeeEdge'][]; // [EmployeeEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  EmployeeEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Employee']; // Employee!
-  }
-  Employeer: { // root type
-    createdAt: any; // DateTime!
-    email: string; // String!
-    id: string; // ID!
-    name: string; // String!
-    photo_url?: string | null; // String
-    updatedAt?: any | null; // DateTime
-  }
-  EmployeerConnection: { // root type
-    edges: NexusGenRootTypes['EmployeerEdge'][]; // [EmployeerEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  EmployeerEdge: { // root type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Employeer']; // Employeer!
+    text: string; // String!
+    updatedAt: any; // DateTime!
   }
   Mutation: {};
-  PageInfo: { // root type
-    endCursor?: string | null; // String
-    hasNextPage: boolean; // Boolean!
-    hasPreviousPage: boolean; // Boolean!
-    startCursor?: string | null; // String
+  Post: { // root type
+    content?: string | null; // String
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    isPublished: boolean; // Boolean!
+    title: string; // String!
+    updatedAt: any; // DateTime!
   }
   Query: {};
+  User: { // root type
+    email: string; // String!
+    id: string; // ID!
+    name: string; // String!
+  }
   String: string;
   Int: number;
   Float: number;
   Boolean: boolean;
   ID: string;
   DateTime: any;
-  Long: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  EmployeeCreateInput: NexusGenInputs['EmployeeCreateInput'];
-  EmployeeCreateManyWithoutEmployeerInput: NexusGenInputs['EmployeeCreateManyWithoutEmployeerInput'];
-  EmployeeCreateWithoutEmployeerInput: NexusGenInputs['EmployeeCreateWithoutEmployeerInput'];
-  EmployeeScalarWhereInput: NexusGenInputs['EmployeeScalarWhereInput'];
-  EmployeeUpdateInput: NexusGenInputs['EmployeeUpdateInput'];
-  EmployeeUpdateManyDataInput: NexusGenInputs['EmployeeUpdateManyDataInput'];
-  EmployeeUpdateManyMutationInput: NexusGenInputs['EmployeeUpdateManyMutationInput'];
-  EmployeeUpdateManyWithWhereNestedInput: NexusGenInputs['EmployeeUpdateManyWithWhereNestedInput'];
-  EmployeeUpdateManyWithoutEmployeerInput: NexusGenInputs['EmployeeUpdateManyWithoutEmployeerInput'];
-  EmployeeUpdateWithWhereUniqueWithoutEmployeerInput: NexusGenInputs['EmployeeUpdateWithWhereUniqueWithoutEmployeerInput'];
-  EmployeeUpdateWithoutEmployeerDataInput: NexusGenInputs['EmployeeUpdateWithoutEmployeerDataInput'];
-  EmployeeUpsertWithWhereUniqueWithoutEmployeerInput: NexusGenInputs['EmployeeUpsertWithWhereUniqueWithoutEmployeerInput'];
-  EmployeeWhereInput: NexusGenInputs['EmployeeWhereInput'];
-  EmployeeWhereUniqueInput: NexusGenInputs['EmployeeWhereUniqueInput'];
-  EmployeerCreateInput: NexusGenInputs['EmployeerCreateInput'];
-  EmployeerCreateOneWithoutEmployeesInput: NexusGenInputs['EmployeerCreateOneWithoutEmployeesInput'];
-  EmployeerCreateWithoutEmployeesInput: NexusGenInputs['EmployeerCreateWithoutEmployeesInput'];
-  EmployeerUpdateInput: NexusGenInputs['EmployeerUpdateInput'];
-  EmployeerUpdateManyMutationInput: NexusGenInputs['EmployeerUpdateManyMutationInput'];
-  EmployeerUpdateOneWithoutEmployeesInput: NexusGenInputs['EmployeerUpdateOneWithoutEmployeesInput'];
-  EmployeerUpdateWithoutEmployeesDataInput: NexusGenInputs['EmployeerUpdateWithoutEmployeesDataInput'];
-  EmployeerUpsertWithoutEmployeesInput: NexusGenInputs['EmployeerUpsertWithoutEmployeesInput'];
-  EmployeerWhereInput: NexusGenInputs['EmployeerWhereInput'];
-  EmployeerWhereUniqueInput: NexusGenInputs['EmployeerWhereUniqueInput'];
-  EmployeeOrderByInput: NexusGenEnums['EmployeeOrderByInput'];
-  EmployeerOrderByInput: NexusGenEnums['EmployeerOrderByInput'];
+  CommentWhereInput: NexusGenInputs['CommentWhereInput'];
+  PostWhereInput: NexusGenInputs['PostWhereInput'];
+  UserWhereInput: NexusGenInputs['UserWhereInput'];
+  loginInput: NexusGenInputs['loginInput'];
+  signupInput: NexusGenInputs['signupInput'];
+  CommentOrderByInput: NexusGenEnums['CommentOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
-  AggregateEmployee: { // field return type
-    count: number; // Int!
+  AuthPayload: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
   }
-  AggregateEmployeer: { // field return type
-    count: number; // Int!
-  }
-  BatchPayload: { // field return type
-    count: any; // Long!
-  }
-  Employee: { // field return type
+  Comment: { // field return type
+    author: NexusGenRootTypes['User']; // User!
     createdAt: any; // DateTime!
-    email: string; // String!
-    employeer: NexusGenRootTypes['Employeer'] | null; // Employeer
     id: string; // ID!
-    name: string; // String!
-    status: boolean | null; // Boolean
-  }
-  EmployeeConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateEmployee']; // AggregateEmployee!
-    edges: NexusGenRootTypes['EmployeeEdge'][]; // [EmployeeEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  EmployeeEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Employee']; // Employee!
-  }
-  Employeer: { // field return type
-    createdAt: any; // DateTime!
-    email: string; // String!
-    employees: NexusGenRootTypes['Employee'][] | null; // [Employee!]
-    id: string; // ID!
-    name: string; // String!
-    no_employees: number | null; // Int
-    photo_url: string | null; // String
-    updatedAt: any | null; // DateTime
-  }
-  EmployeerConnection: { // field return type
-    aggregate: NexusGenRootTypes['AggregateEmployeer']; // AggregateEmployeer!
-    edges: NexusGenRootTypes['EmployeerEdge'][]; // [EmployeerEdge!]!
-    pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  }
-  EmployeerEdge: { // field return type
-    cursor: string; // String!
-    node: NexusGenRootTypes['Employeer']; // Employeer!
+    post: NexusGenRootTypes['Post']; // Post!
+    text: string; // String!
+    updatedAt: any; // DateTime!
   }
   Mutation: { // field return type
-    createEmployee: NexusGenRootTypes['Employee']; // Employee!
-    createEmployeer: NexusGenRootTypes['Employeer']; // Employeer!
-    deleteEmployee: NexusGenRootTypes['Employee'] | null; // Employee
-    deleteEmployeer: NexusGenRootTypes['Employeer'] | null; // Employeer
-    deleteManyEmployeers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    deleteManyEmployees: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateEmployee: NexusGenRootTypes['Employee'] | null; // Employee
-    updateEmployeer: NexusGenRootTypes['Employeer'] | null; // Employeer
-    updateManyEmployeers: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    updateManyEmployees: NexusGenRootTypes['BatchPayload']; // BatchPayload!
-    upsertEmployee: NexusGenRootTypes['Employee']; // Employee!
-    upsertEmployeer: NexusGenRootTypes['Employeer']; // Employeer!
+    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
   }
-  PageInfo: { // field return type
-    endCursor: string | null; // String
-    hasNextPage: boolean; // Boolean!
-    hasPreviousPage: boolean; // Boolean!
-    startCursor: string | null; // String
+  Post: { // field return type
+    author: NexusGenRootTypes['User']; // User!
+    comments: NexusGenRootTypes['Comment'][] | null; // [Comment!]
+    content: string | null; // String
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    isPublished: boolean; // Boolean!
+    title: string; // String!
+    updatedAt: any; // DateTime!
   }
   Query: { // field return type
-    employee: NexusGenRootTypes['Employee'] | null; // Employee
-    employeer: NexusGenRootTypes['Employeer'] | null; // Employeer
-    employeers: NexusGenRootTypes['Employeer'][]; // [Employeer!]!
-    employeersConnection: NexusGenRootTypes['EmployeerConnection']; // EmployeerConnection!
-    employees: NexusGenRootTypes['Employee'][]; // [Employee!]!
-    employeesConnection: NexusGenRootTypes['EmployeeConnection']; // EmployeeConnection!
+    allPosts: NexusGenRootTypes['Post'][]; // [Post!]!
+    allUsers: NexusGenRootTypes['User'][]; // [User!]!
+    myProfile: NexusGenRootTypes['User']; // User!
+    postById: NexusGenRootTypes['Post']; // Post!
+  }
+  User: { // field return type
+    email: string; // String!
+    id: string; // ID!
+    name: string; // String!
+    posts: NexusGenRootTypes['Post'][] | null; // [Post!]
   }
 }
 
 export interface NexusGenArgTypes {
-  Employeer: {
-    employees: { // args
+  Mutation: {
+    login: { // args
+      loginInput: NexusGenInputs['loginInput']; // loginInput!
+    }
+    signup: { // args
+      signupInput: NexusGenInputs['signupInput']; // signupInput!
+    }
+  }
+  Post: {
+    comments: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
       last?: number | null; // Int
-      orderBy?: NexusGenEnums['EmployeeOrderByInput'] | null; // EmployeeOrderByInput
+      orderBy?: NexusGenEnums['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
-      where?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    }
-  }
-  Mutation: {
-    createEmployee: { // args
-      data: NexusGenInputs['EmployeeCreateInput']; // EmployeeCreateInput!
-    }
-    createEmployeer: { // args
-      data: NexusGenInputs['EmployeerCreateInput']; // EmployeerCreateInput!
-    }
-    deleteEmployee: { // args
-      where: NexusGenInputs['EmployeeWhereUniqueInput']; // EmployeeWhereUniqueInput!
-    }
-    deleteEmployeer: { // args
-      where: NexusGenInputs['EmployeerWhereUniqueInput']; // EmployeerWhereUniqueInput!
-    }
-    deleteManyEmployeers: { // args
-      where?: NexusGenInputs['EmployeerWhereInput'] | null; // EmployeerWhereInput
-    }
-    deleteManyEmployees: { // args
-      where?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    }
-    updateEmployee: { // args
-      data: NexusGenInputs['EmployeeUpdateInput']; // EmployeeUpdateInput!
-      where: NexusGenInputs['EmployeeWhereUniqueInput']; // EmployeeWhereUniqueInput!
-    }
-    updateEmployeer: { // args
-      data: NexusGenInputs['EmployeerUpdateInput']; // EmployeerUpdateInput!
-      where: NexusGenInputs['EmployeerWhereUniqueInput']; // EmployeerWhereUniqueInput!
-    }
-    updateManyEmployeers: { // args
-      data: NexusGenInputs['EmployeerUpdateManyMutationInput']; // EmployeerUpdateManyMutationInput!
-      where?: NexusGenInputs['EmployeerWhereInput'] | null; // EmployeerWhereInput
-    }
-    updateManyEmployees: { // args
-      data: NexusGenInputs['EmployeeUpdateManyMutationInput']; // EmployeeUpdateManyMutationInput!
-      where?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    }
-    upsertEmployee: { // args
-      create: NexusGenInputs['EmployeeCreateInput']; // EmployeeCreateInput!
-      update: NexusGenInputs['EmployeeUpdateInput']; // EmployeeUpdateInput!
-      where: NexusGenInputs['EmployeeWhereUniqueInput']; // EmployeeWhereUniqueInput!
-    }
-    upsertEmployeer: { // args
-      create: NexusGenInputs['EmployeerCreateInput']; // EmployeerCreateInput!
-      update: NexusGenInputs['EmployeerUpdateInput']; // EmployeerUpdateInput!
-      where: NexusGenInputs['EmployeerWhereUniqueInput']; // EmployeerWhereUniqueInput!
+      where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
     }
   }
   Query: {
-    employee: { // args
-      where: NexusGenInputs['EmployeeWhereUniqueInput']; // EmployeeWhereUniqueInput!
+    allPosts: { // args
+      searchString?: string | null; // String
     }
-    employeer: { // args
-      where: NexusGenInputs['EmployeerWhereUniqueInput']; // EmployeerWhereUniqueInput!
+    allUsers: { // args
+      searchNameString?: string | null; // String
     }
-    employeers: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['EmployeerOrderByInput'] | null; // EmployeerOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['EmployeerWhereInput'] | null; // EmployeerWhereInput
-    }
-    employeersConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['EmployeerOrderByInput'] | null; // EmployeerOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['EmployeerWhereInput'] | null; // EmployeerWhereInput
-    }
-    employees: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['EmployeeOrderByInput'] | null; // EmployeeOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
-    }
-    employeesConnection: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['EmployeeOrderByInput'] | null; // EmployeeOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['EmployeeWhereInput'] | null; // EmployeeWhereInput
+    postById: { // args
+      id: string; // ID!
     }
   }
 }
@@ -653,15 +354,15 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AggregateEmployee" | "AggregateEmployeer" | "BatchPayload" | "Employee" | "EmployeeConnection" | "EmployeeEdge" | "Employeer" | "EmployeerConnection" | "EmployeerEdge" | "Mutation" | "PageInfo" | "Query";
+export type NexusGenObjectNames = "AuthPayload" | "Comment" | "Mutation" | "Post" | "Query" | "User";
 
-export type NexusGenInputNames = "EmployeeCreateInput" | "EmployeeCreateManyWithoutEmployeerInput" | "EmployeeCreateWithoutEmployeerInput" | "EmployeeScalarWhereInput" | "EmployeeUpdateInput" | "EmployeeUpdateManyDataInput" | "EmployeeUpdateManyMutationInput" | "EmployeeUpdateManyWithWhereNestedInput" | "EmployeeUpdateManyWithoutEmployeerInput" | "EmployeeUpdateWithWhereUniqueWithoutEmployeerInput" | "EmployeeUpdateWithoutEmployeerDataInput" | "EmployeeUpsertWithWhereUniqueWithoutEmployeerInput" | "EmployeeWhereInput" | "EmployeeWhereUniqueInput" | "EmployeerCreateInput" | "EmployeerCreateOneWithoutEmployeesInput" | "EmployeerCreateWithoutEmployeesInput" | "EmployeerUpdateInput" | "EmployeerUpdateManyMutationInput" | "EmployeerUpdateOneWithoutEmployeesInput" | "EmployeerUpdateWithoutEmployeesDataInput" | "EmployeerUpsertWithoutEmployeesInput" | "EmployeerWhereInput" | "EmployeerWhereUniqueInput";
+export type NexusGenInputNames = "CommentWhereInput" | "PostWhereInput" | "UserWhereInput" | "loginInput" | "signupInput";
 
-export type NexusGenEnumNames = "EmployeeOrderByInput" | "EmployeerOrderByInput";
+export type NexusGenEnumNames = "CommentOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "Long" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 
