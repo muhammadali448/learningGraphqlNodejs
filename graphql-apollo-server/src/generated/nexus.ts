@@ -11,208 +11,8 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  CommentWhereInput: { // input type
-    AND?: NexusGenInputs['CommentWhereInput'][] | null; // [CommentWhereInput!]
-    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    createdAt?: any | null; // DateTime
-    createdAt_gt?: any | null; // DateTime
-    createdAt_gte?: any | null; // DateTime
-    createdAt_in?: any[] | null; // [DateTime!]
-    createdAt_lt?: any | null; // DateTime
-    createdAt_lte?: any | null; // DateTime
-    createdAt_not?: any | null; // DateTime
-    createdAt_not_in?: any[] | null; // [DateTime!]
-    id?: string | null; // ID
-    id_contains?: string | null; // ID
-    id_ends_with?: string | null; // ID
-    id_gt?: string | null; // ID
-    id_gte?: string | null; // ID
-    id_in?: string[] | null; // [ID!]
-    id_lt?: string | null; // ID
-    id_lte?: string | null; // ID
-    id_not?: string | null; // ID
-    id_not_contains?: string | null; // ID
-    id_not_ends_with?: string | null; // ID
-    id_not_in?: string[] | null; // [ID!]
-    id_not_starts_with?: string | null; // ID
-    id_starts_with?: string | null; // ID
-    NOT?: NexusGenInputs['CommentWhereInput'][] | null; // [CommentWhereInput!]
-    OR?: NexusGenInputs['CommentWhereInput'][] | null; // [CommentWhereInput!]
-    post?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    text?: string | null; // String
-    text_contains?: string | null; // String
-    text_ends_with?: string | null; // String
-    text_gt?: string | null; // String
-    text_gte?: string | null; // String
-    text_in?: string[] | null; // [String!]
-    text_lt?: string | null; // String
-    text_lte?: string | null; // String
-    text_not?: string | null; // String
-    text_not_contains?: string | null; // String
-    text_not_ends_with?: string | null; // String
-    text_not_in?: string[] | null; // [String!]
-    text_not_starts_with?: string | null; // String
-    text_starts_with?: string | null; // String
-    updatedAt?: any | null; // DateTime
-    updatedAt_gt?: any | null; // DateTime
-    updatedAt_gte?: any | null; // DateTime
-    updatedAt_in?: any[] | null; // [DateTime!]
-    updatedAt_lt?: any | null; // DateTime
-    updatedAt_lte?: any | null; // DateTime
-    updatedAt_not?: any | null; // DateTime
-    updatedAt_not_in?: any[] | null; // [DateTime!]
-  }
-  PostWhereInput: { // input type
-    AND?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    author?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    comments_every?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    comments_none?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    comments_some?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    content?: string | null; // String
-    content_contains?: string | null; // String
-    content_ends_with?: string | null; // String
-    content_gt?: string | null; // String
-    content_gte?: string | null; // String
-    content_in?: string[] | null; // [String!]
-    content_lt?: string | null; // String
-    content_lte?: string | null; // String
-    content_not?: string | null; // String
-    content_not_contains?: string | null; // String
-    content_not_ends_with?: string | null; // String
-    content_not_in?: string[] | null; // [String!]
-    content_not_starts_with?: string | null; // String
-    content_starts_with?: string | null; // String
-    createdAt?: any | null; // DateTime
-    createdAt_gt?: any | null; // DateTime
-    createdAt_gte?: any | null; // DateTime
-    createdAt_in?: any[] | null; // [DateTime!]
-    createdAt_lt?: any | null; // DateTime
-    createdAt_lte?: any | null; // DateTime
-    createdAt_not?: any | null; // DateTime
-    createdAt_not_in?: any[] | null; // [DateTime!]
-    id?: string | null; // ID
-    id_contains?: string | null; // ID
-    id_ends_with?: string | null; // ID
-    id_gt?: string | null; // ID
-    id_gte?: string | null; // ID
-    id_in?: string[] | null; // [ID!]
-    id_lt?: string | null; // ID
-    id_lte?: string | null; // ID
-    id_not?: string | null; // ID
-    id_not_contains?: string | null; // ID
-    id_not_ends_with?: string | null; // ID
-    id_not_in?: string[] | null; // [ID!]
-    id_not_starts_with?: string | null; // ID
-    id_starts_with?: string | null; // ID
-    isPublished?: boolean | null; // Boolean
-    isPublished_not?: boolean | null; // Boolean
-    NOT?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    OR?: NexusGenInputs['PostWhereInput'][] | null; // [PostWhereInput!]
-    title?: string | null; // String
-    title_contains?: string | null; // String
-    title_ends_with?: string | null; // String
-    title_gt?: string | null; // String
-    title_gte?: string | null; // String
-    title_in?: string[] | null; // [String!]
-    title_lt?: string | null; // String
-    title_lte?: string | null; // String
-    title_not?: string | null; // String
-    title_not_contains?: string | null; // String
-    title_not_ends_with?: string | null; // String
-    title_not_in?: string[] | null; // [String!]
-    title_not_starts_with?: string | null; // String
-    title_starts_with?: string | null; // String
-    updatedAt?: any | null; // DateTime
-    updatedAt_gt?: any | null; // DateTime
-    updatedAt_gte?: any | null; // DateTime
-    updatedAt_in?: any[] | null; // [DateTime!]
-    updatedAt_lt?: any | null; // DateTime
-    updatedAt_lte?: any | null; // DateTime
-    updatedAt_not?: any | null; // DateTime
-    updatedAt_not_in?: any[] | null; // [DateTime!]
-  }
-  UserWhereInput: { // input type
-    AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    comments_every?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    comments_none?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    comments_some?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    createdAt?: any | null; // DateTime
-    createdAt_gt?: any | null; // DateTime
-    createdAt_gte?: any | null; // DateTime
-    createdAt_in?: any[] | null; // [DateTime!]
-    createdAt_lt?: any | null; // DateTime
-    createdAt_lte?: any | null; // DateTime
-    createdAt_not?: any | null; // DateTime
-    createdAt_not_in?: any[] | null; // [DateTime!]
-    email?: string | null; // String
-    email_contains?: string | null; // String
-    email_ends_with?: string | null; // String
-    email_gt?: string | null; // String
-    email_gte?: string | null; // String
-    email_in?: string[] | null; // [String!]
-    email_lt?: string | null; // String
-    email_lte?: string | null; // String
-    email_not?: string | null; // String
-    email_not_contains?: string | null; // String
-    email_not_ends_with?: string | null; // String
-    email_not_in?: string[] | null; // [String!]
-    email_not_starts_with?: string | null; // String
-    email_starts_with?: string | null; // String
-    id?: string | null; // ID
-    id_contains?: string | null; // ID
-    id_ends_with?: string | null; // ID
-    id_gt?: string | null; // ID
-    id_gte?: string | null; // ID
-    id_in?: string[] | null; // [ID!]
-    id_lt?: string | null; // ID
-    id_lte?: string | null; // ID
-    id_not?: string | null; // ID
-    id_not_contains?: string | null; // ID
-    id_not_ends_with?: string | null; // ID
-    id_not_in?: string[] | null; // [ID!]
-    id_not_starts_with?: string | null; // ID
-    id_starts_with?: string | null; // ID
-    name?: string | null; // String
-    name_contains?: string | null; // String
-    name_ends_with?: string | null; // String
-    name_gt?: string | null; // String
-    name_gte?: string | null; // String
-    name_in?: string[] | null; // [String!]
-    name_lt?: string | null; // String
-    name_lte?: string | null; // String
-    name_not?: string | null; // String
-    name_not_contains?: string | null; // String
-    name_not_ends_with?: string | null; // String
-    name_not_in?: string[] | null; // [String!]
-    name_not_starts_with?: string | null; // String
-    name_starts_with?: string | null; // String
-    NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    password?: string | null; // String
-    password_contains?: string | null; // String
-    password_ends_with?: string | null; // String
-    password_gt?: string | null; // String
-    password_gte?: string | null; // String
-    password_in?: string[] | null; // [String!]
-    password_lt?: string | null; // String
-    password_lte?: string | null; // String
-    password_not?: string | null; // String
-    password_not_contains?: string | null; // String
-    password_not_ends_with?: string | null; // String
-    password_not_in?: string[] | null; // [String!]
-    password_not_starts_with?: string | null; // String
-    password_starts_with?: string | null; // String
-    posts_every?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    posts_none?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    posts_some?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
-    updatedAt?: any | null; // DateTime
-    updatedAt_gt?: any | null; // DateTime
-    updatedAt_gte?: any | null; // DateTime
-    updatedAt_in?: any[] | null; // [DateTime!]
-    updatedAt_lt?: any | null; // DateTime
-    updatedAt_lte?: any | null; // DateTime
-    updatedAt_not?: any | null; // DateTime
-    updatedAt_not_in?: any[] | null; // [DateTime!]
+  createCommentInput: { // input type
+    text: string; // String!
   }
   createPostInput: { // input type
     content: string; // String!
@@ -227,6 +27,9 @@ export interface NexusGenInputs {
     name: string; // String!
     password: string; // String!
   }
+  updateCommentInput: { // input type
+    text?: string | null; // String
+  }
   updatePostInput: { // input type
     content?: string | null; // String
     isPublished?: boolean | null; // Boolean
@@ -240,7 +43,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  CommentOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "text_ASC" | "text_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  CommentOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "text_ASC" | "text_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -261,7 +64,6 @@ export interface NexusGenRootTypes {
     id: string; // ID!
     isPublished: boolean; // Boolean!
     title: string; // String!
-    updatedAt: any; // DateTime!
   }
   Query: {};
   User: { // root type
@@ -278,12 +80,11 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  CommentWhereInput: NexusGenInputs['CommentWhereInput'];
-  PostWhereInput: NexusGenInputs['PostWhereInput'];
-  UserWhereInput: NexusGenInputs['UserWhereInput'];
+  createCommentInput: NexusGenInputs['createCommentInput'];
   createPostInput: NexusGenInputs['createPostInput'];
   loginInput: NexusGenInputs['loginInput'];
   signupInput: NexusGenInputs['signupInput'];
+  updateCommentInput: NexusGenInputs['updateCommentInput'];
   updatePostInput: NexusGenInputs['updatePostInput'];
   updateUserInput: NexusGenInputs['updateUserInput'];
   CommentOrderByInput: NexusGenEnums['CommentOrderByInput'];
@@ -303,11 +104,14 @@ export interface NexusGenFieldTypes {
     updatedAt: any; // DateTime!
   }
   Mutation: { // field return type
+    createComment: NexusGenRootTypes['Comment']; // Comment!
     createPost: NexusGenRootTypes['Post']; // Post!
+    deleteComment: NexusGenRootTypes['Comment']; // Comment!
     deletePost: NexusGenRootTypes['Post']; // Post!
     deleteUser: NexusGenRootTypes['User']; // User!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    updateComment: NexusGenRootTypes['Comment']; // Comment!
     updatePost: NexusGenRootTypes['Post']; // Post!
     updateUser: NexusGenRootTypes['User']; // User!
   }
@@ -319,15 +123,17 @@ export interface NexusGenFieldTypes {
     id: string; // ID!
     isPublished: boolean; // Boolean!
     title: string; // String!
-    updatedAt: any; // DateTime!
   }
   Query: { // field return type
+    allComments: NexusGenRootTypes['Comment'][]; // [Comment!]!
     allPosts: NexusGenRootTypes['Post'][]; // [Post!]!
     allUsers: NexusGenRootTypes['User'][]; // [User!]!
+    myPosts: NexusGenRootTypes['Post'][]; // [Post!]!
     myProfile: NexusGenRootTypes['User']; // User!
     postById: NexusGenRootTypes['Post']; // Post!
   }
   User: { // field return type
+    comments: NexusGenRootTypes['Comment'][] | null; // [Comment!]
     email: string; // String!
     id: string; // ID!
     name: string; // String!
@@ -337,8 +143,15 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    createComment: { // args
+      createCommentInput: NexusGenInputs['createCommentInput']; // createCommentInput!
+      postId: string; // ID!
+    }
     createPost: { // args
       createPostInput: NexusGenInputs['createPostInput']; // createPostInput!
+    }
+    deleteComment: { // args
+      id: string; // ID!
     }
     deletePost: { // args
       id: string; // ID!
@@ -352,6 +165,10 @@ export interface NexusGenArgTypes {
     signup: { // args
       signupInput: NexusGenInputs['signupInput']; // signupInput!
     }
+    updateComment: { // args
+      id: string; // ID!
+      updateCommentInput: NexusGenInputs['updateCommentInput']; // updateCommentInput!
+    }
     updatePost: { // args
       id: string; // ID!
       updatePostInput: NexusGenInputs['updatePostInput']; // updatePostInput!
@@ -360,23 +177,18 @@ export interface NexusGenArgTypes {
       updateUserInput: NexusGenInputs['updateUserInput']; // updateUserInput!
     }
   }
-  Post: {
-    comments: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['CommentOrderByInput'] | null; // CommentOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
-    }
-  }
   Query: {
+    allComments: { // args
+      orderBy?: NexusGenEnums['CommentOrderByInput'] | null; // CommentOrderByInput
+    }
     allPosts: { // args
       searchString?: string | null; // String
     }
     allUsers: { // args
       searchNameString?: string | null; // String
+    }
+    myPosts: { // args
+      searchString?: string | null; // String
     }
     postById: { // args
       id: string; // ID!
@@ -391,7 +203,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "AuthPayload" | "Comment" | "Mutation" | "Post" | "Query" | "User";
 
-export type NexusGenInputNames = "CommentWhereInput" | "PostWhereInput" | "UserWhereInput" | "createPostInput" | "loginInput" | "signupInput" | "updatePostInput" | "updateUserInput";
+export type NexusGenInputNames = "createCommentInput" | "createPostInput" | "loginInput" | "signupInput" | "updateCommentInput" | "updatePostInput" | "updateUserInput";
 
 export type NexusGenEnumNames = "CommentOrderByInput";
 

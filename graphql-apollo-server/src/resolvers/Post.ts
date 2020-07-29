@@ -20,6 +20,17 @@ export const updatePostInput = inputObjectType({
 export const Post = prismaObjectType<"Post">({
     name: 'Post',
     definition(t) {
-        t.prismaFields(['*'])
+        t.prismaFields([
+            "id",
+            "title",
+            "createdAt",
+            "content",
+            "author",
+            "isPublished",
+            {
+                name: "comments",
+                args: [],
+            }
+        ])
     },
 })

@@ -36,7 +36,7 @@ export const Mutation = mutationType({
                 id: idArg({ nullable: false })
             },
             resolve: async (parent, { id }, ctx) => {
-                const userId = getUserId(ctx);
+                const userId = getUserId(ctx.request);
                 const deletedUser = await ctx.prisma.deleteUser(
                     {
                         id: userId,
@@ -52,7 +52,7 @@ export const Mutation = mutationType({
                 updateUserInput: arg({ type: "updateUserInput", nullable: false })
             },
             resolve: async (parent, { updateUserInput: { name, email, password } }, ctx) => {
-                const userId = getUserId(ctx);
+                const userId = getUserId(ctx.request);
                 if (typeof password === "string") {
                     const hashedPassword = await generateHashPassword(password);
                     password = hashedPassword;
@@ -162,6 +162,69 @@ export const Mutation = mutationType({
                     }
                 });
                 return updatedPost;
+            }
+        })
+        t.field("createComment", {
+            type: "Comment",
+            nullable: false,
+            args: {
+                postId: idArg({ nullable: false, }),
+                createCommentInput: arg({ type: "createCommentInput", nullable: false })
+            },
+            resolve: async (parent, { createCommentInput: { text }, postId }, ctx) => {
+                const userId = getUserId(ctx.request);
+                const newComment = await ctx.prisma.createComment(
+                    {
+                        text,
+                        author: {
+                            connect: {
+                                id: userId,
+                            },
+                        },
+                        post: {
+                            connect: {
+                                id: postId,
+                            },
+                        }
+                    },
+                );
+                return newComment;
+            }
+        })
+        t.field("deleteComment", {
+            type: "Comment",
+            nullable: false,
+            args: {
+                id: idArg({ nullable: false })
+            },
+            resolve: async (parent, { id }, ctx) => {
+                const deletedComment = await ctx.prisma.deleteComment(
+                    {
+                        id,
+                    }
+                );
+                return deletedComment;
+            }
+        })
+        t.field("updateComment", {
+            type: "Comment",
+            nullable: false,
+            args: {
+                id: idArg({ nullable: false }),
+                updateCommentInput: arg({ type: "updateCommentInput", nullable: false })
+            },
+            resolve: async (parent, { id, updateCommentInput: { text } }, ctx) => {
+                const updatedComment = await ctx.prisma.updateComment(
+                    {
+                        where: {
+                            id,
+                        },
+                        data: {
+                            text
+                        }
+                    },
+                );
+                return updatedComment;
             }
         })
     }

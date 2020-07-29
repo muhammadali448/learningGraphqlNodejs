@@ -10,6 +10,18 @@ const rules = {
         const userId = getUserId(ctx.request);
         const author = await ctx.prisma.post({ id }).author();
         return userId === author.id
+    }),
+    isPublishedPost: rule()(async (parent, { postId }, ctx) => {
+        const isPostPublished = await ctx.prisma.$exists.post({
+            id: postId,
+            isPublished: true,
+        });
+        return isPostPublished === true
+    }),
+    isCommentOwner: rule()(async (parent, { id }, ctx) => {
+        const userId = getUserId(ctx.request);
+        const author = await ctx.prisma.comment({ id }).author();
+        return userId === author.id;
     })
 };
 
@@ -18,12 +30,16 @@ export const middlewares = shield({
         myProfile: rules.isAuthenticatedUser,
         allPosts: rules.isAuthenticatedUser,
         allUsers: rules.isAuthenticatedUser,
-        postById: rules.isAuthenticatedUser
+        allComments: rules.isAuthenticatedUser
     },
     Mutation: {
-        deletePost: rules.isPostOwner,
+        createPost: rules.isAuthenticatedUser,
+        deletePost: and(rules.isAuthenticatedUser, rules.isPostOwner),
         deleteUser: rules.isAuthenticatedUser,
         updatePost: and(rules.isAuthenticatedUser, rules.isPostOwner),
-        updateUser: rules.isAuthenticatedUser
+        updateUser: rules.isAuthenticatedUser,
+        createComment: and(rules.isAuthenticatedUser, rules.isPublishedPost),
+        deleteComment: and(rules.isAuthenticatedUser, rules.isCommentOwner),
+        updateComment: and(rules.isAuthenticatedUser, rules.isCommentOwner)
     }
 });

@@ -11,6 +11,10 @@ export const User = prismaObjectType<"User">({
                 name: 'posts',
                 args: []
             },
+            {
+                name: 'comments',
+                args: []
+            },
         ])
     },
 })
