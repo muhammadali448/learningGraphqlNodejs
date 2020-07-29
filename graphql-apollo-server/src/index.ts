@@ -1,14 +1,15 @@
-import { ApolloServer, gql } from 'apollo-server'
+import { GraphQLServer } from 'graphql-yoga'
 import { makePrismaSchema } from 'nexus-prisma'
 import * as path from 'path'
 import datamodelInfo from './generated/nexus-prisma'
 import { prisma } from './generated/prisma-client'
 import * as allTypes from './resolvers'
+import { applyMiddleware } from 'graphql-middleware'
+import { middlewares } from './middlewares'
 
 const schema = makePrismaSchema({
   // Provide all the GraphQL types we've implemented
   types: allTypes,
-
   // Configure the interface to Prisma
   prisma: {
     datamodelInfo,
@@ -39,18 +40,17 @@ const schema = makePrismaSchema({
   },
 })
 
-const server = new ApolloServer({
-  schema,
+const server = new GraphQLServer({
+  schema: applyMiddleware(schema, middlewares),
   context: (req) => {
     return {
-      ...req,
+      request: req,
       prisma,
     };
   },
 });
 
-// server.applyMiddleware();
 
-server.listen({ port: 4000 }, () =>
+server.start({ port: 4000 }, () =>
   console.log(`🚀 Server ready at http://localhost:4000`),
 )

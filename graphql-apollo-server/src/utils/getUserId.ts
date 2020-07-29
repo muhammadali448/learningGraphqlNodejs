@@ -5,16 +5,15 @@ interface Token {
     userId: string
 };
 export const getUserId = (context: Context, isAuthRequired = true) => {
+    console.log(context.request.get('Authorization'));
     const authTokenWithBarer = context.request
-        ? context.request.request.headers.authorization
+        ? context.request.headers.authorization
         : context.request.connection.context.Authorization;
     if (authTokenWithBarer) {
         const token = authTokenWithBarer.split(" ")[1];
         const user = verify(token, APP_SECRET) as Token;
+        console.log(user.userId);
         return user.userId;
-    }
-    if (isAuthRequired) {
-        throw new Error("Unauthorized");
     }
     return null;
 };

@@ -8,6 +8,15 @@ export const signupInput = inputObjectType({
     },
 });
 
+export const updateUserInput = inputObjectType({
+    name: "updateUserInput",
+    definition(t) {
+        t.string("name");
+        t.string("email");
+        t.string("password");
+    },
+});
+
 export const loginInput = inputObjectType({
     name: "loginInput",
     definition(t) {

@@ -50,7 +50,7 @@ export const Query = queryType({
             },
             nullable: false,
             resolve: async (parent, { id }, ctx) => {
-                const userId = getUserId(ctx, false);
+                const userId = getUserId(ctx);
                 const posts = await ctx.prisma.posts({
                     where: {
                         id,

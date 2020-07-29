@@ -2,6 +2,8 @@ import { stringArg, idArg, mutationType, inputObjectType, arg, objectType } from
 import generateHashPassword from '../utils/generateHashPassword';
 import generateToken from '../utils/generateToken';
 import { compare } from "bcrypt";
+import { getUserId } from '../utils/getUserId';
+
 export const Mutation = mutationType({
     definition(t) {
         t.field("signup", {
@@ -27,6 +29,49 @@ export const Mutation = mutationType({
                 };
             }
         })
+        t.field("deleteUser", {
+            type: "User",
+            nullable: false,
+            args: {
+                id: idArg({ nullable: false })
+            },
+            resolve: async (parent, { id }, ctx) => {
+                const userId = getUserId(ctx);
+                const deletedUser = await ctx.prisma.deleteUser(
+                    {
+                        id: userId,
+                    },
+                );
+                return deletedUser;
+            }
+        });
+        t.field("updateUser", {
+            type: "User",
+            nullable: false,
+            args: {
+                updateUserInput: arg({ type: "updateUserInput", nullable: false })
+            },
+            resolve: async (parent, { updateUserInput: { name, email, password } }, ctx) => {
+                const userId = getUserId(ctx);
+                if (typeof password === "string") {
+                    const hashedPassword = await generateHashPassword(password);
+                    password = hashedPassword;
+                }
+                const updateUser = await ctx.prisma.updateUser(
+                    {
+                        where: {
+                            id: userId,
+                        },
+                        data: {
+                            name,
+                            email,
+                            password
+                        },
+                    },
+                );
+                return updateUser;
+            }
+        })
         t.field("login", {
             type: "AuthPayload",
             nullable: false,
@@ -48,6 +93,75 @@ export const Mutation = mutationType({
                     user,
                     token: generateToken(user.id),
                 };
+            }
+        })
+        t.field("createPost", {
+            type: "Post",
+            nullable: false,
+            args: {
+                createPostInput: arg({ type: "createPostInput", required: true })
+            },
+            resolve: async (parent, { createPostInput: { title, content } }, ctx) => {
+                const userId = getUserId(ctx.request);
+                const newPost = await ctx.prisma.createPost({
+                    title,
+                    content,
+                    author: {
+                        connect: {
+                            id: userId,
+                        },
+                    },
+                });
+                return newPost;
+            }
+        })
+        t.field("deletePost", {
+            type: "Post",
+            nullable: false,
+            args: {
+                id: idArg({ nullable: false })
+            },
+            resolve: async (parent, { id }, ctx) => {
+                const deletedPost = await ctx.prisma.deletePost({
+                    id
+                });
+                return deletedPost;
+            }
+        })
+        t.field("updatePost", {
+            type: "Post",
+            nullable: false,
+            args: {
+                id: idArg({ nullable: false }),
+                updatePostInput: arg({ type: "updatePostInput", nullable: false })
+            },
+            resolve: async (parent, { id, updatePostInput: { title, content, isPublished } }, ctx) => {
+                const isPostPublished = await ctx.prisma.$exists.post({
+                    id,
+                    isPublished: true
+                });
+                if (
+                    isPostPublished &&
+                    typeof isPublished !== "undefined" &&
+                    !isPublished
+                ) {
+                    await ctx.prisma.deleteManyComments({
+                        post: {
+                            id,
+                        },
+                    });
+                }
+                const updatedPost = await ctx.prisma.updatePost({
+                    data: {
+                        title,
+                        content,
+                        isPublished
+                    },
+                    where: {
+                        id
+                    }
+                });
+                return updatedPost;
             }
         })
     }
