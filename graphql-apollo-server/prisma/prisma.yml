@@ -1,6 +1,7 @@
 # Specifies the HTTP endpoint of your Prisma API.
 #endpoint: ''
-endpoint: http://localhost:4466/nexus-prisma/dev
+endpoint: ${env:PRISMA_ENDPOINT}
+secret: ${env:PRISMA_SECRET}
 # endpoint: https://us1.prisma.sh/muhammad-ali-a334ca/m-ali-prisma-service/dev
 
 # Defines your models, each model is mapped to the database as a table.

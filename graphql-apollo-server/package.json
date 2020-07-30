@@ -1,7 +1,21 @@
 {
   "name": "typescript-graphql",
   "scripts": {
-    "start": "ts-node-dev --no-notify --respawn --transpileOnly ./src"
+    "dev": "env-cmd -f ./config/dev.env ts-node-dev --no-notify --respawn --transpileOnly ./src",
+    "test": "env-cmd -f ./configs/test.env jest --watch --silent --verbose --runInBand"
+  },
+  "jest": {
+    "globalSetup": "./tests/jest/globalSetup.ts",
+    "globalTeardown": "./tests/jest/globalTeardown.ts",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "testRegex": ".test.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    }
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -18,9 +32,13 @@
     "@types/aws-lambda": "8.10.46",
     "@types/bcrypt": "^3.0.0",
     "@types/graphql": "14.2.3",
+    "@types/jest": "^26.0.7",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "10.17.17",
     "@types/ws": "6.0.4",
+    "env-cmd": "^10.1.0",
+    "jest": "^26.2.1",
+    "ts-jest": "^26.1.4",
     "ts-node-dev": "1.0.0-pre.44",
     "typescript": "3.8.3"
   }

@@ -1,11 +1,10 @@
 import { sign } from "jsonwebtoken";
-import { APP_SECRET } from "./getUserId";
 const generateToken = (userId: String) => {
     const token = sign(
         {
             userId,
         },
-        APP_SECRET,
+        process.env.JWT_SECRET,
         {
             expiresIn: "7d",
         }
