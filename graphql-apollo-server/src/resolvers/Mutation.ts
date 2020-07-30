@@ -1,4 +1,4 @@
-import { stringArg, idArg, mutationType, inputObjectType, arg, objectType } from 'nexus'
+import { idArg, mutationType, arg } from 'nexus'
 import generateHashPassword from '../utils/generateHashPassword';
 import generateToken from '../utils/generateToken';
 import { compare } from "bcrypt";

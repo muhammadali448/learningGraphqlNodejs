@@ -23,6 +23,11 @@ enum CommentOrderByInput {
   text_DESC
 }
 
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  node: Comment
+}
+
 input createCommentInput {
   text: String!
 }
@@ -52,6 +57,12 @@ type Mutation {
   updateUser(updateUserInput: updateUserInput!): User!
 }
 
+enum MutationType {
+  CREATED
+  DELETED
+  UPDATED
+}
+
 type Post {
   author: User!
   comments: [Comment!]
@@ -60,6 +71,11 @@ type Post {
   id: ID!
   isPublished: Boolean!
   title: String!
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
 }
 
 type Query {
@@ -75,6 +91,16 @@ input signupInput {
   email: String!
   name: String!
   password: String!
+}
+
+type Subscription {
+  """
+  Listen when a comment is created, deleted or updated for a particular post
+  """
+  comments(id: ID!): CommentSubscriptionPayload!
+
+  """Listen when a post is created, deleted or updated"""
+  posts: PostSubscriptionPayload!
 }
 
 input updateCommentInput {
