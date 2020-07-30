@@ -1,5 +1,6 @@
 import { subscriptionField, extendType, idArg } from "nexus";
 import { prismaObjectType } from "nexus-prisma";
+import { getUserId } from "../utils/getUserId";
 
 export const postsSubscriptionPayload = prismaObjectType<"PostSubscriptionPayload">({
     name: "PostSubscriptionPayload",
@@ -34,8 +35,13 @@ export const commentsSubscription = subscriptionField("comments", {
     args: {
         id: idArg({ nullable: false })
     },
-    subscribe: async (parent, { id }, { prisma }) => {
-        return prisma.$subscribe.comment({
+    subscribe: async (parent, { id }, ctx) => {
+
+        const userId = getUserId(ctx);
+        if (!userId) {
+            throw new Error("Not Authenticated");
+        }
+        return ctx.prisma.$subscribe.comment({
             node: {
                 post: {
                     id
@@ -50,8 +56,8 @@ export const postsSubscription = subscriptionField("posts", {
     type: "PostSubscriptionPayload",
     nullable: false,
     description: "Listen when a post is created, deleted or updated",
-    subscribe: async (parent, args, { prisma }) => {
-        return prisma.$subscribe.post({
+    subscribe: async (parent, args, ctx) => {
+        return ctx.prisma.$subscribe.post({
             node: {
                 isPublished: true
             },

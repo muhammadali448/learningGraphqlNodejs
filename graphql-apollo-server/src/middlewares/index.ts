@@ -3,11 +3,12 @@ import { getUserId } from "../utils/getUserId";
 
 const rules = {
     isAuthenticatedUser: rule()((parent, args, ctx) => {
-        const userId = getUserId(ctx.request);
+        console.log(ctx);
+        const userId = getUserId(ctx);
         return Boolean(userId)
     }),
     isPostOwner: rule()(async (parent, { id }, ctx) => {
-        const userId = getUserId(ctx.request);
+        const userId = getUserId(ctx);
         const author = await ctx.prisma.post({ id }).author();
         return userId === author.id
     }),
@@ -41,5 +42,5 @@ export const middlewares = shield({
         createComment: and(rules.isAuthenticatedUser, rules.isPublishedPost),
         deleteComment: and(rules.isAuthenticatedUser, rules.isCommentOwner),
         updateComment: and(rules.isAuthenticatedUser, rules.isCommentOwner)
-    }
+    },
 });

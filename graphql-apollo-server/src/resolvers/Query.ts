@@ -22,7 +22,7 @@ export const Query = queryType({
             type: "User",
             nullable: false,
             resolve: (parent, args, ctx) => {
-                const userId = getUserId(ctx.request);
+                const userId = getUserId(ctx);
                 return ctx.prisma.user({ id: userId });
             }
         })
@@ -51,7 +51,7 @@ export const Query = queryType({
                 searchString: stringArg({ nullable: true }),
             },
             resolve: (parent, { searchString }, ctx) => {
-                const userId = getUserId(ctx.request);
+                const userId = getUserId(ctx);
                 return ctx.prisma.posts({
                     where: {
                         author: {
@@ -87,7 +87,7 @@ export const Query = queryType({
             },
             nullable: false,
             resolve: async (parent, { id }, ctx) => {
-                const userId = getUserId(ctx.request, false);
+                const userId = getUserId(ctx, false);
                 const posts = await ctx.prisma.posts({
                     where: {
                         id,

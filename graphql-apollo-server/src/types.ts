@@ -2,5 +2,8 @@ import { Prisma } from './generated/prisma-client'
 
 export interface Context {
   prisma: Prisma
-  request: any
+  request: {
+    request: any,
+    connection: any
+  }
 }

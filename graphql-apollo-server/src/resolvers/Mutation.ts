@@ -36,7 +36,7 @@ export const Mutation = mutationType({
                 id: idArg({ nullable: false })
             },
             resolve: async (parent, { id }, ctx) => {
-                const userId = getUserId(ctx.request);
+                const userId = getUserId(ctx);
                 const deletedUser = await ctx.prisma.deleteUser(
                     {
                         id: userId,
@@ -52,7 +52,7 @@ export const Mutation = mutationType({
                 updateUserInput: arg({ type: "updateUserInput", nullable: false })
             },
             resolve: async (parent, { updateUserInput: { name, email, password } }, ctx) => {
-                const userId = getUserId(ctx.request);
+                const userId = getUserId(ctx);
                 if (typeof password === "string") {
                     const hashedPassword = await generateHashPassword(password);
                     password = hashedPassword;
@@ -102,7 +102,7 @@ export const Mutation = mutationType({
                 createPostInput: arg({ type: "createPostInput", required: true })
             },
             resolve: async (parent, { createPostInput: { title, content } }, ctx) => {
-                const userId = getUserId(ctx.request);
+                const userId = getUserId(ctx);
                 const newPost = await ctx.prisma.createPost({
                     title,
                     content,
@@ -172,7 +172,7 @@ export const Mutation = mutationType({
                 createCommentInput: arg({ type: "createCommentInput", nullable: false })
             },
             resolve: async (parent, { createCommentInput: { text }, postId }, ctx) => {
-                const userId = getUserId(ctx.request);
+                const userId = getUserId(ctx);
                 const newComment = await ctx.prisma.createComment(
                     {
                         text,

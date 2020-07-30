@@ -5,9 +5,8 @@ interface Token {
     userId: string
 };
 export const getUserId = (context: Context, isAuthRequired = true) => {
-    // console.log(context.request.get('Authorization'));
-    const authTokenWithBarer = context.request
-        ? context.request.headers.authorization
+    const authTokenWithBarer = context.request.request
+        ? context.request.request.headers.authorization
         : context.request.connection.context.Authorization;
     if (authTokenWithBarer) {
         const token = authTokenWithBarer.split(" ")[1];
