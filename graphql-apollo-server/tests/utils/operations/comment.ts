@@ -4,19 +4,13 @@ const deleteComment = gql`
     deleteComment(id: $id) {
       id
       text
-      author {
-        id
-      }
-      post {
-        id
-      }
     }
   }
 `;
 
 const subscriptionComment = gql`
   subscription($postId: ID!) {
-    comment(postId: $postId) {
+    comments(id: $postId) {
       node {
         id
         text
@@ -28,10 +22,10 @@ const subscriptionComment = gql`
 
 const fetchCommentsFromPost = gql`
   query($postId: ID!) {
-    post(id: $postId) {
+    postById(id: $postId) {
       id
       title
-      body
+      content
       isPublished
       comments {
         text
@@ -41,8 +35,8 @@ const fetchCommentsFromPost = gql`
 `;
 
 const createComment = gql`
-  mutation($data: createCommentInput!) {
-    createComment(data: $data) {
+  mutation($data: createCommentInput!, $postId: ID!) {
+    createComment(createCommentInput: $data, postId: $postId) {
       id
       text
     }
@@ -51,9 +45,12 @@ const createComment = gql`
 
 const updateComment = gql`
   mutation($id: ID!, $data: updateCommentInput!) {
-    updateComment(id: $id, data: $data) {
+    updateComment(id: $id, updateCommentInput: $data) {
       id
       text
+      author {
+        id
+      }
     }
   }
 `;

@@ -1,3 +1,6 @@
+import "cross-fetch"
+import * as fetch from 'cross-fetch'
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,16 +10,17 @@ import {
   Observable,
   ApolloLink,
 } from "@apollo/client";
+import * as ws from 'ws';
 import { getMainDefinition } from "@apollo/client/utilities";
 import { onError } from "@apollo/client/link/error";
 import { WebSocketLink } from "@apollo/client/link/ws";
 const getClient = (
-  jwt,
+  jwt?: string,
   httpURL = "http://localhost:4000",
   websocketURL = "ws://localhost:4000"
 ) => {
   // Setup the authorization header for the http client
-  const request = async (operation) => {
+  const request = async (operation: any) => {
     if (jwt) {
       operation.setContext({
         headers: {
@@ -28,8 +32,8 @@ const getClient = (
 
   // Setup the request handlers for the http clients
   const requestLink = new ApolloLink((operation, forward) => {
-    return new Observable((observer) => {
-      let handle;
+    return new Observable((observer: any) => {
+      let handle: any;
       Promise.resolve(operation)
         .then((oper) => {
           request(oper);
@@ -79,6 +83,7 @@ const getClient = (
           }
         },
       },
+      webSocketImpl: ws
     }),
   ]);
 
@@ -99,15 +104,20 @@ const getClient = (
     requestLink,
     new HttpLink({
       uri: httpURL,
+      fetch: fetch.fetch,
       credentials: "same-origin",
     }),
   ]);
 
+  interface Definintion {
+    kind: string;
+    operation?: string;
+  };
   // Link to direct ws and http traffic to the correct place
   const link = split(
     // Pick which links get the data based on the operation kind
     ({ query }) => {
-      const { kind, operation } = getMainDefinition(query);
+      const { kind, operation }: Definintion = getMainDefinition(query);
       return kind === "OperationDefinition" && operation === "subscription";
     },
     wsLink,

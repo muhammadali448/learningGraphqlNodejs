@@ -3,6 +3,7 @@ import generateHashPassword from '../utils/generateHashPassword';
 import generateToken from '../utils/generateToken';
 import { compare } from "bcrypt";
 import { getUserId } from '../utils/getUserId';
+import { prisma } from '../generated/prisma-client';
 
 export const Mutation = mutationType({
     definition(t) {
@@ -198,9 +199,10 @@ export const Mutation = mutationType({
                 id: idArg({ nullable: false })
             },
             resolve: async (parent, { id }, ctx) => {
+                const userId = getUserId(ctx);
                 const deletedComment = await ctx.prisma.deleteComment(
                     {
-                        id,
+                        id
                     }
                 );
                 return deletedComment;
@@ -214,10 +216,14 @@ export const Mutation = mutationType({
                 updateCommentInput: arg({ type: "updateCommentInput", nullable: false })
             },
             resolve: async (parent, { id, updateCommentInput: { text } }, ctx) => {
+                // const userId = getUserId(ctx);
+                // const author = await ctx.prisma.comment({
+                //     id
+                // }).author();
                 const updatedComment = await ctx.prisma.updateComment(
                     {
                         where: {
-                            id,
+                            id
                         },
                         data: {
                             text

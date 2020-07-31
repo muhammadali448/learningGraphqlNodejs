@@ -1,10 +1,10 @@
 import { gql } from "@apollo/client";
 const getPosts = gql`
   query {
-    posts {
+    allPosts {
       id
       title
-      body
+      content
       isPublished
     }
   }
@@ -14,7 +14,7 @@ const getMyPosts = gql`
     myPosts {
       id
       title
-      body
+      content
       isPublished
     }
   }
@@ -22,23 +22,23 @@ const getMyPosts = gql`
 
 const updatePost = gql`
   mutation($id: ID!, $data: updatePostInput!) {
-    updatePost(id: $id, data: $data) {
+    updatePost(id: $id, updatePostInput: $data) {
       id
       title
-      body
+      content
       isPublished
     }
   }
 `;
 const createPost = gql`
   mutation($data: createPostInput!) {
-    createPost(data: $data) {
-      id
-      title
-      body
-      isPublished
-    }
+  createPost(createPostInput: $data) {
+    title
+    id
+    isPublished
+    content
   }
+}
 `;
 
 const deletePost = gql`
@@ -51,11 +51,11 @@ const deletePost = gql`
 
 const subscriptionPosts = gql`
   subscription {
-    post {
+    posts {
       node {
         id
         title
-        body
+        content
         isPublished
       }
       mutation
@@ -65,10 +65,10 @@ const subscriptionPosts = gql`
 
 const fetchPublishedPostById = gql`
   query($id: ID!) {
-    post(id: $id) {
+    postById(id: $id) {
       id
       title
-      body
+      content
       isPublished
     }
   }

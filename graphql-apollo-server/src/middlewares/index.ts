@@ -3,7 +3,7 @@ import { getUserId } from "../utils/getUserId";
 
 const rules = {
     isAuthenticatedUser: rule()((parent, args, ctx) => {
-        console.log(ctx);
+
         const userId = getUserId(ctx);
         return Boolean(userId)
     }),
@@ -20,9 +20,12 @@ const rules = {
         return isPostPublished === true
     }),
     isCommentOwner: rule()(async (parent, { id }, ctx) => {
-        const userId = getUserId(ctx.request);
-        const author = await ctx.prisma.comment({ id }).author();
-        return userId === author.id;
+        const userId = getUserId(ctx);
+        const author = await ctx.prisma.comment({
+            id
+        }).author();
+        console.log(author.id === userId);
+        return userId == author.id;
     })
 };
 

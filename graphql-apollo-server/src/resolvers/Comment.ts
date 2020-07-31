@@ -5,10 +5,7 @@ export const Comment = prismaObjectType<"Comment">({
     name: 'Comment',
     definition(t) {
         t.prismaFields([
-            "*",
-            {
-                name: "author"
-            }
+            "*"
         ])
     },
 })

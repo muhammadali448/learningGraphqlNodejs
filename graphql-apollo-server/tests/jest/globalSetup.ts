@@ -1,4 +1,4 @@
-const server = require("../../src/server").default;
+import server from "../../src/server";
 
 export const globalAny: any = global;
 

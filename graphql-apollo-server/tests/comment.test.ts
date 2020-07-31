@@ -1,7 +1,4 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import "cross-fetch/polyfill";
-import prisma from "../src/prisma";
+import { prisma } from "../src/generated/prisma-client";
 import {
   createSeedDatabase,
   user1,
@@ -19,11 +16,20 @@ import {
   createComment,
   updateComment,
 } from "./utils/operations/comment";
-import { async } from "regenerator-runtime/runtime";
-// import { async } from "regenerator-runtime/runtime";
+import server from "../src/server";
 const client = getClient();
 
 describe("Comment Test Cases", () => {
+  let serverH: any;
+  beforeAll(async (done) => {
+    serverH = await server.start({ port: 4000 });
+    done()
+  })
+
+  afterAll(async (done) => {
+    await serverH.close()
+    done()
+  })
   beforeEach(createSeedDatabase);
   test("Should fetch post comments", async () => {
     const variables = {
@@ -33,14 +39,14 @@ describe("Comment Test Cases", () => {
       query: fetchCommentsFromPost,
       variables,
     });
-    expect(data.post.comments).toHaveLength(2);
+    expect(data.postById.comments).toHaveLength(2);
   });
   test("Should require authentication to create a comment", async () => {
     const variables = {
       data: {
         text: "new comment",
-        post: post1.post.id,
       },
+      postId: post1.post.id,
     };
     expect(
       client.mutate({
@@ -54,14 +60,14 @@ describe("Comment Test Cases", () => {
     const variables = {
       data: {
         text: "new comment",
-        post: post1.post.id,
       },
+      postId: post1.post.id,
     };
     const { data } = await client.mutate({
       mutation: createComment,
       variables,
     });
-    const isCommentExist = await prisma.exists.Comment({
+    const isCommentExist = await prisma.$exists.comment({
       id: data.id,
     });
     expect(isCommentExist).toBeTruthy();
@@ -70,9 +76,9 @@ describe("Comment Test Cases", () => {
     const client = getClient(user1.jwt);
     const variables = {
       data: {
-        text: "new comment 2",
-        post: post2.post.id,
+        text: "new comment",
       },
+      postId: post2.post.id,
     };
     expect(
       client.mutate({
@@ -97,10 +103,10 @@ describe("Comment Test Cases", () => {
     ).rejects.toThrow();
   });
   test("Should update comment", async () => {
-    const client = getClient(user1.jwt);
+    const client = getClient(user2.jwt);
     const text = "Comment updated";
     const variables = {
-      id: comment1.comment.id,
+      id: comment2.comment.id,
       data: {
         text,
       },
@@ -147,7 +153,7 @@ describe("Comment Test Cases", () => {
       mutation: deleteComment,
       variables,
     });
-    const isCommentExist = await prisma.exists.Comment({
+    const isCommentExist = await prisma.$exists.comment({
       id: comment1.comment.id,
     });
     expect(isCommentExist).toBeFalsy();
@@ -172,9 +178,9 @@ describe("Comment Test Cases", () => {
     const sub = client
       .subscribe({ query: subscriptionComment, variables })
       .subscribe({
-        next(response) {
+        next(response: any) {
           try {
-            expect(response.data.comment.mutation).toBe("DELETED");
+            expect(response.data.comments.mutation).toBe("DELETED");
             sub.unsubscribe();
             done();
           } catch (err) {
@@ -183,8 +189,8 @@ describe("Comment Test Cases", () => {
         },
       });
     setTimeout(async () => {
-      await prisma.mutation.deleteComment({
-        where: { id: comment1.comment.id },
+      await prisma.deleteComment({
+        id: comment1.comment.id,
       });
     }, 1000);
   });

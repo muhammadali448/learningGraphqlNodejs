@@ -1,7 +1,4 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-import "cross-fetch/polyfill";
-import prisma from "../src/prisma";
+import { prisma } from "../src/generated/prisma-client";
 import {
   createSeedDatabase,
   user1,
@@ -19,17 +16,28 @@ import {
   subscriptionPosts,
   fetchPublishedPostById,
 } from "./utils/operations/post";
-import { async } from "regenerator-runtime/runtime";
+import server from "../src/server";
 const client = getClient();
 
 describe("Post Test Cases", () => {
+  let serverH: any;
+  beforeAll(async (done) => {
+    serverH = await server.start({ port: 4000 });
+    done()
+  })
+
+  afterAll(async (done) => {
+    await serverH.close()
+    done()
+  })
   beforeEach(createSeedDatabase);
   test("should return published posts", async () => {
+    const client = getClient(user1.jwt);
     const response = await client.query({
       query: getPosts,
     });
-    expect(response.data.posts.length).toBe(1);
-    expect(response.data.posts[0].isPublished).toBeTruthy();
+    expect(response.data.allPosts.length).toBe(1);
+    expect(response.data.allPosts[0].isPublished).toBeTruthy();
   });
   test("should return myPosts", async () => {
     const client = getClient(user1.jwt);
@@ -37,6 +45,7 @@ describe("Post Test Cases", () => {
     expect(data.myPosts).toHaveLength(2);
   });
   test("Should fetch published post by id", async () => {
+    const client = getClient(user1.jwt);
     const variables = {
       id: post1.post.id,
     };
@@ -44,7 +53,7 @@ describe("Post Test Cases", () => {
       query: fetchPublishedPostById,
       variables,
     });
-    expect(data.post.isPublished).toBeTruthy();
+    expect(data.postById.isPublished).toBeTruthy();
   });
   test("Should fetch own post by id", async () => {
     const client = getClient(user2.jwt);
@@ -55,7 +64,7 @@ describe("Post Test Cases", () => {
       query: fetchPublishedPostById,
       variables,
     });
-    expect(data.post.isPublished).toBeFalsy();
+    expect(data.postById.isPublished).toBeFalsy();
   });
   test("Should not fetch draft post from other user", async () => {
     const client = getClient(user1.jwt);
@@ -68,16 +77,6 @@ describe("Post Test Cases", () => {
         variables,
       })
     ).rejects.toThrow();
-  });
-  test("should update post title", async () => {
-    const client = getClient(user1.jwt);
-    const title = "change hogya";
-    const variables = {
-      data: { title },
-      id: post1.post.id,
-    };
-    const { data } = await client.mutate({ mutation: updatePost, variables });
-    expect(data.updatePost.title).toBe(title);
   });
   test("Should require authentication to update a post", () => {
     const title = "change hogya";
@@ -100,14 +99,14 @@ describe("Post Test Cases", () => {
       client.mutate({ mutation: updatePost, variables })
     ).rejects.toThrow();
   });
-  test("should update isPublished to false title", async () => {
+  test("should update isPublished to false", async () => {
     const client = getClient(user1.jwt);
     const variables = {
       data: { isPublished: false },
       id: post1.post.id,
     };
     const { data } = await client.mutate({ mutation: updatePost, variables });
-    const isPostExist = await prisma.exists.Post({
+    const isPostExist = await prisma.$exists.post({
       id: post1.post.id,
       isPublished: false,
     });
@@ -117,22 +116,20 @@ describe("Post Test Cases", () => {
   test("should create a post", async () => {
     const client = getClient(user1.jwt);
     let title = "new post";
-    let body = "";
-    let isPublished = true;
+    let content = "new content";
     const variables = {
-      data: { title, body, isPublished },
+      data: { title, content },
     };
     const { data } = await client.mutate({ mutation: createPost, variables });
     expect(data.createPost.title).toBe(title);
-    expect(data.createPost.body).toBe(body);
-    expect(data.createPost.isPublished).toBe(isPublished);
+    expect(data.createPost.content).toBe(content);
   });
   test("Should require authentication to create a post", () => {
     let title = "new post";
-    let body = "";
+    let content = "";
     let isPublished = true;
     const variables = {
-      data: { title, body, isPublished },
+      data: { title, content, isPublished },
     };
     expect(
       client.mutate({ mutation: createPost, variables })
@@ -144,7 +141,7 @@ describe("Post Test Cases", () => {
       id: post1.post.id,
     };
     await client.mutate({ mutation: deletePost, variables });
-    const isPostExist = await prisma.exists.Post({
+    const isPostExist = await prisma.$exists.post({
       id: post1.post.id,
     });
     expect(isPostExist).toBeFalsy();
@@ -169,9 +166,9 @@ describe("Post Test Cases", () => {
   test("should subscribe a post", (done) => {
     const client = getClient(user1.jwt);
     const sub = client.subscribe({ query: subscriptionPosts }).subscribe({
-      next(response) {
+      next(response: any) {
         try {
-          expect(response.data.post.mutation).toBe("DELETED");
+          expect(response.data.posts.mutation).toBe("DELETED");
           sub.unsubscribe();
           done();
         } catch (err) {
@@ -180,8 +177,8 @@ describe("Post Test Cases", () => {
       },
     });
     setTimeout(async () => {
-      await prisma.mutation.deletePost({
-        where: { id: post1.post.id },
+      await prisma.deletePost({
+        id: post1.post.id
       });
     }, 1000);
   });
