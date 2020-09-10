@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS "public"."User" (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "public"."Post" (
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
+  content TEXT NOT NULL,
+  published BOOLEAN NOT NULL DEFAULT false,
+  "authorId" INTEGER NOT NULL,
+  FOREIGN KEY ("authorId") REFERENCES "public"."User"(id)
+);
