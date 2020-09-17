@@ -1,66 +1,34 @@
-import { intArg, queryType, stringArg } from '@nexus/schema'
-import { getUserId } from '../utils'
-
+import { getUserId } from "../utils/getUserId";
+import { queryType, stringArg } from "@nexus/schema";
 export const Query = queryType({
   definition(t) {
-    t.field('me', {
-      type: 'User',
-      nullable: true,
-      resolve: (parent, args, ctx) => {
-        const userId = getUserId(ctx)
+    t.list.field("allUsers", {
+      type: "User",
+      nullable: false,
+      args: {
+        searchNameString: stringArg({ nullable: true }),
+      },
+      resolve: (_parent, { searchNameString }, ctx) => {
+        return ctx.prisma.user.findMany({
+          where: {
+            name: {
+              contains: searchNameString,
+            },
+          },
+        });
+      },
+    });
+    t.field("currentUser", {
+      type: "User",
+      nullable: false,
+      resolve: (_parent, _args, ctx) => {
+        const userId = getUserId(ctx);
         return ctx.prisma.user.findOne({
           where: {
             id: Number(userId),
           },
-        })
+        });
       },
-    })
-
-    t.list.field('feed', {
-      type: 'Post',
-      resolve: (parent, args, ctx) => {
-        return ctx.prisma.post.findMany({
-          where: { published: true },
-        })
-      },
-    })
-
-    t.list.field('filterPosts', {
-      type: 'Post',
-      args: {
-        searchString: stringArg({ nullable: true }),
-      },
-      resolve: (parent, { searchString }, ctx) => {
-        return ctx.prisma.post.findMany({
-          where: {
-            OR: [
-              {
-                title: {
-                  contains: searchString || undefined,
-                },
-              },
-              {
-                content: {
-                  contains: searchString,
-                },
-              },
-            ],
-          },
-        })
-      },
-    })
-
-    t.field('post', {
-      type: 'Post',
-      nullable: true,
-      args: { id: intArg() },
-      resolve: (parent, { id }, ctx) => {
-        return ctx.prisma.post.findOne({
-          where: {
-            id: Number(id),
-          },
-        })
-      },
-    })
+    });
   },
-})
+});

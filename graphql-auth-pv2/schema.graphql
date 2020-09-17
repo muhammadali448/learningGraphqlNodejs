@@ -7,32 +7,65 @@ type AuthPayload {
   user: User!
 }
 
-type Mutation {
-  createDraft(content: String, title: String!): Post!
-  deletePost(id: Int!): Post
-  login(email: String!, password: String!): AuthPayload!
-  publish(id: Int!): Post
-  signup(email: String!, name: String, password: String!): AuthPayload!
+input DeleteUserInput {
+  id: [ID!]!
 }
 
-type Post {
-  author: User!
-  content: String!
-  id: Int!
-  published: Boolean!
-  title: String!
+input facebookLoginInput {
+  accessToken: String!
+  userId: String!
+}
+
+input googleLoginInput {
+  idToken: String!
+}
+
+input loginInput {
+  email: String!
+  password: String!
+}
+
+type MessagePayload {
+  message: String!
+}
+
+type Mutation {
+  accountActivation(token: String!): MessagePayload!
+  deleteUsers(ids: DeleteUserInput!): MessagePayload!
+  facebookLogin(facebookLoginInput: facebookLoginInput!): AuthPayload!
+  forgotPassword(email: String!): MessagePayload!
+  googleLogin(googleLoginInput: googleLoginInput!): AuthPayload!
+  login(loginInput: loginInput!): AuthPayload!
+  resetPassword(resetPasswordInput: resetPasswordInput!): MessagePayload!
+  signup(signupInput: signupInput!): MessagePayload!
+  updateUser(updateUserInput: UpdateUserInput!): User!
 }
 
 type Query {
-  feed: [Post!]!
-  filterPosts(searchString: String): [Post!]!
-  me: User
-  post(id: Int): Post
+  allUsers(searchNameString: String): [User!]!
+  currentUser: User!
+}
+
+input resetPasswordInput {
+  newPassword: String!
+  resetPasswordToken: String!
+}
+
+input signupInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+  password: String
 }
 
 type User {
   email: String!
   id: Int!
-  name: String!
-  posts: [Post!]!
+  isAdmin: Boolean!
+  name: String
 }
