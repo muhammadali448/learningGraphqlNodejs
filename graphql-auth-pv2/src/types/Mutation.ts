@@ -1,20 +1,20 @@
-import { mutationType, arg, stringArg } from '@nexus/schema'
-import generateHashPassword from '../utils/generateHashPassword'
-import generateToken from '../utils/generateToken'
-import mailService from '../services/sendEmail'
-import { compare } from 'bcrypt'
-import { OAuth2Client } from 'google-auth-library'
-import { sign, decode, verify } from 'jsonwebtoken'
-import { getUserId } from '../utils/getUserId'
-import fetch from 'node-fetch'
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
+import { mutationType, arg, stringArg } from "@nexus/schema";
+import generateHashPassword from "../utils/generateHashPassword";
+import generateToken from "../utils/generateToken";
+import mailService from "../services/sendEmail";
+import { compare } from "bcrypt";
+import { OAuth2Client } from "google-auth-library";
+import { sign, decode, verify } from "jsonwebtoken";
+import { getUserId } from "../utils/getUserId";
+import fetch from "node-fetch";
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 export const Mutation = mutationType({
   definition(t) {
-    t.field('googleLogin', {
-      type: 'AuthPayload',
+    t.field("googleLogin", {
+      type: "AuthPayload",
       nullable: false,
       args: {
-        googleLoginInput: arg({ type: 'googleLoginInput', required: true }),
+        googleLoginInput: arg({ type: "googleLoginInput", required: true }),
       },
       resolve: async (_, { googleLoginInput: { idToken } }, ctx) => {
         try {
@@ -23,93 +23,93 @@ export const Mutation = mutationType({
               idToken,
               audience: process.env.GOOGLE_CLIENT_ID,
             })
-          ).getPayload()
+          ).getPayload();
           if (email_verified) {
             const user = await ctx.prisma.user.findOne({
               where: {
                 email,
               },
-            })
+            });
             if (!user) {
               const newUser = await ctx.prisma.user.create({
                 data: {
                   name,
                   email,
                 },
-              })
+              });
               return {
                 user: newUser,
                 token: generateToken(newUser.id),
-              }
+              };
             }
             return {
               user,
               token: generateToken(user.id),
-            }
+            };
           }
         } catch (error) {
-          throw new Error(error.message)
+          throw new Error(error.message);
         }
       },
-    })
-    t.field('facebookLogin', {
-      type: 'AuthPayload',
+    });
+    t.field("facebookLogin", {
+      type: "AuthPayload",
       nullable: false,
       args: {
-        facebookLoginInput: arg({ type: 'facebookLoginInput', required: true }),
+        facebookLoginInput: arg({ type: "facebookLoginInput", required: true }),
       },
       resolve: async (
         _,
         { facebookLoginInput: { userId, accessToken } },
-        ctx,
+        ctx
       ) => {
         try {
-          const url = `https://graph.facebook.com/v2.11/${userId}/?fields=id,name,email&access_token=${accessToken}`
+          const url = `https://graph.facebook.com/v2.11/${userId}/?fields=id,name,email&access_token=${accessToken}`;
           const response = await fetch(url, {
-            method: 'GET',
-          })
+            method: "GET",
+          });
           const data = (await response.json()) as {
-            name: string
-            email: string
+            name: string;
+            email: string;
             // error: {
             //   message: string;
             // };
-          }
+          };
           if (response.status !== 200) {
-            throw new Error('Something went wrong')
+            throw new Error("Something went wrong");
           }
-          const { email, name } = data
+          const { email, name } = data;
           const user = await ctx.prisma.user.findOne({
             where: {
               email,
             },
-          })
+          });
           if (!user) {
             const newUser = await ctx.prisma.user.create({
               data: {
                 name,
                 email,
               },
-            })
+            });
             return {
               user: newUser,
               token: generateToken(newUser.id),
-            }
+            };
           }
           return {
             user,
             token: generateToken(user.id),
-          }
+          };
         } catch (error) {
-          throw new Error(error.message)
+          throw new Error(error.message);
         }
       },
-    })
-    t.field('signup', {
-      type: 'MessagePayload',
+    });
+    t.field("signup", {
+      type: "MessagePayload",
       nullable: false,
       args: {
-        signupInput: arg({ type: 'signupInput', required: true }),
+        signupInput: arg({ type: "signupInput", required: true }),
       },
       resolve: async (_, { signupInput: { name, email, password } }, ctx) => {
         try {
@@ -117,11 +117,11 @@ export const Mutation = mutationType({
             where: {
               email,
             },
-          })
+          });
           if (isUserExist) {
-            throw new Error('Email is already associated with another user')
+            throw new Error("Email is already associated with another user");
           }
-          const hashPassword = await generateHashPassword(password)
+          const hashPassword = await generateHashPassword(password);
           const token = sign(
             {
               name,
@@ -130,26 +130,26 @@ export const Mutation = mutationType({
             },
             process.env.JWT_ACCOUNT_ACTIVATION,
             {
-              expiresIn: '10m',
-            },
-          )
-          const html = mailService.activationEmail(token)
+              expiresIn: "10m",
+            }
+          );
+          const html = mailService.activationEmail(token);
           await mailService.sendEmail(
             process.env.EMAIL_FROM,
             email,
-            'Account activation',
-            html,
-          )
+            "Account activation",
+            html
+          );
           return {
             message: `Email has been sent to ${email}. Follow the instruction to activate your account`,
-          }
+          };
         } catch (error) {
-          throw new Error(error.message)
+          throw new Error(error.message);
         }
       },
-    })
-    t.field('accountActivation', {
-      type: 'MessagePayload',
+    });
+    t.field("accountActivation", {
+      type: "MessagePayload",
       nullable: false,
       args: {
         token: stringArg({ required: true }),
@@ -157,76 +157,76 @@ export const Mutation = mutationType({
       resolve: async (_, { token }, ctx) => {
         try {
           if (!token) {
-            throw new Error('No token for activation')
+            throw new Error("No token for activation");
           }
-          const decoded = verify(token, process.env.JWT_ACCOUNT_ACTIVATION)
+          const decoded = verify(token, process.env.JWT_ACCOUNT_ACTIVATION);
           const { name, email, password } = decode(token) as {
-            name: string
-            email: string
-            password: string
-          }
+            name: string;
+            email: string;
+            password: string;
+          };
           await ctx.prisma.user.create({
             data: {
               name,
               password,
               email,
             },
-          })
+          });
           return {
-            message: 'Signup success. Please signin.',
-          }
+            message: "Signup success. Please signin.",
+          };
         } catch (error) {
-          throw new Error(error.message)
+          throw new Error(error.message);
         }
       },
-    })
-    t.field('resetPassword', {
-      type: 'MessagePayload',
+    });
+    t.field("resetPassword", {
+      type: "MessagePayload",
       nullable: false,
       args: {
         resetPasswordInput: arg({
-          type: 'resetPasswordInput',
+          type: "resetPasswordInput",
           required: true,
         }),
       },
       resolve: async (
         _,
         { resetPasswordInput: { resetPasswordToken, newPassword } },
-        ctx,
+        ctx
       ) => {
         try {
           if (!resetPasswordToken) {
-            throw new Error('No reset link found')
+            throw new Error("No reset link found");
           }
-          verify(resetPasswordToken, process.env.JWT_RESET_PASSWORD)
+          verify(resetPasswordToken, process.env.JWT_RESET_PASSWORD);
           const user = await ctx.prisma.user.findMany({
             where: {
               resetPasswordToken,
             },
-          })
+          });
           if (!user[0]) {
-            throw new Error('User not exist')
+            throw new Error("User not exist");
           }
-          const password = await generateHashPassword(newPassword)
+          const password = await generateHashPassword(newPassword);
           await ctx.prisma.user.update({
             where: {
               id: user[0].id,
             },
             data: {
               password,
-              resetPasswordToken: '',
+              resetPasswordToken: "",
             },
-          })
+          });
           return {
             message: `Great! Now you can login with your new password`,
-          }
+          };
         } catch (error) {
-          throw new Error(error.message)
+          throw new Error(error.message);
         }
       },
-    })
-    t.field('forgotPassword', {
-      type: 'MessagePayload',
+    });
+    t.field("forgotPassword", {
+      type: "MessagePayload",
       nullable: false,
       args: {
         email: stringArg({ required: true }),
@@ -237,9 +237,9 @@ export const Mutation = mutationType({
             where: {
               email,
             },
-          })
+          });
           if (!user) {
-            throw new Error('User not exist')
+            throw new Error("User not exist");
           }
           const token = sign(
             {
@@ -248,10 +248,10 @@ export const Mutation = mutationType({
             },
             process.env.JWT_RESET_PASSWORD,
             {
-              expiresIn: '10m',
-            },
-          )
-          const html = mailService.resetPassword(token)
+              expiresIn: "10m",
+            }
+          );
+          const html = mailService.resetPassword(token);
           await ctx.prisma.user.update({
             where: {
               id: user.id,
@@ -259,65 +259,65 @@ export const Mutation = mutationType({
             data: {
               resetPasswordToken: token,
             },
-          })
+          });
           await mailService.sendEmail(
             process.env.EMAIL_FROM,
             email,
-            'Password Reset',
-            html,
-          )
+            "Password Reset",
+            html
+          );
           return {
             message: `Email has been sent to ${email}. Follow the instruction to reset your password`,
-          }
+          };
         } catch (error) {
-          throw new Error(error.message)
+          throw new Error(error.message);
         }
       },
-    })
-    t.field('updateUser', {
-      type: 'User',
+    });
+    t.field("updateUser", {
+      type: "User",
       nullable: false,
       args: {
-        updateUserInput: arg({ type: 'UpdateUserInput', required: true }),
+        updateUserInput: arg({ type: "UpdateUserInput", required: true }),
       },
       resolve: async (
         _,
         { updateUserInput: { name, password, email } },
-        ctx,
+        ctx
       ) => {
-        const userId = getUserId(ctx)
+        const userId = getUserId(ctx);
         if (!name && !password && !email) {
-          throw new Error('No Field to update')
+          throw new Error("No Field to update");
         }
         interface DataType {
-          name?: string
-          email?: string
-          password: string
+          name?: string;
+          email?: string;
+          password: string;
         }
-        const data = {} as DataType
+        const data = {} as DataType;
         if (name) {
-          data.name = name
+          data.name = name;
         }
         if (email) {
-          data.email = email
+          data.email = email;
         }
         if (password) {
-          data.password = await generateHashPassword(password)
+          data.password = await generateHashPassword(password);
         }
         const updateUser = await ctx.prisma.user.update({
           where: {
             id: Number(userId),
           },
           data,
-        })
-        return updateUser
+        });
+        return updateUser;
       },
-    })
-    t.field('deleteUsers', {
-      type: 'MessagePayload',
+    });
+    t.field("deleteUsers", {
+      type: "MessagePayload",
       nullable: false,
       args: {
-        ids: arg({ type: 'DeleteUserInput', required: true }),
+        ids: arg({ type: "DeleteUserInput", required: true }),
       },
       resolve: async (parent, { ids }, ctx) => {
         await ctx.prisma.user.deleteMany({
@@ -326,36 +326,37 @@ export const Mutation = mutationType({
               in: ids.id,
             },
           },
-        })
+        });
         return {
-          message: 'Delete users successfully',
-        }
+          message: "Delete users successfully",
+        };
       },
-    })
-    t.field('login', {
-      type: 'AuthPayload',
+    });
+    t.field("login", {
+      type: "AuthPayload",
       nullable: false,
       args: {
-        loginInput: arg({ type: 'loginInput', required: true }),
+        loginInput: arg({ type: "loginInput", required: true }),
       },
       resolve: async (_, { loginInput: { email, password } }, ctx) => {
         const user = await ctx.prisma.user.findOne({
           where: {
             email,
           },
-        })
+        });
         if (!user) {
-          throw new Error('User not exist')
+          console.log("User not exist");
+          throw new Error("User not exist");
         }
-        const isPasswordMatch = await compare(password, user.password)
+        const isPasswordMatch = await compare(password, user.password);
         if (!isPasswordMatch) {
-          throw new Error('Password not correct')
+          throw new Error("Password not correct");
         }
         return {
           user,
           token: generateToken(user.id),
-        }
+        };
       },
-    })
+    });
   },
-})
+});
